@@ -9,14 +9,14 @@
 #import "TSetLocationCache.h"
 
 
-typedef NS_ENUM(NSUInteger, CacheKeyType) {
-    CacheKeyTypeUsingHookLocation   = 1,
-    CacheKeyTypeLatitude            = 2,
-    CacheKeyTypeLongitude           = 3,
-    CacheKeyTypeBackupLatitude      = 4,
-    CacheKeyTypeBackupLongitude     = 5,
-    CacheKeyTypeRange               = 6,
-};
+//typedef NS_ENUM(NSUInteger, CacheKeyType) {
+//    CacheKeyTypeUsingHookLocation   = 1,
+//    CacheKeyTypeLatitude            = 2,
+//    CacheKeyTypeLongitude           = 3,
+//    CacheKeyTypeBackupLatitude      = 4,
+//    CacheKeyTypeBackupLongitude     = 5,
+//    CacheKeyTypeRange               = 6,
+//};
 
 @implementation TSetLocationCache
 

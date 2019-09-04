@@ -13,21 +13,21 @@ NS_ASSUME_NONNULL_BEGIN
 #ifdef __cplusplus
 extern "C" {
 #endif
-    
-    void ibox_add_instance_method(Class cls,
-                                  SEL sel);
-    
-    void ibox_add_class_method(Class cls,
-                               SEL sel);
-    
-    void ibox_exchange_instance_method(Class cls,
-                                       SEL originalSel,
-                                       SEL swizzledSel);
-    
-    void ibox_exchange_class_method(Class cls,
-                                    SEL originalSel,
-                                    SEL swizzledSel);
-    
+
+void t_add_instance_method(Class cls,
+                           SEL sel);
+
+void t_add_class_method(Class cls,
+                        SEL sel);
+
+void t_exchange_instance_method(Class cls,
+                                SEL originalSel,
+                                SEL swizzledSel);
+
+void t_exchange_class_method(Class cls,
+                             SEL originalSel,
+                             SEL swizzledSel);
+
 #ifdef __cplusplus
 } // extern "C"
 #endif

@@ -32,15 +32,15 @@
 + (void)replaceCLLocationsFunctionToClass:(Class)cls {
     
     if ([cls instancesRespondToSelector:@selector(locationManager:didUpdateToLocation:fromLocation:)]) {
-        ibox_exchange_instance_method(cls,
-                                      @selector(locationManager:didUpdateToLocation:fromLocation:),
-                                      @selector(__t_locationManager:didUpdateToLocation:fromLocation:));
+        t_exchange_instance_method(cls,
+                                   @selector(locationManager:didUpdateToLocation:fromLocation:),
+                                   @selector(__t_locationManager:didUpdateToLocation:fromLocation:));
     }
     
     if ([cls instancesRespondToSelector:@selector(locationManager:didUpdateLocations:)]) {
-        ibox_exchange_instance_method(cls,
-                                      @selector(locationManager:didUpdateLocations:),
-                                      @selector(__t_locationManager:didUpdateLocations:));
+        t_exchange_instance_method(cls,
+                                   @selector(locationManager:didUpdateLocations:),
+                                   @selector(__t_locationManager:didUpdateLocations:));
     }
 }
 
