@@ -27,7 +27,7 @@
     if (JWeixinNativeCodeHandler_getLocation_Class != Nil) {
         [self replaceCLLocationsFunctionToClass:JWeixinNativeCodeHandler_getLocation_Class];
     }
-    Class QMapView_Class = CLASS(JWeixinNativeCodeHandler_getLocation);
+    Class QMapView_Class = CLASS(QMapView);
     if (QMapView_Class != Nil) {
         [self replaceCLLocationsFunctionToClass:QMapView_Class];
     }
