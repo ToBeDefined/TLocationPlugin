@@ -1,23 +1,16 @@
 //
-//  UIWindow+Shake.m
-//  LocationPlugin
+//  UIWindow+TShake.m
+//  TLocationPlugin
 //
 //  Created by TBD on 2019/9/4.
-//
-//  Copyright (C) 2011-2019 ShenZhen iBOXCHAIN Information Technology Co.,Ltd. 
-//                             All rights reserved.
-//
-//      This  software  is  the  confidential  and  proprietary  information  of
-//  iBOXCHAIN  Company  of  China. ("Confidential Information"). You  shall  not
-//  disclose such Confidential Information and shall use it only in accordance
-//  with the terms of the contract agreement you entered into with iBOXCHAIN inc.
+//  Copyright © 2019 TBD. All rights reserved.
 //
 
 #import <AudioToolbox/AudioToolbox.h>
-#import "UIWindow+Shake.h"
+#import "UIWindow+TShake.h"
 #import "TSetLocationViewController.h"
 
-@implementation UIWindow (Shake)
+@implementation UIWindow (TShake)
 
 - (BOOL)canBecomeFirstResponder {
     return YES;

@@ -1,15 +1,9 @@
 //
-//  CashBoxSafeRuntimeCFunc.h
+//  TSafeRuntimeCFunc.h
 //  CashBox
 //
 //  Created by TBD on 2018/4/19.
-//  Copyright (C) 2011-2019 ShenZhen iBOXCHAIN Information Technology Co.,Ltd.
-//                           All right reserved.
-//
-//  This  software  is  the  confidential  and  proprietary  information  of
-//  iBOXCHAIN  Company  of  China. ("Confidential Information").  You  shall  not
-//  disclose such Confidential Information and shall use it only in accordance
-//  with the terms of the contract agreement you entered into with iBOXCHAIN inc.
+//  Copyright © 2019 TBD. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

@@ -8,7 +8,7 @@ $ios_min_version = '9.0'
 
 platform :ios, $ios_min_version
 
-target 'LocationPlugin' do
+target 'TLocationPlugin' do
   pod 'iBoxSafeRuntime', '~> 1.0.2'
 end
 
