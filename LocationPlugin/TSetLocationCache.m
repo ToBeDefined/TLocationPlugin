@@ -79,90 +79,74 @@ static TSetLocationCache *_instance;
 #pragma mark - Function
 #pragma mark -
 
-- (NSString *)cacheKeyForType:(CacheKeyType)type {
-    switch (type) {
-        case CacheKeyTypeUsingHookLocation:
-            return @"_T_CacheKeyTypeUsingHookLocation";
-        case CacheKeyTypeLatitude:
-            return @"_T_CacheKeyTypeLatitude";
-        case CacheKeyTypeLongitude:
-            return @"_T_CacheKeyTypeLongitude";
-        case CacheKeyTypeBackupLatitude:
-            return @"_T_CacheKeyTypeBackupLatitude";
-        case CacheKeyTypeBackupLongitude:
-            return @"_T_CacheKeyTypeBackupLongitude";
-        case CacheKeyTypeRange:
-            return @"_T_CacheKeyTypeRange";
-        default:
-            return nil;
-    }
-}
+//- (NSString *)cacheKeyForType:(CacheKeyType)type {
+//    switch (type) {
+//        case CacheKeyTypeUsingHookLocation:
+//            return @"_T_CacheKeyTypeUsingHookLocation";
+//        case CacheKeyTypeLatitude:
+//            return @"_T_CacheKeyTypeLatitude";
+//        case CacheKeyTypeLongitude:
+//            return @"_T_CacheKeyTypeLongitude";
+//        case CacheKeyTypeBackupLatitude:
+//            return @"_T_CacheKeyTypeBackupLatitude";
+//        case CacheKeyTypeBackupLongitude:
+//            return @"_T_CacheKeyTypeBackupLongitude";
+//        case CacheKeyTypeRange:
+//            return @"_T_CacheKeyTypeRange";
+//        default:
+//            return nil;
+//    }
+//}
 
-- (BOOL)usingHookLocation {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:[self cacheKeyForType:CacheKeyTypeUsingHookLocation]];
-}
-- (void)setUsingHookLocation:(BOOL)usingHookLocation {
-    NSString *key = [self cacheKeyForType:CacheKeyTypeUsingHookLocation];
-    [[NSUserDefaults standardUserDefaults] setBool:usingHookLocation
-                                            forKey:key];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
-
+static NSString * const _t_latitudeKey = @"_T_CacheKeyTypeLatitude";
 - (CLLocationDegrees)latitude {
-    return [[NSUserDefaults standardUserDefaults] doubleForKey:[self cacheKeyForType:CacheKeyTypeLatitude]];
+    return [[NSUserDefaults standardUserDefaults] doubleForKey:_t_latitudeKey];
 }
 - (void)setLatitude:(CLLocationDegrees)latitude {
-    NSString *key = [self cacheKeyForType:CacheKeyTypeLatitude];
     [[NSUserDefaults standardUserDefaults] setDouble:latitude
-                                              forKey:key];
+                                              forKey:_t_latitudeKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-
+static NSString * const _t_longitudeKey = @"_T_CacheKeyTypeLongitude";
 - (CLLocationDegrees)longitude {
-    return [[NSUserDefaults standardUserDefaults] doubleForKey:[self cacheKeyForType:CacheKeyTypeLongitude]];
+    return [[NSUserDefaults standardUserDefaults] doubleForKey:_t_longitudeKey];
 }
 - (void)setLongitude:(CLLocationDegrees)longitude {
-    NSString *key = [self cacheKeyForType:CacheKeyTypeLongitude];
     [[NSUserDefaults standardUserDefaults] setDouble:longitude
-                                              forKey:key];
+                                              forKey:_t_longitudeKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 
-
+static NSString * const _t_backupLatitudeKey = @"_T_CacheKeyTypeBackupLatitude";
 - (CLLocationDegrees)backupLatitude {
-    return [[NSUserDefaults standardUserDefaults] doubleForKey:[self cacheKeyForType:CacheKeyTypeBackupLatitude]];
+    return [[NSUserDefaults standardUserDefaults] doubleForKey:_t_backupLatitudeKey];
 }
 - (void)setBackupLatitude:(CLLocationDegrees)backupLatitude {
-    NSString *key = [self cacheKeyForType:CacheKeyTypeBackupLatitude];
     [[NSUserDefaults standardUserDefaults] setDouble:backupLatitude
-                                              forKey:key];
+                                              forKey:_t_backupLatitudeKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-
+static NSString * const _t_backupLongitudeKey = @"_T_CacheKeyTypeBackupLongitude";
 - (CLLocationDegrees)backupLongitude {
-    return [[NSUserDefaults standardUserDefaults] doubleForKey:[self cacheKeyForType:CacheKeyTypeBackupLongitude]];
+    return [[NSUserDefaults standardUserDefaults] doubleForKey:_t_backupLongitudeKey];
 }
 - (void)setBackupLongitude:(CLLocationDegrees)backupLongitude {
-    NSString *key = [self cacheKeyForType:CacheKeyTypeBackupLongitude];
     [[NSUserDefaults standardUserDefaults] setDouble:backupLongitude
-                                              forKey:key];
+                                              forKey:_t_backupLongitudeKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-
+static NSString * const _t_rangeKey = @"_T_CacheKeyTypeRange";
 - (double)range {
-    return [[NSUserDefaults standardUserDefaults] doubleForKey:[self cacheKeyForType:CacheKeyTypeRange]];
+    return [[NSUserDefaults standardUserDefaults] doubleForKey:_t_rangeKey];
 }
 - (void)setRange:(double)range {
-    NSString *key = [self cacheKeyForType:CacheKeyTypeRange];
     [[NSUserDefaults standardUserDefaults] setDouble:range
-                                              forKey:key];
+                                              forKey:_t_rangeKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
-
 
 @end
