@@ -1,5 +1,5 @@
 //
-//  QMapView+LocationPlugin.m
+//  TSetLocationViewController.h
 //  LocationPlugin
 //
 //  Created by TBD on 2019/9/4.
@@ -13,10 +13,12 @@
 //  with the terms of the contract agreement you entered into with iBOXCHAIN inc.
 //
 
-#import "QMapView+LocationPlugin.h"
-#import "Defines.h"
-#import "iBoxSafeRuntimeCFunc.h"
+#import <UIKit/UIKit.h>
 
-@implementation NSObject (QMapView)
+NS_ASSUME_NONNULL_BEGIN
+
+@interface TSetLocationViewController : UIViewController
 
 @end
+
+NS_ASSUME_NONNULL_END

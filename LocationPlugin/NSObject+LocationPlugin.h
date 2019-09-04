@@ -1,5 +1,5 @@
 //
-//  QMapView+LocationPlugin.h
+//  NSObject+LocationPlugin.h
 //  LocationPlugin
 //
 //  Created by TBD on 2019/9/4.
@@ -14,10 +14,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NSObject (QMapView)
+@interface NSObject (LocationPlugin)
 
 @end
 
