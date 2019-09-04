@@ -7,12 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TBaseViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TSetLocationViewController : UIViewController
-
-@property(class, nonatomic, assign) BOOL isShowing;
+@interface TSetLocationViewController : TBaseViewController
 
 @end
 

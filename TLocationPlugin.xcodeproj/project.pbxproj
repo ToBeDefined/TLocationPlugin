@@ -7,39 +7,120 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F0FE5112320FBFC008B0830 /* TLocationCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F0FE50F2320FBFC008B0830 /* TLocationCache.h */; };
+		3F0FE5122320FBFC008B0830 /* TLocationCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0FE5102320FBFC008B0830 /* TLocationCache.m */; };
 		3F94F9F7231F7F7800EA742C /* TLocationPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F94F9F5231F7F7800EA742C /* TLocationPlugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3F94F9FF231F813100EA742C /* NSObject+TLocationPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F94F9FD231F813100EA742C /* NSObject+TLocationPlugin.h */; };
 		3F94FA00231F813100EA742C /* NSObject+TLocationPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F94F9FE231F813100EA742C /* NSObject+TLocationPlugin.m */; };
+		3FB305F62320044900FD85A4 /* TSelectLocationDataViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FB305F32320044900FD85A4 /* TSelectLocationDataViewController.h */; };
+		3FB305F72320044900FD85A4 /* TSelectLocationDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB305F42320044900FD85A4 /* TSelectLocationDataViewController.m */; };
+		3FB305F82320044900FD85A4 /* TSelectLocationDataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FB305F52320044900FD85A4 /* TSelectLocationDataViewController.xib */; };
+		3FB305FC2320063F00FD85A4 /* TAddLocationDataViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FB305F92320063F00FD85A4 /* TAddLocationDataViewController.h */; };
+		3FB305FD2320063F00FD85A4 /* TAddLocationDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB305FA2320063F00FD85A4 /* TAddLocationDataViewController.m */; };
+		3FB305FE2320063F00FD85A4 /* TAddLocationDataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FB305FB2320063F00FD85A4 /* TAddLocationDataViewController.xib */; };
+		3FB30600232008E100FD85A4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FB305FF232008E100FD85A4 /* MapKit.framework */; };
+		3FB306032320144700FD85A4 /* TLocationModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FB306012320144700FD85A4 /* TLocationModel.h */; };
+		3FB306042320144700FD85A4 /* TLocationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB306022320144700FD85A4 /* TLocationModel.m */; };
 		3FE3DFB8231FA8A5002711B6 /* TSafeRuntimeCFunc.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE3DFB7231FA8A5002711B6 /* TSafeRuntimeCFunc.m */; };
 		3FEDEEC5231FAD10002E9C18 /* TSetLocationViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FEDEEC2231FAD10002E9C18 /* TSetLocationViewController.h */; };
 		3FEDEEC6231FAD10002E9C18 /* TSetLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEDEEC3231FAD10002E9C18 /* TSetLocationViewController.m */; };
 		3FEDEEC7231FAD10002E9C18 /* TSetLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FEDEEC4231FAD10002E9C18 /* TSetLocationViewController.xib */; };
 		3FEDEEC8231FAF5B002E9C18 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FEDEEC0231FAA46002E9C18 /* CoreLocation.framework */; };
-		3FEDEECB231FC0C5002E9C18 /* TSetLocationCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FEDEEC9231FC0C5002E9C18 /* TSetLocationCache.h */; };
-		3FEDEECC231FC0C5002E9C18 /* TSetLocationCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEDEECA231FC0C5002E9C18 /* TSetLocationCache.m */; };
 		3FEDEED0231FDB49002E9C18 /* UIWindow+TShake.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FEDEECE231FDB49002E9C18 /* UIWindow+TShake.h */; };
 		3FEDEED1231FDB49002E9C18 /* UIWindow+TShake.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEDEECF231FDB49002E9C18 /* UIWindow+TShake.m */; };
 		3FEDEED3231FDCF3002E9C18 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FEDEED2231FDCF3002E9C18 /* AudioToolbox.framework */; };
+		3FEDEED62320AE6D002E9C18 /* TAddLocationTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FEDEED42320AE6C002E9C18 /* TAddLocationTableViewCell.h */; };
+		3FEDEED72320AE6D002E9C18 /* TAddLocationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEDEED52320AE6C002E9C18 /* TAddLocationTableViewCell.m */; };
+		3FEDEED92320B11C002E9C18 /* TLocationPluginImages.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3FEDEED82320B11C002E9C18 /* TLocationPluginImages.bundle */; };
+		3FEDEEDC2320B14B002E9C18 /* UIImage+TLocation.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FEDEEDA2320B14B002E9C18 /* UIImage+TLocation.h */; };
+		3FEDEEDD2320B14B002E9C18 /* UIImage+TLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEDEEDB2320B14B002E9C18 /* UIImage+TLocation.m */; };
+		3FEDEEE02320B1AF002E9C18 /* NSBundle+TLocation.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FEDEEDE2320B1AF002E9C18 /* NSBundle+TLocation.h */; };
+		3FEDEEE12320B1AF002E9C18 /* NSBundle+TLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEDEEDF2320B1AF002E9C18 /* NSBundle+TLocation.m */; };
+		3FEDEEE72320B51F002E9C18 /* TLocationNavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FEDEEE52320B51F002E9C18 /* TLocationNavigationController.h */; };
+		3FEDEEE82320B51F002E9C18 /* TLocationNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEDEEE62320B51F002E9C18 /* TLocationNavigationController.m */; };
+		3FEDEEEB2320C82E002E9C18 /* TBaseViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FEDEEE92320C82D002E9C18 /* TBaseViewController.h */; };
+		3FEDEEEC2320C82E002E9C18 /* TBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEDEEEA2320C82E002E9C18 /* TBaseViewController.m */; };
+		3FEDEEF52320C916002E9C18 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEDEEF42320C916002E9C18 /* AppDelegate.m */; };
+		3FEDEEF82320C916002E9C18 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEDEEF72320C916002E9C18 /* ViewController.m */; };
+		3FEDEEFB2320C916002E9C18 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FEDEEF92320C916002E9C18 /* Main.storyboard */; };
+		3FEDEEFD2320C91A002E9C18 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FEDEEFC2320C91A002E9C18 /* Assets.xcassets */; };
+		3FEDEF002320C91A002E9C18 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FEDEEFE2320C91A002E9C18 /* LaunchScreen.storyboard */; };
+		3FEDEF032320C91A002E9C18 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEDEF022320C91A002E9C18 /* main.m */; };
+		3FEDEF092320C93B002E9C18 /* TLocationPlugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F94F9F2231F7F7800EA742C /* TLocationPlugin.framework */; };
+		3FEDEF0A2320C93B002E9C18 /* TLocationPlugin.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3F94F9F2231F7F7800EA742C /* TLocationPlugin.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		3FEDEF072320C92C002E9C18 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3F94F9E9231F7F7800EA742C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3F94F9F1231F7F7800EA742C;
+			remoteInfo = TLocationPlugin;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3FEDEF0B2320C93B002E9C18 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				3FEDEF0A2320C93B002E9C18 /* TLocationPlugin.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		3F0FE50F2320FBFC008B0830 /* TLocationCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLocationCache.h; sourceTree = "<group>"; };
+		3F0FE5102320FBFC008B0830 /* TLocationCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLocationCache.m; sourceTree = "<group>"; };
 		3F94F9F2231F7F7800EA742C /* TLocationPlugin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TLocationPlugin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F94F9F5231F7F7800EA742C /* TLocationPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLocationPlugin.h; sourceTree = "<group>"; };
 		3F94F9F6231F7F7800EA742C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F94F9FD231F813100EA742C /* NSObject+TLocationPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+TLocationPlugin.h"; sourceTree = "<group>"; };
 		3F94F9FE231F813100EA742C /* NSObject+TLocationPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+TLocationPlugin.m"; sourceTree = "<group>"; };
+		3FB305F32320044900FD85A4 /* TSelectLocationDataViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSelectLocationDataViewController.h; sourceTree = "<group>"; };
+		3FB305F42320044900FD85A4 /* TSelectLocationDataViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSelectLocationDataViewController.m; sourceTree = "<group>"; };
+		3FB305F52320044900FD85A4 /* TSelectLocationDataViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TSelectLocationDataViewController.xib; sourceTree = "<group>"; };
+		3FB305F92320063F00FD85A4 /* TAddLocationDataViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TAddLocationDataViewController.h; sourceTree = "<group>"; };
+		3FB305FA2320063F00FD85A4 /* TAddLocationDataViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TAddLocationDataViewController.m; sourceTree = "<group>"; };
+		3FB305FB2320063F00FD85A4 /* TAddLocationDataViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAddLocationDataViewController.xib; sourceTree = "<group>"; };
+		3FB305FF232008E100FD85A4 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/MapKit.framework; sourceTree = DEVELOPER_DIR; };
+		3FB306012320144700FD85A4 /* TLocationModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLocationModel.h; sourceTree = "<group>"; };
+		3FB306022320144700FD85A4 /* TLocationModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLocationModel.m; sourceTree = "<group>"; };
 		3FE3DFB6231FA8A3002711B6 /* TSafeRuntimeCFunc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSafeRuntimeCFunc.h; sourceTree = "<group>"; };
 		3FE3DFB7231FA8A5002711B6 /* TSafeRuntimeCFunc.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSafeRuntimeCFunc.m; sourceTree = "<group>"; };
 		3FEDEEC0231FAA46002E9C18 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		3FEDEEC2231FAD10002E9C18 /* TSetLocationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSetLocationViewController.h; sourceTree = "<group>"; };
 		3FEDEEC3231FAD10002E9C18 /* TSetLocationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSetLocationViewController.m; sourceTree = "<group>"; };
 		3FEDEEC4231FAD10002E9C18 /* TSetLocationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TSetLocationViewController.xib; sourceTree = "<group>"; };
-		3FEDEEC9231FC0C5002E9C18 /* TSetLocationCache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSetLocationCache.h; sourceTree = "<group>"; };
-		3FEDEECA231FC0C5002E9C18 /* TSetLocationCache.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSetLocationCache.m; sourceTree = "<group>"; };
 		3FEDEECE231FDB49002E9C18 /* UIWindow+TShake.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIWindow+TShake.h"; sourceTree = "<group>"; };
 		3FEDEECF231FDB49002E9C18 /* UIWindow+TShake.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+TShake.m"; sourceTree = "<group>"; };
 		3FEDEED2231FDCF3002E9C18 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		DCF039DCB033E09C55C9B538 /* libPods-TLocationPlugin.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TLocationPlugin.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3FEDEED42320AE6C002E9C18 /* TAddLocationTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TAddLocationTableViewCell.h; sourceTree = "<group>"; };
+		3FEDEED52320AE6C002E9C18 /* TAddLocationTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TAddLocationTableViewCell.m; sourceTree = "<group>"; };
+		3FEDEED82320B11C002E9C18 /* TLocationPluginImages.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TLocationPluginImages.bundle; sourceTree = "<group>"; };
+		3FEDEEDA2320B14B002E9C18 /* UIImage+TLocation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+TLocation.h"; sourceTree = "<group>"; };
+		3FEDEEDB2320B14B002E9C18 /* UIImage+TLocation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+TLocation.m"; sourceTree = "<group>"; };
+		3FEDEEDE2320B1AF002E9C18 /* NSBundle+TLocation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSBundle+TLocation.h"; sourceTree = "<group>"; };
+		3FEDEEDF2320B1AF002E9C18 /* NSBundle+TLocation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+TLocation.m"; sourceTree = "<group>"; };
+		3FEDEEE52320B51F002E9C18 /* TLocationNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLocationNavigationController.h; sourceTree = "<group>"; };
+		3FEDEEE62320B51F002E9C18 /* TLocationNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLocationNavigationController.m; sourceTree = "<group>"; };
+		3FEDEEE92320C82D002E9C18 /* TBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TBaseViewController.h; sourceTree = "<group>"; };
+		3FEDEEEA2320C82E002E9C18 /* TBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TBaseViewController.m; sourceTree = "<group>"; };
+		3FEDEEF12320C916002E9C18 /* TestLocationPlugin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestLocationPlugin.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3FEDEEF32320C916002E9C18 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		3FEDEEF42320C916002E9C18 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		3FEDEEF62320C916002E9C18 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		3FEDEEF72320C916002E9C18 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		3FEDEEFA2320C916002E9C18 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3FEDEEFC2320C91A002E9C18 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3FEDEEFF2320C91A002E9C18 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3FEDEF012320C91A002E9C18 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3FEDEF022320C91A002E9C18 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,7 +129,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				3FEDEED3231FDCF3002E9C18 /* AudioToolbox.framework in Frameworks */,
+				3FB30600232008E100FD85A4 /* MapKit.framework in Frameworks */,
 				3FEDEEC8231FAF5B002E9C18 /* CoreLocation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3FEDEEEE2320C916002E9C18 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3FEDEF092320C93B002E9C18 /* TLocationPlugin.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				3F94F9F4231F7F7800EA742C /* TLocationPlugin */,
+				3FEDEEF22320C916002E9C18 /* TestLocationPlugin */,
 				3F94F9F3231F7F7800EA742C /* Products */,
 				EC41FADB1E5A492BCB391115 /* Frameworks */,
 			);
@@ -68,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				3F94F9F2231F7F7800EA742C /* TLocationPlugin.framework */,
+				3FEDEEF12320C916002E9C18 /* TestLocationPlugin.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -78,26 +170,85 @@
 				3F94F9F5231F7F7800EA742C /* TLocationPlugin.h */,
 				3FE3DFB6231FA8A3002711B6 /* TSafeRuntimeCFunc.h */,
 				3FE3DFB7231FA8A5002711B6 /* TSafeRuntimeCFunc.m */,
-				3FEDEECE231FDB49002E9C18 /* UIWindow+TShake.h */,
-				3FEDEECF231FDB49002E9C18 /* UIWindow+TShake.m */,
 				3F94F9FD231F813100EA742C /* NSObject+TLocationPlugin.h */,
 				3F94F9FE231F813100EA742C /* NSObject+TLocationPlugin.m */,
-				3FEDEEC9231FC0C5002E9C18 /* TSetLocationCache.h */,
-				3FEDEECA231FC0C5002E9C18 /* TSetLocationCache.m */,
-				3FEDEEC2231FAD10002E9C18 /* TSetLocationViewController.h */,
-				3FEDEEC3231FAD10002E9C18 /* TSetLocationViewController.m */,
-				3FEDEEC4231FAD10002E9C18 /* TSetLocationViewController.xib */,
+				3FEDEEE42320B435002E9C18 /* ModelAndCache */,
+				3FEDEEE32320B419002E9C18 /* ViewControllerAndViews */,
+				3FEDEEE22320B402002E9C18 /* Categories */,
+				3FEDEED82320B11C002E9C18 /* TLocationPluginImages.bundle */,
 				3F94F9F6231F7F7800EA742C /* Info.plist */,
 			);
 			path = TLocationPlugin;
 			sourceTree = "<group>";
 		};
+		3FEDEEE22320B402002E9C18 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				3FEDEECE231FDB49002E9C18 /* UIWindow+TShake.h */,
+				3FEDEECF231FDB49002E9C18 /* UIWindow+TShake.m */,
+				3FEDEEDE2320B1AF002E9C18 /* NSBundle+TLocation.h */,
+				3FEDEEDF2320B1AF002E9C18 /* NSBundle+TLocation.m */,
+				3FEDEEDA2320B14B002E9C18 /* UIImage+TLocation.h */,
+				3FEDEEDB2320B14B002E9C18 /* UIImage+TLocation.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		3FEDEEE32320B419002E9C18 /* ViewControllerAndViews */ = {
+			isa = PBXGroup;
+			children = (
+				3FEDEEE52320B51F002E9C18 /* TLocationNavigationController.h */,
+				3FEDEEE62320B51F002E9C18 /* TLocationNavigationController.m */,
+				3FEDEEE92320C82D002E9C18 /* TBaseViewController.h */,
+				3FEDEEEA2320C82E002E9C18 /* TBaseViewController.m */,
+				3FEDEEC2231FAD10002E9C18 /* TSetLocationViewController.h */,
+				3FEDEEC3231FAD10002E9C18 /* TSetLocationViewController.m */,
+				3FEDEEC4231FAD10002E9C18 /* TSetLocationViewController.xib */,
+				3FB305F32320044900FD85A4 /* TSelectLocationDataViewController.h */,
+				3FB305F42320044900FD85A4 /* TSelectLocationDataViewController.m */,
+				3FB305F52320044900FD85A4 /* TSelectLocationDataViewController.xib */,
+				3FB305F92320063F00FD85A4 /* TAddLocationDataViewController.h */,
+				3FB305FA2320063F00FD85A4 /* TAddLocationDataViewController.m */,
+				3FB305FB2320063F00FD85A4 /* TAddLocationDataViewController.xib */,
+				3FEDEED42320AE6C002E9C18 /* TAddLocationTableViewCell.h */,
+				3FEDEED52320AE6C002E9C18 /* TAddLocationTableViewCell.m */,
+			);
+			path = ViewControllerAndViews;
+			sourceTree = "<group>";
+		};
+		3FEDEEE42320B435002E9C18 /* ModelAndCache */ = {
+			isa = PBXGroup;
+			children = (
+				3F0FE50F2320FBFC008B0830 /* TLocationCache.h */,
+				3F0FE5102320FBFC008B0830 /* TLocationCache.m */,
+				3FB306012320144700FD85A4 /* TLocationModel.h */,
+				3FB306022320144700FD85A4 /* TLocationModel.m */,
+			);
+			path = ModelAndCache;
+			sourceTree = "<group>";
+		};
+		3FEDEEF22320C916002E9C18 /* TestLocationPlugin */ = {
+			isa = PBXGroup;
+			children = (
+				3FEDEEF32320C916002E9C18 /* AppDelegate.h */,
+				3FEDEEF42320C916002E9C18 /* AppDelegate.m */,
+				3FEDEEF62320C916002E9C18 /* ViewController.h */,
+				3FEDEEF72320C916002E9C18 /* ViewController.m */,
+				3FEDEEF92320C916002E9C18 /* Main.storyboard */,
+				3FEDEEFC2320C91A002E9C18 /* Assets.xcassets */,
+				3FEDEEFE2320C91A002E9C18 /* LaunchScreen.storyboard */,
+				3FEDEF012320C91A002E9C18 /* Info.plist */,
+				3FEDEF022320C91A002E9C18 /* main.m */,
+			);
+			path = TestLocationPlugin;
+			sourceTree = "<group>";
+		};
 		EC41FADB1E5A492BCB391115 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3FB305FF232008E100FD85A4 /* MapKit.framework */,
 				3FEDEED2231FDCF3002E9C18 /* AudioToolbox.framework */,
 				3FEDEEC0231FAA46002E9C18 /* CoreLocation.framework */,
-				DCF039DCB033E09C55C9B538 /* libPods-TLocationPlugin.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -111,9 +262,17 @@
 			files = (
 				3FEDEEC5231FAD10002E9C18 /* TSetLocationViewController.h in Headers */,
 				3F94F9FF231F813100EA742C /* NSObject+TLocationPlugin.h in Headers */,
+				3FB305FC2320063F00FD85A4 /* TAddLocationDataViewController.h in Headers */,
 				3FEDEED0231FDB49002E9C18 /* UIWindow+TShake.h in Headers */,
-				3FEDEECB231FC0C5002E9C18 /* TSetLocationCache.h in Headers */,
+				3FEDEEEB2320C82E002E9C18 /* TBaseViewController.h in Headers */,
+				3FEDEEE02320B1AF002E9C18 /* NSBundle+TLocation.h in Headers */,
+				3FEDEEDC2320B14B002E9C18 /* UIImage+TLocation.h in Headers */,
+				3FEDEEE72320B51F002E9C18 /* TLocationNavigationController.h in Headers */,
+				3FB306032320144700FD85A4 /* TLocationModel.h in Headers */,
+				3FB305F62320044900FD85A4 /* TSelectLocationDataViewController.h in Headers */,
+				3FEDEED62320AE6D002E9C18 /* TAddLocationTableViewCell.h in Headers */,
 				3F94F9F7231F7F7800EA742C /* TLocationPlugin.h in Headers */,
+				3F0FE5112320FBFC008B0830 /* TLocationCache.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,6 +297,25 @@
 			productReference = 3F94F9F2231F7F7800EA742C /* TLocationPlugin.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		3FEDEEF02320C916002E9C18 /* TestLocationPlugin */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3FEDEF042320C91A002E9C18 /* Build configuration list for PBXNativeTarget "TestLocationPlugin" */;
+			buildPhases = (
+				3FEDEEED2320C916002E9C18 /* Sources */,
+				3FEDEEEE2320C916002E9C18 /* Frameworks */,
+				3FEDEEEF2320C916002E9C18 /* Resources */,
+				3FEDEF0B2320C93B002E9C18 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3FEDEF082320C92C002E9C18 /* PBXTargetDependency */,
+			);
+			name = TestLocationPlugin;
+			productName = TestLocationPlugin;
+			productReference = 3FEDEEF12320C916002E9C18 /* TestLocationPlugin.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -149,6 +327,9 @@
 				TargetAttributes = {
 					3F94F9F1231F7F7800EA742C = {
 						CreatedOnToolsVersion = 11.0;
+					};
+					3FEDEEF02320C916002E9C18 = {
+						CreatedOnToolsVersion = 10.3;
 					};
 				};
 			};
@@ -166,6 +347,7 @@
 			projectRoot = "";
 			targets = (
 				3F94F9F1231F7F7800EA742C /* TLocationPlugin */,
+				3FEDEEF02320C916002E9C18 /* TestLocationPlugin */,
 			);
 		};
 /* End PBXProject section */
@@ -175,7 +357,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FB305F82320044900FD85A4 /* TSelectLocationDataViewController.xib in Resources */,
+				3FEDEED92320B11C002E9C18 /* TLocationPluginImages.bundle in Resources */,
+				3FB305FE2320063F00FD85A4 /* TAddLocationDataViewController.xib in Resources */,
 				3FEDEEC7231FAD10002E9C18 /* TSetLocationViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3FEDEEEF2320C916002E9C18 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3FEDEF002320C91A002E9C18 /* LaunchScreen.storyboard in Resources */,
+				3FEDEEFD2320C91A002E9C18 /* Assets.xcassets in Resources */,
+				3FEDEEFB2320C916002E9C18 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,15 +381,60 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FB305F72320044900FD85A4 /* TSelectLocationDataViewController.m in Sources */,
+				3FB306042320144700FD85A4 /* TLocationModel.m in Sources */,
 				3F94FA00231F813100EA742C /* NSObject+TLocationPlugin.m in Sources */,
+				3FEDEEE82320B51F002E9C18 /* TLocationNavigationController.m in Sources */,
+				3FEDEEE12320B1AF002E9C18 /* NSBundle+TLocation.m in Sources */,
 				3FEDEEC6231FAD10002E9C18 /* TSetLocationViewController.m in Sources */,
+				3F0FE5122320FBFC008B0830 /* TLocationCache.m in Sources */,
 				3FEDEED1231FDB49002E9C18 /* UIWindow+TShake.m in Sources */,
 				3FE3DFB8231FA8A5002711B6 /* TSafeRuntimeCFunc.m in Sources */,
-				3FEDEECC231FC0C5002E9C18 /* TSetLocationCache.m in Sources */,
+				3FEDEEEC2320C82E002E9C18 /* TBaseViewController.m in Sources */,
+				3FB305FD2320063F00FD85A4 /* TAddLocationDataViewController.m in Sources */,
+				3FEDEED72320AE6D002E9C18 /* TAddLocationTableViewCell.m in Sources */,
+				3FEDEEDD2320B14B002E9C18 /* UIImage+TLocation.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3FEDEEED2320C916002E9C18 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3FEDEEF82320C916002E9C18 /* ViewController.m in Sources */,
+				3FEDEF032320C91A002E9C18 /* main.m in Sources */,
+				3FEDEEF52320C916002E9C18 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3FEDEF082320C92C002E9C18 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3F94F9F1231F7F7800EA742C /* TLocationPlugin */;
+			targetProxy = 3FEDEF072320C92C002E9C18 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3FEDEEF92320C916002E9C18 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3FEDEEFA2320C916002E9C18 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		3FEDEEFE2320C91A002E9C18 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3FEDEEFF2320C91A002E9C18 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		3F94F9F8231F7F7800EA742C /* Debug */ = {
@@ -316,8 +556,10 @@
 		3F94F9FB231F7F7800EA742C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 63JR9Z58EL;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -339,8 +581,10 @@
 		3F94F9FC231F7F7800EA742C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 63JR9Z58EL;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -355,6 +599,46 @@
 				PRODUCT_BUNDLE_IDENTIFIER = tbd.tech.TLocationPlugin;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		3FEDEF052320C91A002E9C18 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 63JR9Z58EL;
+				INFOPLIST_FILE = TestLocationPlugin/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = tbd.tech.TestLocationPlugin;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "Wildcard Development";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3FEDEF062320C91A002E9C18 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 63JR9Z58EL;
+				INFOPLIST_FILE = TestLocationPlugin/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = tbd.tech.TestLocationPlugin;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "Wildcard Development";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -376,6 +660,15 @@
 			buildConfigurations = (
 				3F94F9FB231F7F7800EA742C /* Debug */,
 				3F94F9FC231F7F7800EA742C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3FEDEF042320C91A002E9C18 /* Build configuration list for PBXNativeTarget "TestLocationPlugin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3FEDEF052320C91A002E9C18 /* Debug */,
+				3FEDEF062320C91A002E9C18 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

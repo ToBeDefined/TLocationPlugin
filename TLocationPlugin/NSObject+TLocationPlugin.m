@@ -9,7 +9,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "NSObject+TLocationPlugin.h"
 #import "TSafeRuntimeCFunc.h"
-#import "TSetLocationCache.h"
+#import "TLocationCache.h"
 
 
 #define CLASS(_cls) NSClassFromString(@#_cls)
@@ -47,40 +47,40 @@
 - (void)__t_locationManager:(CLLocationManager *)manager
         didUpdateToLocation:(CLLocation *)newLocation
                fromLocation:(CLLocation *)oldLocation API_AVAILABLE(macos(10.6)) {
-    if (!TSetLocationCache.shared.usingHookLocation) {
+    if (!TLocationCache.shared.usingHookLocation) {
         [self __t_locationManager:manager didUpdateToLocation:newLocation fromLocation:oldLocation];
         return;
     }
     
-    CLLocationDegrees latitude = TSetLocationCache.shared.latitude + [self rangeDegress];
-    CLLocationDegrees longitude = TSetLocationCache.shared.longitude + [self rangeDegress];
+    CLLocationDegrees latitude = TLocationCache.shared.latitude + [self rangeDegress];
+    CLLocationDegrees longitude = TLocationCache.shared.longitude + [self rangeDegress];
     CLLocation *t_newLocation = [[CLLocation alloc] initWithLatitude:latitude longitude:longitude];
     [self __t_locationManager:manager didUpdateToLocation:t_newLocation fromLocation:oldLocation];
 }
 
 - (void)__t_locationManager:(CLLocationManager *)manager
          didUpdateLocations:(NSArray<CLLocation *> *)locations {
-    if (!TSetLocationCache.shared.usingHookLocation) {
+    if (!TLocationCache.shared.usingHookLocation) {
         [self __t_locationManager:manager didUpdateLocations:locations];
         return;
     }
     
-    CLLocationDegrees latitude1 = TSetLocationCache.shared.latitude + [self rangeDegress];
-    CLLocationDegrees longitude1 = TSetLocationCache.shared.longitude + [self rangeDegress];
+    CLLocationDegrees latitude1 = TLocationCache.shared.latitude + [self rangeDegress];
+    CLLocationDegrees longitude1 = TLocationCache.shared.longitude + [self rangeDegress];
     CLLocation *t_newLocation1 = [[CLLocation alloc] initWithLatitude:latitude1 longitude:longitude1];
     
-    CLLocationDegrees latitude2 = TSetLocationCache.shared.latitude + [self rangeDegress];
-    CLLocationDegrees longitude2 = TSetLocationCache.shared.longitude + [self rangeDegress];
+    CLLocationDegrees latitude2 = TLocationCache.shared.latitude + [self rangeDegress];
+    CLLocationDegrees longitude2 = TLocationCache.shared.longitude + [self rangeDegress];
     CLLocation *t_newLocation2 = [[CLLocation alloc] initWithLatitude:latitude2 longitude:longitude2];
     
-    CLLocationDegrees latitude3 = TSetLocationCache.shared.latitude + [self rangeDegress];
-    CLLocationDegrees longitude3 = TSetLocationCache.shared.longitude + [self rangeDegress];
+    CLLocationDegrees latitude3 = TLocationCache.shared.latitude + [self rangeDegress];
+    CLLocationDegrees longitude3 = TLocationCache.shared.longitude + [self rangeDegress];
     CLLocation *t_newLocation3 = [[CLLocation alloc] initWithLatitude:latitude3 longitude:longitude3];
     [self __t_locationManager:manager didUpdateLocations:@[t_newLocation1, t_newLocation2, t_newLocation3]];
 }
 
 - (CLLocationDegrees)rangeDegress {
-    NSInteger range = arc4random() % TSetLocationCache.shared.range;
+    NSInteger range = arc4random() % TLocationCache.shared.range;
     CLLocationDegrees degress = 1.0/100000.0 * range + (arc4random() % 1000) * 1.0/100000000.0;
     if (arc4random() % 2 == 0) return -degress;
     return degress;
