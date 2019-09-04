@@ -96,24 +96,40 @@ static BOOL _t_isShowing = NO;
 
 /// 保存到缓存
 - (IBAction)storageLocationToCache:(UIButton *)sender {
-    CLLocationDegrees latitude = [self.latitudeTextField.text doubleValue];
-    CLLocationDegrees longitude = [self.longitudeTextField.text doubleValue];
-    NSInteger range = [self.rangeTextField.text integerValue];
-    TSetLocationCache.shared.latitude = latitude;
-    TSetLocationCache.shared.longitude = longitude;
-    TSetLocationCache.shared.range = range;
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil
+                                                                   message:@"保存到缓存后, hook 将使用配置的数据"
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        CLLocationDegrees latitude = [self.latitudeTextField.text doubleValue];
+        CLLocationDegrees longitude = [self.longitudeTextField.text doubleValue];
+        NSInteger range = [self.rangeTextField.text integerValue];
+        TSetLocationCache.shared.latitude = latitude;
+        TSetLocationCache.shared.longitude = longitude;
+        TSetLocationCache.shared.range = range;
+    }]];
 }
 
 /// 保存到备份缓存
 - (IBAction)storageLocationToBackupCache:(UIButton *)sender {
-    CLLocationDegrees latitude = [self.latitudeTextField.text doubleValue];
-    CLLocationDegrees longitude = [self.longitudeTextField.text doubleValue];
-    TSetLocationCache.shared.backupLatitude = latitude;
-    TSetLocationCache.shared.backupLongitude = longitude;
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil
+                                                                   message:@"保存到备份缓存, 仅供数据备份, hook 函数中并不使用备份的数据"
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        CLLocationDegrees latitude = [self.latitudeTextField.text doubleValue];
+        CLLocationDegrees longitude = [self.longitudeTextField.text doubleValue];
+        TSetLocationCache.shared.backupLatitude = latitude;
+        TSetLocationCache.shared.backupLongitude = longitude;
+    }]];
 }
 
 - (IBAction)usingHookLocationValueChanged:(UISwitch *)sender {
     TSetLocationCache.shared.usingHookLocation = sender.isEnabled;
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil
+                                                                   message:sender.isEnabled ? @"已开启" : @"已关闭"
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:nil]];
 }
 
 
