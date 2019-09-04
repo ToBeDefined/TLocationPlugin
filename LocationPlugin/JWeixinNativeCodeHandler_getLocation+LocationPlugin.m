@@ -14,10 +14,18 @@
 //
 
 #import "JWeixinNativeCodeHandler_getLocation+LocationPlugin.h"
+#import "Defines.h"
+#import "iBoxSafeRuntimeCFunc.h"
 
 @implementation NSObject (JWeixinNativeCodeHandler_getLocation)
 
 + (void)load {
+    if (CLASS(JWeixinNativeCodeHandler_getLocation) != Nil) {
+        <#statements#>
+    }
+}
+
++ (void)replaceJWeixinNativeCodeHandler_getLocationFunctions {
     
 }
 

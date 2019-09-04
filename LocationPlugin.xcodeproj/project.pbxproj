@@ -12,17 +12,20 @@
 		3F94F9F7231F7F7800EA742C /* LocationPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F94F9F5231F7F7800EA742C /* LocationPlugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3F94F9FF231F813100EA742C /* JWeixinNativeCodeHandler_getLocation+LocationPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F94F9FD231F813100EA742C /* JWeixinNativeCodeHandler_getLocation+LocationPlugin.h */; };
 		3F94FA00231F813100EA742C /* JWeixinNativeCodeHandler_getLocation+LocationPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F94F9FE231F813100EA742C /* JWeixinNativeCodeHandler_getLocation+LocationPlugin.m */; };
-		61FFB740D56A2E8B878FC777 /* libPods-LocationPlugin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DCF039DCB033E09C55C9B538 /* libPods-LocationPlugin.a */; };
+		3FE3DFB8231FA8A5002711B6 /* iBoxSafeRuntimeCFunc.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE3DFB7231FA8A5002711B6 /* iBoxSafeRuntimeCFunc.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3F6A4F68231F821F0096DF60 /* QMapView+LocationPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "QMapView+LocationPlugin.h"; sourceTree = "<group>"; };
 		3F6A4F69231F821F0096DF60 /* QMapView+LocationPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "QMapView+LocationPlugin.m"; sourceTree = "<group>"; };
+		3F6A4F70231F85140096DF60 /* Defines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Defines.h; sourceTree = "<group>"; };
 		3F94F9F2231F7F7800EA742C /* LocationPlugin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LocationPlugin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F94F9F5231F7F7800EA742C /* LocationPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationPlugin.h; sourceTree = "<group>"; };
 		3F94F9F6231F7F7800EA742C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F94F9FD231F813100EA742C /* JWeixinNativeCodeHandler_getLocation+LocationPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JWeixinNativeCodeHandler_getLocation+LocationPlugin.h"; sourceTree = "<group>"; };
 		3F94F9FE231F813100EA742C /* JWeixinNativeCodeHandler_getLocation+LocationPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "JWeixinNativeCodeHandler_getLocation+LocationPlugin.m"; sourceTree = "<group>"; };
+		3FE3DFB6231FA8A3002711B6 /* iBoxSafeRuntimeCFunc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iBoxSafeRuntimeCFunc.h; sourceTree = "<group>"; };
+		3FE3DFB7231FA8A5002711B6 /* iBoxSafeRuntimeCFunc.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iBoxSafeRuntimeCFunc.m; sourceTree = "<group>"; };
 		436BAF2F633B3C1E46FAEF8C /* Pods-LocationPlugin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocationPlugin.release.xcconfig"; path = "Target Support Files/Pods-LocationPlugin/Pods-LocationPlugin.release.xcconfig"; sourceTree = "<group>"; };
 		782B2E7C007659080DA4DA9E /* Pods-LocationPlugin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocationPlugin.debug.xcconfig"; path = "Target Support Files/Pods-LocationPlugin/Pods-LocationPlugin.debug.xcconfig"; sourceTree = "<group>"; };
 		DCF039DCB033E09C55C9B538 /* libPods-LocationPlugin.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LocationPlugin.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -33,7 +36,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				61FFB740D56A2E8B878FC777 /* libPods-LocationPlugin.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,11 +64,14 @@
 			isa = PBXGroup;
 			children = (
 				3F94F9F5231F7F7800EA742C /* LocationPlugin.h */,
-				3F94F9F6231F7F7800EA742C /* Info.plist */,
+				3F6A4F70231F85140096DF60 /* Defines.h */,
+				3FE3DFB6231FA8A3002711B6 /* iBoxSafeRuntimeCFunc.h */,
+				3FE3DFB7231FA8A5002711B6 /* iBoxSafeRuntimeCFunc.m */,
 				3F94F9FD231F813100EA742C /* JWeixinNativeCodeHandler_getLocation+LocationPlugin.h */,
 				3F94F9FE231F813100EA742C /* JWeixinNativeCodeHandler_getLocation+LocationPlugin.m */,
 				3F6A4F68231F821F0096DF60 /* QMapView+LocationPlugin.h */,
 				3F6A4F69231F821F0096DF60 /* QMapView+LocationPlugin.m */,
+				3F94F9F6231F7F7800EA742C /* Info.plist */,
 			);
 			path = LocationPlugin;
 			sourceTree = "<group>";
@@ -108,7 +113,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3F94F9FA231F7F7800EA742C /* Build configuration list for PBXNativeTarget "LocationPlugin" */;
 			buildPhases = (
-				174C6CA8043431D8A11228EE /* [CP] Check Pods Manifest.lock */,
 				3F94F9ED231F7F7800EA742C /* Headers */,
 				3F94F9EE231F7F7800EA742C /* Sources */,
 				3F94F9EF231F7F7800EA742C /* Frameworks */,
@@ -165,37 +169,13 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		174C6CA8043431D8A11228EE /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-LocationPlugin-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		3F94F9EE231F7F7800EA742C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				3F94FA00231F813100EA742C /* JWeixinNativeCodeHandler_getLocation+LocationPlugin.m in Sources */,
+				3FE3DFB8231FA8A5002711B6 /* iBoxSafeRuntimeCFunc.m in Sources */,
 				3F6A4F6B231F821F0096DF60 /* QMapView+LocationPlugin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -321,7 +301,6 @@
 		};
 		3F94F9FB231F7F7800EA742C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 782B2E7C007659080DA4DA9E /* Pods-LocationPlugin.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -330,6 +309,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = LocationPlugin/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -344,7 +324,6 @@
 		};
 		3F94F9FC231F7F7800EA742C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 436BAF2F633B3C1E46FAEF8C /* Pods-LocationPlugin.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -353,6 +332,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = LocationPlugin/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

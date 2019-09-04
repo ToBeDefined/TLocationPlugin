@@ -14,6 +14,8 @@
 //
 
 #import "QMapView+LocationPlugin.h"
+#import "Defines.h"
+#import "iBoxSafeRuntimeCFunc.h"
 
 @implementation NSObject (QMapView)
 

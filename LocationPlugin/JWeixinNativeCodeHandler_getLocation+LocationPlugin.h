@@ -14,7 +14,6 @@
 //
 
 #import <UIKit/UIKit.h>
-
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NSObject (JWeixinNativeCodeHandler_getLocation)
