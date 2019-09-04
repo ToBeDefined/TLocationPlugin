@@ -29,7 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) CLLocationDegrees backupLatitude;
 @property (nonatomic, assign) CLLocationDegrees backupLongitude;
-@property (nonatomic, assign) double range;
+@property (nonatomic, assign) NSInteger range;
 
 @end
 

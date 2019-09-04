@@ -140,12 +140,12 @@ static NSString * const _t_backupLongitudeKey = @"_T_CacheKeyTypeBackupLongitude
 }
 
 static NSString * const _t_rangeKey = @"_T_CacheKeyTypeRange";
-- (double)range {
-    return [[NSUserDefaults standardUserDefaults] doubleForKey:_t_rangeKey];
+- (NSInteger)range {
+    return [[NSUserDefaults standardUserDefaults] integerForKey:_t_rangeKey];
 }
-- (void)setRange:(double)range {
-    [[NSUserDefaults standardUserDefaults] setDouble:range
-                                              forKey:_t_rangeKey];
+- (void)setRange:(NSInteger)range {
+    [[NSUserDefaults standardUserDefaults] setInteger:range
+                                               forKey:_t_rangeKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
