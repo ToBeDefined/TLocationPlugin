@@ -28,6 +28,18 @@
 
 @implementation TSetLocationViewController
 
+
+#pragma mark - Setter/Getter
+static BOOL _t_isShowing = NO;
++ (BOOL)isShowing {
+    return _t_isShowing;
+}
+
++ (void)setIsShowing:(BOOL)isShowing {
+    _t_isShowing = isShowing;
+}
+
+#pragma mark - Life Cycle
 - (void)dealloc {
     if (self->_manger) {
         [self->_manger stopUpdatingLocation];
@@ -38,11 +50,9 @@
     [super viewDidLoad];
     self.contentView.layer.masksToBounds = YES;
     self.contentView.layer.cornerRadius = 5.0;
-//    CLLocationDegrees latitude;
-//    CLLocationDegrees longitude;
 }
 
--(CLLocationManager *)manger {
+- (CLLocationManager *)manger {
     if (_manger != nil) {
         return _manger;
     }
@@ -55,6 +65,7 @@
 }
 
 - (IBAction)closeSetLocationViewController:(UIButton *)sender {
+    TSetLocationViewController.isShowing = NO;
     if (self.navigationController) {
         [self.navigationController popViewControllerAnimated:YES];
     } else {

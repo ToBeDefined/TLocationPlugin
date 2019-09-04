@@ -17,10 +17,12 @@
 		3FEDEEC8231FAF5B002E9C18 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FEDEEC0231FAA46002E9C18 /* CoreLocation.framework */; };
 		3FEDEECB231FC0C5002E9C18 /* TSetLocationCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FEDEEC9231FC0C5002E9C18 /* TSetLocationCache.h */; };
 		3FEDEECC231FC0C5002E9C18 /* TSetLocationCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEDEECA231FC0C5002E9C18 /* TSetLocationCache.m */; };
+		3FEDEED0231FDB49002E9C18 /* UIWindow+Shake.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FEDEECE231FDB49002E9C18 /* UIWindow+Shake.h */; };
+		3FEDEED1231FDB49002E9C18 /* UIWindow+Shake.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEDEECF231FDB49002E9C18 /* UIWindow+Shake.m */; };
+		3FEDEED3231FDCF3002E9C18 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FEDEED2231FDCF3002E9C18 /* AudioToolbox.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3F6A4F70231F85140096DF60 /* Defines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Defines.h; sourceTree = "<group>"; };
 		3F94F9F2231F7F7800EA742C /* LocationPlugin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LocationPlugin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F94F9F5231F7F7800EA742C /* LocationPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationPlugin.h; sourceTree = "<group>"; };
 		3F94F9F6231F7F7800EA742C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -34,6 +36,9 @@
 		3FEDEEC4231FAD10002E9C18 /* TSetLocationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TSetLocationViewController.xib; sourceTree = "<group>"; };
 		3FEDEEC9231FC0C5002E9C18 /* TSetLocationCache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSetLocationCache.h; sourceTree = "<group>"; };
 		3FEDEECA231FC0C5002E9C18 /* TSetLocationCache.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSetLocationCache.m; sourceTree = "<group>"; };
+		3FEDEECE231FDB49002E9C18 /* UIWindow+Shake.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIWindow+Shake.h"; sourceTree = "<group>"; };
+		3FEDEECF231FDB49002E9C18 /* UIWindow+Shake.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+Shake.m"; sourceTree = "<group>"; };
+		3FEDEED2231FDCF3002E9C18 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		436BAF2F633B3C1E46FAEF8C /* Pods-LocationPlugin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocationPlugin.release.xcconfig"; path = "Target Support Files/Pods-LocationPlugin/Pods-LocationPlugin.release.xcconfig"; sourceTree = "<group>"; };
 		782B2E7C007659080DA4DA9E /* Pods-LocationPlugin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocationPlugin.debug.xcconfig"; path = "Target Support Files/Pods-LocationPlugin/Pods-LocationPlugin.debug.xcconfig"; sourceTree = "<group>"; };
 		DCF039DCB033E09C55C9B538 /* libPods-LocationPlugin.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LocationPlugin.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FEDEED3231FDCF3002E9C18 /* AudioToolbox.framework in Frameworks */,
 				3FEDEEC8231FAF5B002E9C18 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -73,9 +79,10 @@
 			isa = PBXGroup;
 			children = (
 				3F94F9F5231F7F7800EA742C /* LocationPlugin.h */,
-				3F6A4F70231F85140096DF60 /* Defines.h */,
 				3FE3DFB6231FA8A3002711B6 /* iBoxSafeRuntimeCFunc.h */,
 				3FE3DFB7231FA8A5002711B6 /* iBoxSafeRuntimeCFunc.m */,
+				3FEDEECE231FDB49002E9C18 /* UIWindow+Shake.h */,
+				3FEDEECF231FDB49002E9C18 /* UIWindow+Shake.m */,
 				3F94F9FD231F813100EA742C /* NSObject+LocationPlugin.h */,
 				3F94F9FE231F813100EA742C /* NSObject+LocationPlugin.m */,
 				3FEDEEC9231FC0C5002E9C18 /* TSetLocationCache.h */,
@@ -100,6 +107,7 @@
 		EC41FADB1E5A492BCB391115 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3FEDEED2231FDCF3002E9C18 /* AudioToolbox.framework */,
 				3FEDEEC0231FAA46002E9C18 /* CoreLocation.framework */,
 				DCF039DCB033E09C55C9B538 /* libPods-LocationPlugin.a */,
 			);
@@ -115,6 +123,7 @@
 			files = (
 				3FEDEEC5231FAD10002E9C18 /* TSetLocationViewController.h in Headers */,
 				3F94F9FF231F813100EA742C /* NSObject+LocationPlugin.h in Headers */,
+				3FEDEED0231FDB49002E9C18 /* UIWindow+Shake.h in Headers */,
 				3FEDEECB231FC0C5002E9C18 /* TSetLocationCache.h in Headers */,
 				3F94F9F7231F7F7800EA742C /* LocationPlugin.h in Headers */,
 			);
@@ -191,6 +200,7 @@
 			files = (
 				3F94FA00231F813100EA742C /* NSObject+LocationPlugin.m in Sources */,
 				3FEDEEC6231FAD10002E9C18 /* TSetLocationViewController.m in Sources */,
+				3FEDEED1231FDB49002E9C18 /* UIWindow+Shake.m in Sources */,
 				3FE3DFB8231FA8A5002711B6 /* iBoxSafeRuntimeCFunc.m in Sources */,
 				3FEDEECC231FC0C5002E9C18 /* TSetLocationCache.m in Sources */,
 			);

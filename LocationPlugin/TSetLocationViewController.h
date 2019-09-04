@@ -19,6 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TSetLocationViewController : UIViewController
 
+@property (class, nonatomic, assign) BOOL isShowing;
+
 @end
 
 NS_ASSUME_NONNULL_END

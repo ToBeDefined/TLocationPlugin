@@ -1,5 +1,5 @@
 //
-//  Defines.h
+//  UIWindow+Shake.h
 //  LocationPlugin
 //
 //  Created by TBD on 2019/9/4.
@@ -13,9 +13,12 @@
 //  with the terms of the contract agreement you entered into with iBOXCHAIN inc.
 //
 
-#ifndef Defines_h
-#define Defines_h
+#import <UIKit/UIKit.h>
 
-#define CLASS(_cls) NSClassFromString(@#_cls)
+NS_ASSUME_NONNULL_BEGIN
 
-#endif /* Defines_h */
+@interface UIWindow (Shake)
+
+@end
+
+NS_ASSUME_NONNULL_END

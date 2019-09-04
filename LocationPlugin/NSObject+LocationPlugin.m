@@ -15,9 +15,11 @@
 
 #import <CoreLocation/CoreLocation.h>
 #import "NSObject+LocationPlugin.h"
-#import "Defines.h"
 #import "iBoxSafeRuntimeCFunc.h"
 #import "TSetLocationCache.h"
+
+
+#define CLASS(_cls) NSClassFromString(@#_cls)
 
 // CLLocationManagerDelegate
 
