@@ -132,7 +132,7 @@ static NSString * const TAddLocationDataTableViewCellID = @"TAddLocationDataTabl
 
 - (void)setMapViewCenter:(CLLocationCoordinate2D)coordinate {
     self.mapView.centerCoordinate = coordinate;
-    MKCoordinateSpan span = MKCoordinateSpanMake(0.003, 0.003);
+    MKCoordinateSpan span = MKCoordinateSpanMake(0.001, 0.001);
     MKCoordinateRegion region = MKCoordinateRegionMake(coordinate, span);
     MKCoordinateRegion fitRegion = [self.mapView regionThatFits:region];
     if (CLLocationCoordinate2DIsValid(fitRegion.center)) {
