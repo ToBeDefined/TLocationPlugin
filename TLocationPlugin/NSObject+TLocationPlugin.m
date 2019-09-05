@@ -10,7 +10,7 @@
 #import "NSObject+TLocationPlugin.h"
 #import "TSafeRuntimeCFunc.h"
 #import "TLocationCache.h"
-
+#import "UIWindow+TLocationPluginToast.h"
 
 #define CLASS(_cls) NSClassFromString(@#_cls)
 
@@ -47,18 +47,29 @@
 - (void)__t_locationManager:(CLLocationManager *)manager
         didUpdateToLocation:(CLLocation *)newLocation
                fromLocation:(CLLocation *)oldLocation API_AVAILABLE(macos(10.6)) {
-    if (!TLocationCache.shared.usingHookLocation) {
+    BOOL useHook = TLocationCache.shared.usingHookLocation && TLocationCache.shared.hasCachedLocation;
+    if (!useHook) {
+        if (TLocationCache.shared.usingToast) {
+            [UIWindow t_showTostForCLLocation:newLocation];
+        }
         [self __t_locationManager:manager didUpdateToLocation:newLocation fromLocation:oldLocation];
         return;
     }
     CLLocation *t_newLocation = [[CLLocation alloc] initWithLatitude:TLocationCache.shared.randomLatitude
                                                            longitude:TLocationCache.shared.randomLongitude];
+    if (TLocationCache.shared.usingToast) {
+        [UIWindow t_showTostForCLLocation:t_newLocation];
+    }
     [self __t_locationManager:manager didUpdateToLocation:t_newLocation fromLocation:oldLocation];
 }
 
 - (void)__t_locationManager:(CLLocationManager *)manager
          didUpdateLocations:(NSArray<CLLocation *> *)locations {
-    if (!TLocationCache.shared.usingHookLocation) {
+    BOOL useHook = TLocationCache.shared.usingHookLocation && TLocationCache.shared.hasCachedLocation;
+    if (!useHook) {
+        if (TLocationCache.shared.usingToast) {
+            [UIWindow t_showTostForCLLocations:locations];
+        }
         [self __t_locationManager:manager didUpdateLocations:locations];
         return;
     }
@@ -71,7 +82,10 @@
     
     CLLocation *t_newLocation3 = [[CLLocation alloc] initWithLatitude:TLocationCache.shared.randomLatitude
                                                             longitude:TLocationCache.shared.randomLongitude];
-    
+
+    if (TLocationCache.shared.usingToast) {
+        [UIWindow t_showTostForCLLocations:@[t_newLocation1, t_newLocation2, t_newLocation3]];
+    }
     [self __t_locationManager:manager didUpdateLocations:@[t_newLocation1, t_newLocation2, t_newLocation3]];
 }
 

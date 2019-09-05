@@ -13,8 +13,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TLocationModel : NSObject <NSCoding>
 
+/// 名称
 @property (nonatomic, copy) NSString *name;
+
+/// 纬度
 @property (nonatomic, assign) CLLocationDegrees latitude;
+
+/// 经度
 @property (nonatomic, assign) CLLocationDegrees longitude;
 
 + (instancetype)modelWithName:(NSString *)name

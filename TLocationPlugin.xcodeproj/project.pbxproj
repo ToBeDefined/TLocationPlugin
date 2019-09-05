@@ -48,6 +48,8 @@
 		3FEDEF032320C91A002E9C18 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEDEF022320C91A002E9C18 /* main.m */; };
 		3FEDEF092320C93B002E9C18 /* TLocationPlugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F94F9F2231F7F7800EA742C /* TLocationPlugin.framework */; };
 		3FEDEF0A2320C93B002E9C18 /* TLocationPlugin.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3F94F9F2231F7F7800EA742C /* TLocationPlugin.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3FF4458923214E880073D346 /* UIWindow+TLocationPluginToast.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FF4458723214E880073D346 /* UIWindow+TLocationPluginToast.h */; };
+		3FF4458A23214E880073D346 /* UIWindow+TLocationPluginToast.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF4458823214E880073D346 /* UIWindow+TLocationPluginToast.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +123,8 @@
 		3FEDEEFF2320C91A002E9C18 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3FEDEF012320C91A002E9C18 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3FEDEF022320C91A002E9C18 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3FF4458723214E880073D346 /* UIWindow+TLocationPluginToast.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIWindow+TLocationPluginToast.h"; sourceTree = "<group>"; };
+		3FF4458823214E880073D346 /* UIWindow+TLocationPluginToast.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+TLocationPluginToast.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +188,8 @@
 		3FEDEEE22320B402002E9C18 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				3FF4458723214E880073D346 /* UIWindow+TLocationPluginToast.h */,
+				3FF4458823214E880073D346 /* UIWindow+TLocationPluginToast.m */,
 				3FEDEECE231FDB49002E9C18 /* UIWindow+TLocationPluginShake.h */,
 				3FEDEECF231FDB49002E9C18 /* UIWindow+TLocationPluginShake.m */,
 				3FEDEEDE2320B1AF002E9C18 /* NSBundle+TLocationPlugin.h */,
@@ -267,6 +273,7 @@
 				3FEDEEEB2320C82E002E9C18 /* TBaseViewController.h in Headers */,
 				3FEDEEE02320B1AF002E9C18 /* NSBundle+TLocationPlugin.h in Headers */,
 				3FEDEEDC2320B14B002E9C18 /* UIImage+TLocationPlugin.h in Headers */,
+				3FF4458923214E880073D346 /* UIWindow+TLocationPluginToast.h in Headers */,
 				3FEDEEE72320B51F002E9C18 /* TLocationNavigationController.h in Headers */,
 				3FB306032320144700FD85A4 /* TLocationModel.h in Headers */,
 				3FB305F62320044900FD85A4 /* TSelectLocationDataViewController.h in Headers */,
@@ -389,6 +396,7 @@
 				3FEDEEC6231FAD10002E9C18 /* TSetLocationViewController.m in Sources */,
 				3F0FE5122320FBFC008B0830 /* TLocationCache.m in Sources */,
 				3FEDEED1231FDB49002E9C18 /* UIWindow+TLocationPluginShake.m in Sources */,
+				3FF4458A23214E880073D346 /* UIWindow+TLocationPluginToast.m in Sources */,
 				3FE3DFB8231FA8A5002711B6 /* TSafeRuntimeCFunc.m in Sources */,
 				3FEDEEEC2320C82E002E9C18 /* TBaseViewController.m in Sources */,
 				3FB305FD2320063F00FD85A4 /* TAddLocationDataViewController.m in Sources */,

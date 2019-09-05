@@ -17,7 +17,8 @@
 @property (nonatomic, strong) IBOutlet UITextField *latitudeTextField;
 @property (nonatomic, strong) IBOutlet UITextField *longitudeTextField;
 @property (nonatomic, strong) IBOutlet UITextField *rangeTextField;
-@property (nonatomic, strong) IBOutlet UISwitch *usingSwitch;
+@property (nonatomic, strong) IBOutlet UISwitch *usingHookSwitch;
+@property (strong, nonatomic) IBOutlet UISwitch *usingToastSwitch;
 
 @end
 
@@ -34,13 +35,14 @@
     CLLocationDegrees latitude = TLocationCache.shared.latitude;
     CLLocationDegrees longitude = TLocationCache.shared.longitude;
     NSInteger range = TLocationCache.shared.range;
-    BOOL isUsing = TLocationCache.shared.usingHookLocation;
-    
+    BOOL isUsingHook = TLocationCache.shared.usingHookLocation;
+    BOOL isUsingToast = TLocationCache.shared.usingToast;
     self.locationNameLabel.text = locationName;
     self.latitudeTextField.text = @(latitude).stringValue;
     self.longitudeTextField.text = @(longitude).stringValue;
     self.rangeTextField.text = @(range).stringValue;
-    self.usingSwitch.on = isUsing;
+    self.usingHookSwitch.on = isUsingHook;
+    self.usingToastSwitch.on = isUsingToast;
 }
 
 - (void)closeSetLocationViewController:(UIBarButtonItem *)sender {
@@ -82,11 +84,16 @@
 - (IBAction)usingHookLocationValueChanged:(UISwitch *)sender {
     [self.view endEditing:YES];
     TLocationCache.shared.usingHookLocation = sender.isOn;
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil
-                                                                   message:sender.isOn ? @"已开启" : @"已关闭"
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:sender.isOn ? @"已开启" : @"已关闭"
+                                                                   message:nil
                                                             preferredStyle:UIAlertControllerStyleAlert];
     [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:nil]];
     [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (IBAction)usingToastValueChanged:(UISwitch *)sender {
+    [self.view endEditing:YES];
+    TLocationCache.shared.usingToast = sender.isOn;
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {

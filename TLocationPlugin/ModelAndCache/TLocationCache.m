@@ -9,19 +9,21 @@
 #import "TLocationCache.h"
 
 @implementation TLocationCache {
-    BOOL                        _usingHookLocation;
     NSString                    *_locationName;
     CLLocationDegrees           _latitude;
     CLLocationDegrees           _longitude;
     NSInteger                   _range;
+    BOOL                        _usingHookLocation;
+    BOOL                        _usingToast;
     NSArray<TLocationModel *>   * _cacheDataArray;
 }
 
-@synthesize usingHookLocation   = _usingHookLocation;
 @synthesize locationName        = _locationName;
 @synthesize latitude            = _latitude;
 @synthesize longitude           = _longitude;
 @synthesize range               = _range;
+@synthesize usingHookLocation   = _usingHookLocation;
+@synthesize usingToast          = _usingToast;
 @synthesize cacheDataArray      = _cacheDataArray;
 
 
@@ -72,21 +74,6 @@ static TLocationCache *_instance;
 - (oneway void)release {}
 - (instancetype)autorelease{ return self; }
 #endif
-
-#pragma mark - usingHookLocation
-static NSString * const _t_usingHookLocationKey = @"_T_CacheKeyTypeUsingHookLocation";
-- (BOOL)usingHookLocation {
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        self->_usingHookLocation = [[NSUserDefaults standardUserDefaults] boolForKey:_t_usingHookLocationKey];
-    });
-    return self->_usingHookLocation;
-}
-- (void)setUsingHookLocation:(BOOL)usingHookLocation {
-    self->_usingHookLocation = usingHookLocation;
-    [[NSUserDefaults standardUserDefaults] setBool:usingHookLocation forKey:_t_usingHookLocationKey];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
 
 #pragma mark - locationName
 static NSString * const _t_locationNameKey = @"_T_CacheKeyTypeLocationName";
@@ -152,6 +139,37 @@ static NSString * const _t_rangeKey = @"_T_CacheKeyTypeRange";
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
+
+#pragma mark - usingHookLocation
+static NSString * const _t_usingHookLocationKey = @"_T_CacheKeyTypeUsingHookLocation";
+- (BOOL)usingHookLocation {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        self->_usingHookLocation = [[NSUserDefaults standardUserDefaults] boolForKey:_t_usingHookLocationKey];
+    });
+    return self->_usingHookLocation;
+}
+- (void)setUsingHookLocation:(BOOL)usingHookLocation {
+    self->_usingHookLocation = usingHookLocation;
+    [[NSUserDefaults standardUserDefaults] setBool:usingHookLocation forKey:_t_usingHookLocationKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+#pragma mark - usingToast
+static NSString * const _t_usingToastKey = @"_T_CacheKeyTypeUsingToast";
+- (BOOL)usingToast {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        self->_usingToast = [[NSUserDefaults standardUserDefaults] boolForKey:_t_usingToastKey];
+    });
+    return self->_usingToast;
+}
+- (void)setUsingToast:(BOOL)usingToast {
+    self->_usingToast = usingToast;
+    [[NSUserDefaults standardUserDefaults] setBool:usingToast forKey:_t_usingToastKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
 #pragma mark - cacheDataArray
 - (NSString *)cacheDataArrayArchivePath {
     static NSString *_t_cacheDataArrayArchivePath = nil;
@@ -186,13 +204,16 @@ static NSString * const _t_rangeKey = @"_T_CacheKeyTypeRange";
     }
 }
 
+- (BOOL)hasCachedLocation {
+    return self.longitude != 0 && self.latitude != 0;
+}
 
 - (CLLocationDegrees)randomLatitude {
-    return [self rangeDegressForDegrees:TLocationCache.shared.latitude];
+    return [self rangeDegressForDegrees:self.latitude];
 }
 
 - (CLLocationDegrees)randomLongitude {
-    return [self rangeDegressForDegrees:TLocationCache.shared.longitude];
+    return [self rangeDegressForDegrees:self.longitude];
 }
 
 /// 取 15/16 位有效数字
