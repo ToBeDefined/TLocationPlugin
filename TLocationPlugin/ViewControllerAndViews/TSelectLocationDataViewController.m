@@ -9,7 +9,7 @@
 #import "TSelectLocationDataViewController.h"
 #import "TAddLocationDataViewController.h"
 #import "TLocationCache.h"
-#import "UIImage+TLocation.h"
+#import "UIImage+TLocationPlugin.h"
 
 static NSString * const TSelectLocationDataTableViewCellID = @"TSelectLocationDataTableViewCellID";
 

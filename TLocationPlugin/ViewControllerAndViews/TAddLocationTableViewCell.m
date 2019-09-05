@@ -7,7 +7,7 @@
 //
 
 #import "TAddLocationTableViewCell.h"
-#import "UIImage+TLocation.h"
+#import "UIImage+TLocationPlugin.h"
 
 @implementation TAddLocationTableViewCell
 

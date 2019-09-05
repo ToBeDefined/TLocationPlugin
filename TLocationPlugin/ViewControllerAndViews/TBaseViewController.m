@@ -7,7 +7,7 @@
 //
 
 #import "TBaseViewController.h"
-#import "NSBundle+TLocation.h"
+#import "NSBundle+TLocationPlugin.h"
 
 @interface TBaseViewController ()
 

@@ -9,7 +9,7 @@
 #import "TSetLocationViewController.h"
 #import "TSelectLocationDataViewController.h"
 #import "TLocationCache.h"
-#import "UIImage+TLocation.h"
+#import "UIImage+TLocationPlugin.h"
 
 @interface TSetLocationViewController () <UITextFieldDelegate>
 

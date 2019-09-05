@@ -10,7 +10,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "TAddLocationDataViewController.h"
 #import "TAddLocationTableViewCell.h"
-#import "UIImage+TLocation.h"
+#import "UIImage+TLocationPlugin.h"
 
 typedef void (^GetPlaceInfoBlock)(NSArray<TLocationModel *> *_Nullable models);
 

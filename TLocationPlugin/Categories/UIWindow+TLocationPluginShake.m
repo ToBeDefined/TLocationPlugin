@@ -1,5 +1,5 @@
 //
-//  UIWindow+TShake.m
+//  UIWindow+TLocationPluginShake.m
 //  TLocationPlugin
 //
 //  Created by TBD on 2019/9/4.
@@ -7,11 +7,11 @@
 //
 
 #import <AudioToolbox/AudioToolbox.h>
-#import "UIWindow+TShake.h"
+#import "UIWindow+TLocationPluginShake.h"
 #import "TSetLocationViewController.h"
 #import "TLocationNavigationController.h"
 
-@implementation UIWindow (TShake)
+@implementation UIWindow (TLocationPluginShake)
 
 - (BOOL)canBecomeFirstResponder {
     return YES;

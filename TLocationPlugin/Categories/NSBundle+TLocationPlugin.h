@@ -1,5 +1,5 @@
 //
-//  NSBundle+TLocation.h
+//  NSBundle+TLocationPlugin.h
 //  TLocationPlugin
 //
 //  Created by TBD on 2019/9/5.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NSBundle (TLocation)
+@interface NSBundle (TLocationPlugin)
 
 + (instancetype)t_bundle;
 

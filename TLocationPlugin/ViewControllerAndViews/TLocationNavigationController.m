@@ -7,7 +7,7 @@
 //
 
 #import "TLocationNavigationController.h"
-#import "UIImage+TLocation.h"
+#import "UIImage+TLocationPlugin.h"
 
 @implementation TLocationNavigationController
 

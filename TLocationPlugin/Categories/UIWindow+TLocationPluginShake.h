@@ -1,5 +1,5 @@
 //
-//  UIWindow+TShake.h
+//  UIWindow+TLocationPluginShake.h
 //  TLocationPlugin
 //
 //  Created by TBD on 2019/9/4.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface UIWindow (TShake)
+@interface UIWindow (TLocationPluginShake)
 
 @end
 

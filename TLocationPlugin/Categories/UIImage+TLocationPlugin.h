@@ -1,5 +1,5 @@
 //
-//  UIImage+TLocation.h
+//  UIImage+TLocationPlugin.h
 //  TLocationPlugin
 //
 //  Created by TBD on 2019/9/5.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface UIImage (TLocation)
+@interface UIImage (TLocationPlugin)
 
 + (nullable instancetype)t_imageNamed:(NSString *)name;
 

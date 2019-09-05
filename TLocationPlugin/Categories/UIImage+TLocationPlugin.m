@@ -1,15 +1,15 @@
 //
-//  UIImage+TLocation.m
+//  UIImage+TLocationPlugin.m
 //  TLocationPlugin
 //
 //  Created by TBD on 2019/9/5.
 //  Copyright © 2019 TBD. All rights reserved.
 //
 
-#import "UIImage+TLocation.h"
-#import "NSBundle+TLocation.h"
+#import "UIImage+TLocationPlugin.h"
+#import "NSBundle+TLocationPlugin.h"
 
-@implementation UIImage (TLocation)
+@implementation UIImage (TLocationPlugin)
 
 + (nullable instancetype)t_imageNamed:(NSString *)name {
     static NSBundle *imageBundle;

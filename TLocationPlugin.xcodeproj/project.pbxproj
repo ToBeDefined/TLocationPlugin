@@ -26,16 +26,16 @@
 		3FEDEEC6231FAD10002E9C18 /* TSetLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEDEEC3231FAD10002E9C18 /* TSetLocationViewController.m */; };
 		3FEDEEC7231FAD10002E9C18 /* TSetLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FEDEEC4231FAD10002E9C18 /* TSetLocationViewController.xib */; };
 		3FEDEEC8231FAF5B002E9C18 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FEDEEC0231FAA46002E9C18 /* CoreLocation.framework */; };
-		3FEDEED0231FDB49002E9C18 /* UIWindow+TShake.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FEDEECE231FDB49002E9C18 /* UIWindow+TShake.h */; };
-		3FEDEED1231FDB49002E9C18 /* UIWindow+TShake.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEDEECF231FDB49002E9C18 /* UIWindow+TShake.m */; };
+		3FEDEED0231FDB49002E9C18 /* UIWindow+TLocationPluginShake.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FEDEECE231FDB49002E9C18 /* UIWindow+TLocationPluginShake.h */; };
+		3FEDEED1231FDB49002E9C18 /* UIWindow+TLocationPluginShake.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEDEECF231FDB49002E9C18 /* UIWindow+TLocationPluginShake.m */; };
 		3FEDEED3231FDCF3002E9C18 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FEDEED2231FDCF3002E9C18 /* AudioToolbox.framework */; };
 		3FEDEED62320AE6D002E9C18 /* TAddLocationTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FEDEED42320AE6C002E9C18 /* TAddLocationTableViewCell.h */; };
 		3FEDEED72320AE6D002E9C18 /* TAddLocationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEDEED52320AE6C002E9C18 /* TAddLocationTableViewCell.m */; };
 		3FEDEED92320B11C002E9C18 /* TLocationPluginImages.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3FEDEED82320B11C002E9C18 /* TLocationPluginImages.bundle */; };
-		3FEDEEDC2320B14B002E9C18 /* UIImage+TLocation.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FEDEEDA2320B14B002E9C18 /* UIImage+TLocation.h */; };
-		3FEDEEDD2320B14B002E9C18 /* UIImage+TLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEDEEDB2320B14B002E9C18 /* UIImage+TLocation.m */; };
-		3FEDEEE02320B1AF002E9C18 /* NSBundle+TLocation.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FEDEEDE2320B1AF002E9C18 /* NSBundle+TLocation.h */; };
-		3FEDEEE12320B1AF002E9C18 /* NSBundle+TLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEDEEDF2320B1AF002E9C18 /* NSBundle+TLocation.m */; };
+		3FEDEEDC2320B14B002E9C18 /* UIImage+TLocationPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FEDEEDA2320B14B002E9C18 /* UIImage+TLocationPlugin.h */; };
+		3FEDEEDD2320B14B002E9C18 /* UIImage+TLocationPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEDEEDB2320B14B002E9C18 /* UIImage+TLocationPlugin.m */; };
+		3FEDEEE02320B1AF002E9C18 /* NSBundle+TLocationPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FEDEEDE2320B1AF002E9C18 /* NSBundle+TLocationPlugin.h */; };
+		3FEDEEE12320B1AF002E9C18 /* NSBundle+TLocationPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEDEEDF2320B1AF002E9C18 /* NSBundle+TLocationPlugin.m */; };
 		3FEDEEE72320B51F002E9C18 /* TLocationNavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FEDEEE52320B51F002E9C18 /* TLocationNavigationController.h */; };
 		3FEDEEE82320B51F002E9C18 /* TLocationNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEDEEE62320B51F002E9C18 /* TLocationNavigationController.m */; };
 		3FEDEEEB2320C82E002E9C18 /* TBaseViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FEDEEE92320C82D002E9C18 /* TBaseViewController.h */; };
@@ -97,16 +97,16 @@
 		3FEDEEC2231FAD10002E9C18 /* TSetLocationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSetLocationViewController.h; sourceTree = "<group>"; };
 		3FEDEEC3231FAD10002E9C18 /* TSetLocationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSetLocationViewController.m; sourceTree = "<group>"; };
 		3FEDEEC4231FAD10002E9C18 /* TSetLocationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TSetLocationViewController.xib; sourceTree = "<group>"; };
-		3FEDEECE231FDB49002E9C18 /* UIWindow+TShake.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIWindow+TShake.h"; sourceTree = "<group>"; };
-		3FEDEECF231FDB49002E9C18 /* UIWindow+TShake.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+TShake.m"; sourceTree = "<group>"; };
+		3FEDEECE231FDB49002E9C18 /* UIWindow+TLocationPluginShake.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIWindow+TLocationPluginShake.h"; sourceTree = "<group>"; };
+		3FEDEECF231FDB49002E9C18 /* UIWindow+TLocationPluginShake.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+TLocationPluginShake.m"; sourceTree = "<group>"; };
 		3FEDEED2231FDCF3002E9C18 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		3FEDEED42320AE6C002E9C18 /* TAddLocationTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TAddLocationTableViewCell.h; sourceTree = "<group>"; };
 		3FEDEED52320AE6C002E9C18 /* TAddLocationTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TAddLocationTableViewCell.m; sourceTree = "<group>"; };
 		3FEDEED82320B11C002E9C18 /* TLocationPluginImages.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TLocationPluginImages.bundle; sourceTree = "<group>"; };
-		3FEDEEDA2320B14B002E9C18 /* UIImage+TLocation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+TLocation.h"; sourceTree = "<group>"; };
-		3FEDEEDB2320B14B002E9C18 /* UIImage+TLocation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+TLocation.m"; sourceTree = "<group>"; };
-		3FEDEEDE2320B1AF002E9C18 /* NSBundle+TLocation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSBundle+TLocation.h"; sourceTree = "<group>"; };
-		3FEDEEDF2320B1AF002E9C18 /* NSBundle+TLocation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+TLocation.m"; sourceTree = "<group>"; };
+		3FEDEEDA2320B14B002E9C18 /* UIImage+TLocationPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+TLocationPlugin.h"; sourceTree = "<group>"; };
+		3FEDEEDB2320B14B002E9C18 /* UIImage+TLocationPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+TLocationPlugin.m"; sourceTree = "<group>"; };
+		3FEDEEDE2320B1AF002E9C18 /* NSBundle+TLocationPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSBundle+TLocationPlugin.h"; sourceTree = "<group>"; };
+		3FEDEEDF2320B1AF002E9C18 /* NSBundle+TLocationPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+TLocationPlugin.m"; sourceTree = "<group>"; };
 		3FEDEEE52320B51F002E9C18 /* TLocationNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLocationNavigationController.h; sourceTree = "<group>"; };
 		3FEDEEE62320B51F002E9C18 /* TLocationNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLocationNavigationController.m; sourceTree = "<group>"; };
 		3FEDEEE92320C82D002E9C18 /* TBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TBaseViewController.h; sourceTree = "<group>"; };
@@ -184,12 +184,12 @@
 		3FEDEEE22320B402002E9C18 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				3FEDEECE231FDB49002E9C18 /* UIWindow+TShake.h */,
-				3FEDEECF231FDB49002E9C18 /* UIWindow+TShake.m */,
-				3FEDEEDE2320B1AF002E9C18 /* NSBundle+TLocation.h */,
-				3FEDEEDF2320B1AF002E9C18 /* NSBundle+TLocation.m */,
-				3FEDEEDA2320B14B002E9C18 /* UIImage+TLocation.h */,
-				3FEDEEDB2320B14B002E9C18 /* UIImage+TLocation.m */,
+				3FEDEECE231FDB49002E9C18 /* UIWindow+TLocationPluginShake.h */,
+				3FEDEECF231FDB49002E9C18 /* UIWindow+TLocationPluginShake.m */,
+				3FEDEEDE2320B1AF002E9C18 /* NSBundle+TLocationPlugin.h */,
+				3FEDEEDF2320B1AF002E9C18 /* NSBundle+TLocationPlugin.m */,
+				3FEDEEDA2320B14B002E9C18 /* UIImage+TLocationPlugin.h */,
+				3FEDEEDB2320B14B002E9C18 /* UIImage+TLocationPlugin.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -263,10 +263,10 @@
 				3FEDEEC5231FAD10002E9C18 /* TSetLocationViewController.h in Headers */,
 				3F94F9FF231F813100EA742C /* NSObject+TLocationPlugin.h in Headers */,
 				3FB305FC2320063F00FD85A4 /* TAddLocationDataViewController.h in Headers */,
-				3FEDEED0231FDB49002E9C18 /* UIWindow+TShake.h in Headers */,
+				3FEDEED0231FDB49002E9C18 /* UIWindow+TLocationPluginShake.h in Headers */,
 				3FEDEEEB2320C82E002E9C18 /* TBaseViewController.h in Headers */,
-				3FEDEEE02320B1AF002E9C18 /* NSBundle+TLocation.h in Headers */,
-				3FEDEEDC2320B14B002E9C18 /* UIImage+TLocation.h in Headers */,
+				3FEDEEE02320B1AF002E9C18 /* NSBundle+TLocationPlugin.h in Headers */,
+				3FEDEEDC2320B14B002E9C18 /* UIImage+TLocationPlugin.h in Headers */,
 				3FEDEEE72320B51F002E9C18 /* TLocationNavigationController.h in Headers */,
 				3FB306032320144700FD85A4 /* TLocationModel.h in Headers */,
 				3FB305F62320044900FD85A4 /* TSelectLocationDataViewController.h in Headers */,
@@ -385,15 +385,15 @@
 				3FB306042320144700FD85A4 /* TLocationModel.m in Sources */,
 				3F94FA00231F813100EA742C /* NSObject+TLocationPlugin.m in Sources */,
 				3FEDEEE82320B51F002E9C18 /* TLocationNavigationController.m in Sources */,
-				3FEDEEE12320B1AF002E9C18 /* NSBundle+TLocation.m in Sources */,
+				3FEDEEE12320B1AF002E9C18 /* NSBundle+TLocationPlugin.m in Sources */,
 				3FEDEEC6231FAD10002E9C18 /* TSetLocationViewController.m in Sources */,
 				3F0FE5122320FBFC008B0830 /* TLocationCache.m in Sources */,
-				3FEDEED1231FDB49002E9C18 /* UIWindow+TShake.m in Sources */,
+				3FEDEED1231FDB49002E9C18 /* UIWindow+TLocationPluginShake.m in Sources */,
 				3FE3DFB8231FA8A5002711B6 /* TSafeRuntimeCFunc.m in Sources */,
 				3FEDEEEC2320C82E002E9C18 /* TBaseViewController.m in Sources */,
 				3FB305FD2320063F00FD85A4 /* TAddLocationDataViewController.m in Sources */,
 				3FEDEED72320AE6D002E9C18 /* TAddLocationTableViewCell.m in Sources */,
-				3FEDEEDD2320B14B002E9C18 /* UIImage+TLocation.m in Sources */,
+				3FEDEEDD2320B14B002E9C18 /* UIImage+TLocationPlugin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
