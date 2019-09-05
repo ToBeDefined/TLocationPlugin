@@ -55,7 +55,7 @@
                             <rect key="frame" x="20" y="62" width="335" height="40"/>
                             <subviews>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="搜索位置" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kYv-1g-b1a">
-                                    <rect key="frame" x="0.0" y="0.0" width="285" height="40"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="265" height="40"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
@@ -68,10 +68,10 @@
                                     </connections>
                                 </textField>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hOZ-Xi-8wG">
-                                    <rect key="frame" x="285" y="0.0" width="50" height="40"/>
+                                    <rect key="frame" x="265" y="0.0" width="70" height="40"/>
                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="50" id="udo-Lc-e7c"/>
+                                        <constraint firstAttribute="width" constant="70" id="udo-Lc-e7c"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                     <state key="normal" title="搜索">

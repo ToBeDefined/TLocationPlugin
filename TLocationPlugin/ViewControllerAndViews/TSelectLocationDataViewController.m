@@ -169,7 +169,7 @@ static NSString * const TSelectLocationDataTableViewCellID = @"TSelectLocationDa
                                                                    message:model.name
                                                             preferredStyle:UIAlertControllerStyleAlert];
     [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
-        [self addLabel:@"标记: " toTextField:textField];
+        [self addLabel:@"名称: " toTextField:textField];
         textField.text = model.name;
     }];
     [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
