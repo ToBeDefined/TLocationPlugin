@@ -10,6 +10,15 @@
 
 @implementation TLocationModel
 
++ (instancetype)modelWithName:(NSString *)name
+                     latitude:(CLLocationDegrees)latitude
+                    longitude:(CLLocationDegrees)longitude {
+    return [self modelWithSubLocality:nil
+                                 name:name
+                             latitude:latitude
+                            longitude:longitude];
+}
+
 + (instancetype)modelWithSubLocality:(nullable NSString *)subLocality
                                 name:(NSString *)name
                             latitude:(CLLocationDegrees)latitude
@@ -38,7 +47,7 @@
 }
 
 - (NSString *)locationText {
-    return [NSString stringWithFormat:@"latitude : %@\nlongitude: %@", @(self.latitude).stringValue, @(self.longitude).stringValue];
+    return [NSString stringWithFormat:@"纬度: %@\n经度: %@", @(self.latitude).stringValue, @(self.longitude).stringValue];
 }
 
 - (void)encodeWithCoder:(nonnull NSCoder *)aCoder {

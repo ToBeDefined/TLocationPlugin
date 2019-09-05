@@ -17,6 +17,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) CLLocationDegrees latitude;
 @property (nonatomic, assign) CLLocationDegrees longitude;
 
++ (instancetype)modelWithName:(NSString *)name
+                     latitude:(CLLocationDegrees)latitude
+                    longitude:(CLLocationDegrees)longitude;
+
 + (instancetype)modelWithSubLocality:(nullable NSString *)subLocality
                                 name:(NSString *)name
                             latitude:(CLLocationDegrees)latitude
