@@ -24,11 +24,15 @@ static NSString * const TAddLocationDataTableViewCellID = @"TAddLocationDataTabl
 @interface TAddLocationDataViewController () <UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate, UITextFieldDelegate>
 
 @property (nonatomic, assign) BOOL shouldRefreshUserLocation;
+
+@property (nonatomic, strong) IBOutlet UIView *searchContent;
 @property (nonatomic, strong) IBOutlet UITextField *searchTextField;
 @property (nonatomic, strong) IBOutlet MKMapView *mapView;
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
+
 @property (nonatomic, copy) NSArray<TLocationModel *> *tableViewData;
 @property (nonatomic, strong) TLocationModel *selectedModel;
+
 @property (nonatomic, strong) CLLocationManager *locationManager;
 
 @end
@@ -37,6 +41,7 @@ static NSString * const TAddLocationDataTableViewCellID = @"TAddLocationDataTabl
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"添加位置数据";
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage t_imageNamed:@"my_location"]
                                                                               style:UIBarButtonItemStylePlain
@@ -44,10 +49,10 @@ static NSString * const TAddLocationDataTableViewCellID = @"TAddLocationDataTabl
                                                                              action:@selector(backUserLocation:)];
     [self requestLocationAuthorization];
     self.shouldRefreshUserLocation = YES;
-    self.searchTextField.layer.shadowColor = UIColor.blackColor.CGColor;
-    self.searchTextField.layer.shadowOpacity = 0.5;
-    self.searchTextField.layer.shadowOffset = CGSizeMake(0, 5);
-    self.searchTextField.layer.shadowRadius = 10;
+    self.searchContent.layer.shadowColor = UIColor.blackColor.CGColor;
+    self.searchContent.layer.shadowOpacity = 0.5;
+    self.searchContent.layer.shadowOffset = CGSizeMake(0, 5);
+    self.searchContent.layer.shadowRadius = 10;
     UITapGestureRecognizer *mapViewTouch = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                                    action:@selector(touchMapView:)];
     [self.mapView addGestureRecognizer:mapViewTouch];
@@ -202,12 +207,22 @@ static NSString * const TAddLocationDataTableViewCellID = @"TAddLocationDataTabl
     }];
 }
 
+- (IBAction)searchMap:(UIButton *)sender {
+    [self.searchTextField resignFirstResponder];
+    [self searchMapForText:self.searchTextField.text];
+}
 
 /// 输入文字结束搜索, 其他情况不搜索
 - (void)searchMapForText:(NSString *)text {
     if (text.length <= 0) {
+        // 恢复用户当前位置
+        self.shouldRefreshUserLocation = YES;
+        [self refreshViewWithLocation:self.mapView.userLocation.location
+                     setMapViewCenter:YES
+                       annotationType:TMapViewAnnotationTypeFirst];
         return;
     }
+    // 搜索则拦截用户位置更新, 不进行显示
     self.shouldRefreshUserLocation = NO;
     MKLocalSearchRequest *searchRequest = [[MKLocalSearchRequest alloc] init];
     [searchRequest setNaturalLanguageQuery:text];
@@ -289,7 +304,7 @@ static NSString * const TAddLocationDataTableViewCellID = @"TAddLocationDataTabl
 
 #pragma mark - Touch
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    [self resignFirstResponder];
+    [self.view endEditing:YES];
 }
 
 @end

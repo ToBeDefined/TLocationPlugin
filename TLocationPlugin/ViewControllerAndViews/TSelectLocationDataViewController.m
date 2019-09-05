@@ -24,6 +24,7 @@ static NSString * const TSelectLocationDataTableViewCellID = @"TSelectLocationDa
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"缓存数据";
     self.tableViewData = TLocationCache.shared.cacheDataArray;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }

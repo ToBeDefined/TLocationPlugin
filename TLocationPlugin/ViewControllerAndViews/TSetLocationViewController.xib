@@ -10,7 +10,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TSetLocationViewController">
             <connections>
                 <outlet property="latitudeTextField" destination="K2X-fA-dZd" id="Y5T-8s-AEj"/>
-                <outlet property="locationNameLabel" destination="zYq-f4-Bgb" id="ndd-os-S04"/>
+                <outlet property="locationNameLabel" destination="Cwa-lD-bT9" id="opb-VE-UWZ"/>
                 <outlet property="longitudeTextField" destination="AvS-No-Mxt" id="icf-Ao-wcr"/>
                 <outlet property="rangeTextField" destination="ggQ-Zj-etz" id="vw6-fr-idL"/>
                 <outlet property="usingSwitch" destination="3yV-UL-fdM" id="Am2-OC-AKr"/>
@@ -25,7 +25,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sE3-RS-abB">
                     <rect key="frame" x="20" y="64" width="335" height="382.66666666666669"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="缓存位置" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zYq-f4-Bgb">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="位置信息" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zYq-f4-Bgb">
                             <rect key="frame" x="20" y="10" width="295" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="i1h-mS-dj1"/>
@@ -34,7 +34,7 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="深圳市软件产业基地深圳市软件产业基地深圳市软件产业基地深圳市软件产业基地深圳市软件产业基地深圳市软件产业基地深圳市软件产业基地" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cwa-lD-bT9">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cwa-lD-bT9">
                             <rect key="frame" x="20" y="50" width="295" height="50"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="lWH-IH-Scw"/>
@@ -62,17 +62,26 @@
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="K2X-fA-dZd">
                             <rect key="frame" x="120" y="100" width="195" height="25"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="next"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="O96-EE-yU0"/>
+                            </connections>
                         </textField>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AvS-No-Mxt">
                             <rect key="frame" x="120" y="145" width="195" height="25"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="next"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="PEk-vL-zzD"/>
+                            </connections>
                         </textField>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ggQ-Zj-etz">
                             <rect key="frame" x="120" y="190" width="195" height="25"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="done"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="H3U-gv-Jzo"/>
+                            </connections>
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VRO-R6-jQI">
                             <rect key="frame" x="20" y="272.66666666666669" width="295" height="40"/>
@@ -95,7 +104,7 @@
                                 <constraint firstAttribute="height" constant="40" id="m8M-NF-Ulo"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <state key="normal" title="设置位置数据到缓存">
+                            <state key="normal" title="使用数据">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <connections>

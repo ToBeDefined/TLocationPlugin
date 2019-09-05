@@ -11,7 +11,7 @@
 #import "TLocationCache.h"
 #import "UIImage+TLocation.h"
 
-@interface TSetLocationViewController () <CLLocationManagerDelegate>
+@interface TSetLocationViewController () <UITextFieldDelegate>
 
 @property (nonatomic, strong) IBOutlet UILabel *locationNameLabel;
 @property (nonatomic, strong) IBOutlet UITextField *latitudeTextField;
@@ -25,6 +25,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"设置缓存";
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage t_imageNamed:@"close"]
                                                                              style:UIBarButtonItemStylePlain
                                                                             target:self
@@ -48,6 +49,7 @@
 
 /// 选择数据
 - (IBAction)selectLocationData:(UIButton *)sender {
+    [self.view endEditing:YES];
     TSelectLocationDataViewController *vc = [[TSelectLocationDataViewController alloc] init];
     vc.selectLocationBlock = ^(TLocationModel * _Nonnull model) {
         self.locationNameLabel.text = model.name;
@@ -59,6 +61,7 @@
 
 /// 保存到缓存
 - (IBAction)storageLocationToCache:(UIButton *)sender {
+    [self.view endEditing:YES];
     CLLocationDegrees latitude = [self.latitudeTextField.text doubleValue];
     CLLocationDegrees longitude = [self.longitudeTextField.text doubleValue];
     NSInteger range = [self.rangeTextField.text integerValue];
@@ -77,6 +80,7 @@
 
 /// 开关
 - (IBAction)usingHookLocationValueChanged:(UISwitch *)sender {
+    [self.view endEditing:YES];
     TLocationCache.shared.usingHookLocation = sender.isOn;
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil
                                                                    message:sender.isOn ? @"已开启" : @"已关闭"
@@ -85,5 +89,22 @@
     [self presentViewController:alert animated:YES completion:nil];
 }
 
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self.view endEditing:YES];
+}
+
+#pragma mark - UITextFieldDelegate
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if (textField == self.latitudeTextField) {
+        [self.longitudeTextField becomeFirstResponder];
+        return NO;
+    }
+    if (textField == self.longitudeTextField) {
+        [self.rangeTextField becomeFirstResponder];
+        return NO;
+    }
+    [self.view endEditing:YES];
+    return YES;
+}
 
 @end
