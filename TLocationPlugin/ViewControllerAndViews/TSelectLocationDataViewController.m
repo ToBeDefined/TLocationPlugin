@@ -154,11 +154,11 @@ static NSString * const TSelectLocationDataTableViewCellID = @"TSelectLocationDa
     [alert addAction:[UIAlertAction actionWithTitle:@"确定"
                                               style:UIAlertActionStyleDefault
                                             handler:^(UIAlertAction * _Nonnull action) {
-        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationBottom];
-        
         NSMutableArray<TLocationModel *> *tableViewDataArray = [self.tableViewData mutableCopy];
         [tableViewDataArray removeObjectAtIndex:indexPath.row];
         self.tableViewData = tableViewDataArray;
+        [self.tableView deleteRowsAtIndexPaths:@[indexPath]
+                              withRowAnimation:UITableViewRowAnimationLeft];
     }]];
     [self presentViewController:alert animated:YES completion:nil];
 }
