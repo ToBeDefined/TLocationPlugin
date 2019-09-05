@@ -16,14 +16,24 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (class, nonatomic, assign, readonly) TLocationCache *shared;
 
+/// 是否使用
 @property (nonatomic, assign) BOOL usingHookLocation;
+/// 当前使用的名称
 @property (nonatomic, copy  ) NSString *locationName;
+/// 当前使用的纬度
 @property (nonatomic, assign) CLLocationDegrees latitude;
+/// 当前使用的经度
 @property (nonatomic, assign) CLLocationDegrees longitude;
-// default 10
+/// 扩散范围, 默认为 10
 @property (nonatomic, assign) NSInteger range;
-
+/// 缓存的所有位置数据
 @property (nonatomic, copy, nullable) NSArray<TLocationModel *> *cacheDataArray;
+
+
+/// 取随机纬度 (根据当前纬度以及扩散范围生成)
+@property (nonatomic, assign, readonly) CLLocationDegrees randomLatitude;
+/// 取随机经度 (根据当前经度以及扩散范围生成)
+@property (nonatomic, assign, readonly) CLLocationDegrees randomLongitude;
 
 @end
 

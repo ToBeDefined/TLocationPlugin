@@ -139,7 +139,7 @@ static NSString * const _t_rangeKey = @"_T_CacheKeyTypeRange";
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         self->_range = [[NSUserDefaults standardUserDefaults] integerForKey:_t_rangeKey];
-        if (self->_range == 0) {
+        if (self->_range <= 0) {
             self->_range = 10;
         }
     });
@@ -184,6 +184,65 @@ static NSString * const _t_rangeKey = @"_T_CacheKeyTypeRange";
     if (cacheDataArray != nil) {
         [NSKeyedArchiver archiveRootObject:cacheDataArray toFile:self.cacheDataArrayArchivePath];
     }
+}
+
+
+- (CLLocationDegrees)randomLatitude {
+    return [self rangeDegressForDegrees:TLocationCache.shared.latitude];
+}
+
+- (CLLocationDegrees)randomLongitude {
+    return [self rangeDegressForDegrees:TLocationCache.shared.longitude];
+}
+
+/// 取 15/16 位有效数字
+- (CLLocationDegrees)rangeDegressForDegrees:(CLLocationDegrees)degrees {
+    NSInteger randomRange = arc4random() % self.range;
+    
+    /// 从小数点后第五位开始加/减 randomRange
+    CLLocationDegrees randomDegrees = randomRange * 0.00001;
+    CLLocationDegrees newDegrees;
+    
+    /// 随机加减
+    if (arc4random() % 2 == 0) {
+        newDegrees = degrees + randomDegrees;
+    } else {
+        newDegrees = degrees - randomDegrees;
+    }
+    
+    /// 转换为 String 处理
+    NSString *newDegreesString = @(newDegrees).stringValue;
+    NSRange decimalPointRange = [newDegreesString rangeOfString:@"."];
+    if (decimalPointRange.location == NSNotFound) {
+        newDegreesString = [newDegreesString stringByAppendingString:@"."];
+    } else {
+        /// + 后 5 位
+        NSUInteger toIndex = decimalPointRange.location + decimalPointRange.length + 5;
+        if (toIndex <= newDegreesString.length) {
+            newDegreesString = [newDegreesString substringToIndex:toIndex];
+        } else {
+            /// 不进行截取操作
+            /// 但是应该不可能到这里吧, 除非数据本来长度就很小而且 randomRange 是 10 的倍数
+        }
+    }
+    
+    /// 去除首尾 `空格`
+    static NSCharacterSet *trimmingSet = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        trimmingSet = [NSCharacterSet characterSetWithCharactersInString:@" "];
+    });
+    [newDegreesString stringByTrimmingCharactersInSet:trimmingSet];
+    /// 16 位有效数字 + 1 位小数点 + (负号 ? 1 : 0)
+    NSUInteger toLenght = 16 + 1 + ([newDegreesString hasPrefix:@"-"] ? 1 : 0);
+    while (newDegreesString.length < toLenght) {
+        newDegreesString = [newDegreesString stringByAppendingFormat:@"%d", arc4random() % 10];
+    };
+    
+    /// 转换为 double (CLLocationDegrees)
+    newDegrees = newDegreesString.doubleValue;
+    
+    return newDegrees;
 }
 
 @end
