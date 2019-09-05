@@ -150,9 +150,10 @@ static NSString * const TAddLocationDataTableViewCellID = @"TAddLocationDataTabl
     [self.tableView reloadData];
     /// 默认选择第一个
     if (self.tableViewData.count > 0) {
-        NSIndexPath *firstIndex = [NSIndexPath indexPathForRow:0 inSection:0];
-        [self tableView:self.tableView didSelectRowAtIndexPath:firstIndex];
-        [self.tableView selectRowAtIndexPath:firstIndex animated:YES scrollPosition:UITableViewScrollPositionTop];
+        self.selectedModel = self.tableViewData.firstObject;
+        [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]
+                                    animated:YES
+                              scrollPosition:UITableViewScrollPositionTop];
     }
 }
 
