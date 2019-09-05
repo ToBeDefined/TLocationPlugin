@@ -23,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 // default 10
 @property (nonatomic, assign) NSInteger range;
 
-@property (nonatomic, copy  ) NSArray<TLocationModel *> *cacheDataArray;
+@property (nonatomic, copy, nullable) NSArray<TLocationModel *> *cacheDataArray;
 
 @end
 

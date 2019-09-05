@@ -144,7 +144,9 @@ static NSString * const _t_usingHookLocationKey = @"_T_CacheKeyTypeUsingHookLoca
     if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
         [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
     }
-    [NSKeyedArchiver archiveRootObject:cacheDataArray toFile:self.cacheDataArrayArchivePath];
+    if (cacheDataArray != nil) {
+        [NSKeyedArchiver archiveRootObject:cacheDataArray toFile:self.cacheDataArrayArchivePath];
+    }
 }
 
 @end

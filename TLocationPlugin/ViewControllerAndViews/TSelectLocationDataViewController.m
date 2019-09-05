@@ -25,8 +25,28 @@ static NSString * const TSelectLocationDataTableViewCellID = @"TSelectLocationDa
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"缓存数据";
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash
+                                                                                           target:self
+                                                                                           action:@selector(cleanCacheData:)];
     self.tableViewData = TLocationCache.shared.cacheDataArray;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+}
+
+- (void)cleanCacheData:(UIBarButtonItem *)barButtonItem {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil
+                                                                   message:@"确定清空已保存数据?"
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"确定"
+                                              style:UIAlertActionStyleDestructive
+                                            handler:^(UIAlertAction * _Nonnull action) {
+        self.tableViewData = nil;
+        TLocationCache.shared.cacheDataArray = nil;
+        [self.tableView reloadData];
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"取消"
+                                              style:UIAlertActionStyleDefault
+                                            handler:nil]];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 - (IBAction)addLocationData:(UIButton *)sender {
