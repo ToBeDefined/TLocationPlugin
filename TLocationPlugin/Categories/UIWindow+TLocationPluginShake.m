@@ -13,19 +13,28 @@
 
 @implementation UIWindow (TLocationPluginShake)
 
+static NSInteger _t_window_sharkedTimes = 0;
 - (BOOL)canBecomeFirstResponder {
     return YES;
 }
 
-- (void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event {
-    NSLog(@"Shark Begin");
-}
+- (void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event {}
 
 - (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event {
     if (event.subtype == UIEventSubtypeMotionShake) {
-        NSLog(@"Sharked");
+        if (_t_window_sharkedTimes < 2) {
+            if (_t_window_sharkedTimes == 0) {
+                // 开始摇晃, 5秒内摇晃三次, 5秒后清零
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    _t_window_sharkedTimes = 0;
+                });
+            }
+            ++_t_window_sharkedTimes;
+            return;
+        }
+        // 5秒内摇晃三次
         if (TLocationNavigationController.isShowing) {
-            NSLog(@"TLocationNavigationController is showing");
+            // @"TLocationNavigationController is showing"
             return;
         }
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
@@ -35,12 +44,10 @@
         TLocationNavigationController *nav = [[TLocationNavigationController alloc] initWithRootViewController:vc];
         [rootVC presentViewController:nav animated:YES completion:nil];
     } else {
-        NSLog(@"Some Unknown Event");
+        // Unknown Event
     }
 }
 
-- (void)motionCancelled:(UIEventSubtype)motion withEvent:(UIEvent *)event {
-    NSLog(@"Shark Cancelled");
-}
+- (void)motionCancelled:(UIEventSubtype)motion withEvent:(UIEvent *)event {}
 
 @end
