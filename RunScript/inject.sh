@@ -2,6 +2,10 @@
 
 set -ex
 
+BASEDIR=$(realpath $(dirname "$0"))
+
+source "$BASEDIR/devices_arm_info.sh"
+
 FRAMEWORK_NAME="TLocationPlugin"  # 注入 framework 名称
 APP_NAME="wework"           # App 包名
 BINARY_NAME="wework"        # 二进制文件名称
@@ -26,6 +30,21 @@ cp -rf "${FRAMEWORK_NAME}.framework" "${FRAMEWORKS_PATH}"
 
 pushd . > /dev/null
 cd "${APP_CONTENT_PATH}"
+BINARY_INFO=`file ${BINARY_NAME}`
+SUPPORTED_DEVICE_LIST=""
+echo $ARM64_DEVICES
+echo $ARMV7_DEVICES
+if [[ "${BINARY_INFO}" =~ "arm64" ]]; then
+    SUPPORTED_DEVICE_LIST="${SUPPORTED_DEVICE_LIST}${ARM64_DEVICES}"
+fi
+if [[ "${BINARY_INFO}" =~ "armv7" ]]; then
+    SUPPORTED_DEVICE_LIST="${SUPPORTED_DEVICE_LIST}${ARMV7_DEVICES}"
+fi
+
+# plutil -remove UISupportedDevices Info.plist
+plutil -replace UISupportedDevices -json "[${SUPPORTED_DEVICE_LIST}]" Info.plist
+plutil -p Info.plist
+
 yololib "${BINARY_NAME}" "Frameworks/${FRAMEWORK_NAME}.framework/${FRAMEWORK_NAME}"
 popd > /dev/null
 
@@ -42,4 +61,5 @@ rm -rf ./Payload
 # sign
 set +ex
 echo "new app: ${NEW_APP_NAME}; \nyou should sign it, recommend fastlane"
+
 
