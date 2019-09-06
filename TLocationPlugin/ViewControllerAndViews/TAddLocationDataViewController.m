@@ -262,12 +262,13 @@ static NSString * const TAddLocationDataTableViewCellID = @"TAddLocationDataTabl
     TAddLocationTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:TAddLocationDataTableViewCellID];
     if (cell == nil) {
         cell = [[TAddLocationTableViewCell alloc] initWithReuseIdentifier:TAddLocationDataTableViewCellID];
+        cell.textLabel.numberOfLines = 0;
+        cell.detailTextLabel.numberOfLines = 0;
+        cell.detailTextLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:13];
     }
     TLocationModel *model = self.tableViewData[indexPath.row];
     cell.textLabel.text = model.name;
-    cell.textLabel.numberOfLines = 0;
     cell.detailTextLabel.text = model.locationText;
-    cell.detailTextLabel.numberOfLines = 0;
     return cell;
 }
 

@@ -83,7 +83,11 @@ static NSString * const TSelectLocationDataTableViewCellID = @"TSelectLocationDa
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
                                       reuseIdentifier:TSelectLocationDataTableViewCellID];
+        cell.textLabel.numberOfLines = 0;
+        cell.detailTextLabel.numberOfLines = 0;
+        cell.detailTextLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:13];
     }
+    
     static UIImage *locationImage = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -91,9 +95,7 @@ static NSString * const TSelectLocationDataTableViewCellID = @"TSelectLocationDa
     });
     TLocationModel *model = self.tableViewData[indexPath.row];
     cell.textLabel.text = model.name;
-    cell.textLabel.numberOfLines = 0;
     cell.detailTextLabel.text = model.locationText;
-    cell.detailTextLabel.numberOfLines = 0;
     cell.imageView.image = locationImage;
     return cell;
 }
