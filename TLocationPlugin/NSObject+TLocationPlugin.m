@@ -55,8 +55,14 @@
         [self __t_locationManager:manager didUpdateToLocation:newLocation fromLocation:oldLocation];
         return;
     }
-    CLLocation *t_newLocation = [[CLLocation alloc] initWithLatitude:TLocationCache.shared.randomLatitude
-                                                           longitude:TLocationCache.shared.randomLongitude];
+    
+    CLLocation *t_newLocation = [[CLLocation alloc] initWithCoordinate:TLocationCache.shared.randomCoordinate
+                                                              altitude:newLocation.altitude
+                                                    horizontalAccuracy:newLocation.horizontalAccuracy
+                                                      verticalAccuracy:newLocation.verticalAccuracy
+                                                                course:newLocation.course
+                                                                 speed:newLocation.speed
+                                                             timestamp:newLocation.timestamp];
     if (TLocationCache.shared.usingToast) {
         [UIWindow t_showTostForCLLocation:t_newLocation];
     }
@@ -73,20 +79,22 @@
         [self __t_locationManager:manager didUpdateLocations:locations];
         return;
     }
-    
-    CLLocation *t_newLocation1 = [[CLLocation alloc] initWithLatitude:TLocationCache.shared.randomLatitude
-                                                            longitude:TLocationCache.shared.randomLongitude];
-    
-    CLLocation *t_newLocation2 = [[CLLocation alloc] initWithLatitude:TLocationCache.shared.randomLatitude
-                                                            longitude:TLocationCache.shared.randomLongitude];
-    
-    CLLocation *t_newLocation3 = [[CLLocation alloc] initWithLatitude:TLocationCache.shared.randomLatitude
-                                                            longitude:TLocationCache.shared.randomLongitude];
-
-    if (TLocationCache.shared.usingToast) {
-        [UIWindow t_showTostForCLLocations:@[t_newLocation1, t_newLocation2, t_newLocation3]];
+    NSMutableArray<CLLocation *> *t_locations = [NSMutableArray<CLLocation *> array];
+    for (CLLocation *location in locations) {
+        CLLocation *t_location = [[CLLocation alloc] initWithCoordinate:TLocationCache.shared.randomCoordinate
+                                                               altitude:location.altitude
+                                                     horizontalAccuracy:location.horizontalAccuracy
+                                                       verticalAccuracy:location.verticalAccuracy
+                                                                 course:location.course
+                                                                  speed:location.speed
+                                                              timestamp:location.timestamp];
+        [t_locations addObject:t_location];
     }
-    [self __t_locationManager:manager didUpdateLocations:@[t_newLocation1, t_newLocation2, t_newLocation3]];
+    
+    if (TLocationCache.shared.usingToast) {
+        [UIWindow t_showTostForCLLocations:t_locations];
+    }
+    [self __t_locationManager:manager didUpdateLocations:t_locations];
 }
 
 @end
