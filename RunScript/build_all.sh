@@ -1,4 +1,5 @@
-#!/bin/sh
+#!/usr/bin/env zsh --login
+
 set -ex
 
 FMK_NAME="TLocationPlugin"
@@ -32,4 +33,3 @@ strip -ur "${PROJECT_DIR}/${FMK_NAME}.framework/${FMK_NAME}"
 
 # Step 7. Convenience step to open the project's directory in Finder
 rm -rf build
-open "${PROJECT_DIR}"

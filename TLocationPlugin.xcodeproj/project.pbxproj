@@ -12,6 +12,7 @@
 			buildConfigurationList = 3F9CDAA72321F26D000E7A24 /* Build configuration list for PBXAggregateTarget "RunScript" */;
 			buildPhases = (
 				3F9CDAAA2321F275000E7A24 /* BuildFramework */,
+				3FC34C7D2322524C00C15E66 /* InjectFramework */,
 			);
 			dependencies = (
 			);
@@ -119,6 +120,7 @@
 		3FB305FF232008E100FD85A4 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/MapKit.framework; sourceTree = DEVELOPER_DIR; };
 		3FB306012320144700FD85A4 /* TLocationModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLocationModel.h; sourceTree = "<group>"; };
 		3FB306022320144700FD85A4 /* TLocationModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLocationModel.m; sourceTree = "<group>"; };
+		3FC34C7E2322536600C15E66 /* inject.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = inject.sh; sourceTree = "<group>"; };
 		3FE3DFB6231FA8A3002711B6 /* TSafeRuntimeCFunc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSafeRuntimeCFunc.h; sourceTree = "<group>"; };
 		3FE3DFB7231FA8A5002711B6 /* TSafeRuntimeCFunc.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSafeRuntimeCFunc.m; sourceTree = "<group>"; };
 		3FEDEEC0231FAA46002E9C18 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -217,6 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				3F9CDAAC2321F2A7000E7A24 /* build_all.sh */,
+				3FC34C7E2322536600C15E66 /* inject.sh */,
 			);
 			path = RunScript;
 			sourceTree = "<group>";
@@ -449,6 +452,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n$PROJECT_DIR/RunScript/build_all.sh\n";
+		};
+		3FC34C7D2322524C00C15E66 /* InjectFramework */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = InjectFramework;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n$PROJECT_DIR/RunScript/inject.sh\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
