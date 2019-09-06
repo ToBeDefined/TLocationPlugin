@@ -208,12 +208,17 @@ static NSString * const _t_usingToastKey = @"_T_CacheKeyTypeUsingToast";
     return self.longitude != 0 && self.latitude != 0;
 }
 
+#pragma mark - Random Values
 - (CLLocationDegrees)randomLatitude {
     return [self rangeDegressForDegrees:self.latitude];
 }
 
 - (CLLocationDegrees)randomLongitude {
     return [self rangeDegressForDegrees:self.longitude];
+}
+
+- (CLLocationCoordinate2D)randomCoordinate {
+    return CLLocationCoordinate2DMake(self.randomLatitude, self.randomLongitude);
 }
 
 /// 取 15/16 位有效数字

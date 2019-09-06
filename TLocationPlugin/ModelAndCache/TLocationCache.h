@@ -39,6 +39,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign, readonly) CLLocationDegrees randomLatitude;
 /// 取随机经度 (根据当前经度以及扩散范围生成)
 @property (nonatomic, assign, readonly) CLLocationDegrees randomLongitude;
+/// 取随机坐标 (根据当前经度,纬度以及扩散范围生成)
+@property (nonatomic, assign, readonly) CLLocationCoordinate2D randomCoordinate;
 
 @end
 
