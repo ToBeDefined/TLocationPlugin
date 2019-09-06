@@ -20,10 +20,11 @@ void t_add_instance_method(Class cls,
 void t_add_class_method(Class cls,
                         SEL sel);
 
+/// 先添加 后替换, 防止父类函数指针重复替换
 void t_exchange_instance_method(Class cls,
                                 SEL originalSel,
                                 SEL swizzledSel);
-
+/// 先添加 后替换, 防止父类函数指针重复替换
 void t_exchange_class_method(Class cls,
                              SEL originalSel,
                              SEL swizzledSel);
