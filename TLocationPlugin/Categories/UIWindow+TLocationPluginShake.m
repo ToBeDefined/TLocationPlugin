@@ -42,7 +42,9 @@ static NSInteger _t_window_sharkedTimes = 0;
         TLocationNavigationController.isShowing = YES;
         TSetLocationViewController *vc = [[TSetLocationViewController alloc] init];
         TLocationNavigationController *nav = [[TLocationNavigationController alloc] initWithRootViewController:vc];
-        [rootVC presentViewController:nav animated:YES completion:nil];
+        [rootVC presentViewController:nav animated:YES completion:^{
+            [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+        }];
     } else {
         // Unknown Event
     }

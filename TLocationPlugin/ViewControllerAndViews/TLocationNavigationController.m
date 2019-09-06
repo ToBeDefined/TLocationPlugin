@@ -9,19 +9,32 @@
 #import "TLocationNavigationController.h"
 #import "UIImage+TLocationPlugin.h"
 
+@interface TLocationNavigationController ()
+
+@property (nonatomic, assign) UIStatusBarStyle currentStatusBarStyle;
+
+@end
+
 @implementation TLocationNavigationController
 
 - (void)dealloc {
     self.class.isShowing = NO;
+    [UIApplication sharedApplication].statusBarStyle = self.currentStatusBarStyle;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    [self.navigationBar setBackgroundImage:[UIImage t_imageWithColor:UIColor.lightGrayColor]
-//                             forBarMetrics:UIBarMetricsDefault];
-//    [self.navigationBar setShadowImage:[UIImage t_imageWithColor:UIColor.lightGrayColor]];
-//    self.navigationBar.tintColor = UIColor.whiteColor;
+    self.currentStatusBarStyle = [UIApplication sharedApplication].statusBarStyle;
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+    [self.navigationBar setBackgroundImage:[UIImage t_imageWithColor:UIColor.whiteColor]
+                             forBarMetrics:UIBarMetricsDefault];
+    [self.navigationBar setShadowImage:nil];
+    self.navigationBar.tintColor = UIColor.whiteColor;
     self.navigationBar.tintColor = UIColor.blackColor;
+    self.navigationBar.titleTextAttributes = @{
+        NSForegroundColorAttributeName:UIColor.blackColor,
+        NSFontAttributeName:[UIFont systemFontOfSize:17.0f]
+    };
 }
 
 
@@ -36,13 +49,20 @@ static BOOL _t_isShowing = NO;
 }
 
 
-//- (UIModalPresentationStyle)modalPresentationStyle {
-//#if defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && defined(__IPHONE_13_0) && (__IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_13_0)
-//    if (@available(iOS 13, *)) {
-//        return UIModalPresentationAutomatic;
-//    }
-//#endif
-//    return UIModalPresentationFullScreen;
-//}
+- (UIModalPresentationStyle)modalPresentationStyle {
+    return UIModalPresentationFullScreen;
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleDefault;
+}
+
+- (UIViewController *)childViewControllerForStatusBarStyle {
+    return nil;
+}
+
+- (UIViewController *)childViewControllerForStatusBarHidden {
+    return nil;
+}
 
 @end
