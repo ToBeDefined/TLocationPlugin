@@ -6,6 +6,20 @@
 	objectVersion = 50;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		3F9CDAA62321F26D000E7A24 /* RunScript */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 3F9CDAA72321F26D000E7A24 /* Build configuration list for PBXAggregateTarget "RunScript" */;
+			buildPhases = (
+				3F9CDAAA2321F275000E7A24 /* BuildFramework */,
+			);
+			dependencies = (
+			);
+			name = RunScript;
+			productName = RunScript;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		3F0A641023217506002FA767 /* CALayer+TLocationPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F0A640E23217506002FA767 /* CALayer+TLocationPlugin.h */; };
 		3F0A641123217506002FA767 /* CALayer+TLocationPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0A640F23217506002FA767 /* CALayer+TLocationPlugin.m */; };
@@ -91,6 +105,7 @@
 		3F94F9FE231F813100EA742C /* NSObject+TLocationPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+TLocationPlugin.m"; sourceTree = "<group>"; };
 		3F9CDAA22321F013000E7A24 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
 		3F9CDAA42321F020000E7A24 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
+		3F9CDAAC2321F2A7000E7A24 /* build_all.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = build_all.sh; sourceTree = "<group>"; };
 		3FB305F32320044900FD85A4 /* TSelectLocationDataViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSelectLocationDataViewController.h; sourceTree = "<group>"; };
 		3FB305F42320044900FD85A4 /* TSelectLocationDataViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSelectLocationDataViewController.m; sourceTree = "<group>"; };
 		3FB305F52320044900FD85A4 /* TSelectLocationDataViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TSelectLocationDataViewController.xib; sourceTree = "<group>"; };
@@ -162,6 +177,7 @@
 			children = (
 				3F94F9F4231F7F7800EA742C /* TLocationPlugin */,
 				3FEDEEF22320C916002E9C18 /* TestLocationPlugin */,
+				3F9CDAAB2321F28A000E7A24 /* RunScript */,
 				3F94F9F3231F7F7800EA742C /* Products */,
 				EC41FADB1E5A492BCB391115 /* Frameworks */,
 			);
@@ -191,6 +207,14 @@
 				3F94F9F6231F7F7800EA742C /* Info.plist */,
 			);
 			path = TLocationPlugin;
+			sourceTree = "<group>";
+		};
+		3F9CDAAB2321F28A000E7A24 /* RunScript */ = {
+			isa = PBXGroup;
+			children = (
+				3F9CDAAC2321F2A7000E7A24 /* build_all.sh */,
+			);
+			path = RunScript;
 			sourceTree = "<group>";
 		};
 		3FEDEEE22320B402002E9C18 /* Categories */ = {
@@ -348,6 +372,9 @@
 					3F94F9F1231F7F7800EA742C = {
 						CreatedOnToolsVersion = 11.0;
 					};
+					3F9CDAA62321F26D000E7A24 = {
+						CreatedOnToolsVersion = 11.0;
+					};
 					3FEDEEF02320C916002E9C18 = {
 						CreatedOnToolsVersion = 10.3;
 					};
@@ -368,6 +395,7 @@
 			targets = (
 				3F94F9F1231F7F7800EA742C /* TLocationPlugin */,
 				3FEDEEF02320C916002E9C18 /* TestLocationPlugin */,
+				3F9CDAA62321F26D000E7A24 /* RunScript */,
 			);
 		};
 /* End PBXProject section */
@@ -395,6 +423,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3F9CDAAA2321F275000E7A24 /* BuildFramework */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = BuildFramework;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n$PROJECT_DIR/RunScript/build_all.sh\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3F94F9EE231F7F7800EA742C /* Sources */ = {
@@ -625,6 +674,22 @@
 			};
 			name = Release;
 		};
+		3F9CDAA82321F26D000E7A24 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3F9CDAA92321F26D000E7A24 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		3FEDEF052320C91A002E9C18 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -682,6 +747,15 @@
 			buildConfigurations = (
 				3F94F9FB231F7F7800EA742C /* Debug */,
 				3F94F9FC231F7F7800EA742C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3F9CDAA72321F26D000E7A24 /* Build configuration list for PBXAggregateTarget "RunScript" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F9CDAA82321F26D000E7A24 /* Debug */,
+				3F9CDAA92321F26D000E7A24 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
