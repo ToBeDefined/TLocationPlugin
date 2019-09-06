@@ -10,6 +10,7 @@
 #import "TAddLocationDataViewController.h"
 #import "TLocationManager.h"
 #import "UIImage+TLocationPlugin.h"
+#import "TAlertController.h"
 
 static NSString * const TSelectLocationDataTableViewCellID = @"TSelectLocationDataTableViewCellID";
 
@@ -40,18 +41,15 @@ static NSString * const TSelectLocationDataTableViewCellID = @"TSelectLocationDa
 }
 
 - (void)cleanCacheData:(UIBarButtonItem *)barButtonItem {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil
-                                                                   message:@"确定清空已保存数据?"
-                                                            preferredStyle:UIAlertControllerStyleAlert];
-    [alert addAction:[UIAlertAction actionWithTitle:@"确定"
-                                              style:UIAlertActionStyleDestructive
-                                            handler:^(UIAlertAction * _Nonnull action) {
+    TAlertController *alert = [TAlertController destructiveAlertWithTitle:@"确定清空已保存数据?"
+                                                                  message:nil
+                                                              cancelTitle:@"取消"
+                                                              cancelBlock:nil
+                                                         destructiveTitle:@"确定"
+                                                         destructiveBlock:^(TAlertController * _Nonnull alert, UIAlertAction * _Nonnull action) {
         self.tableViewData = nil;
         [self.tableView reloadData];
-    }]];
-    [alert addAction:[UIAlertAction actionWithTitle:@"取消"
-                                              style:UIAlertActionStyleDefault
-                                            handler:nil]];
+    }];
     [self presentViewController:alert animated:YES completion:nil];
 }
 
@@ -149,59 +147,43 @@ static NSString * const TSelectLocationDataTableViewCellID = @"TSelectLocationDa
 
 - (void)removeTableViewDataInIndexPath:(NSIndexPath *)indexPath {
     TLocationModel *model = self.tableViewData[indexPath.row];
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"确定删除数据?"
-                                                                   message:model.name
-                                                            preferredStyle:UIAlertControllerStyleAlert];
-    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
-    [alert addAction:[UIAlertAction actionWithTitle:@"确定"
-                                              style:UIAlertActionStyleDefault
-                                            handler:^(UIAlertAction * _Nonnull action) {
+    TAlertController *alert = [TAlertController destructiveAlertWithTitle:@"确定删除数据?"
+                                                                  message:model.name
+                                                              cancelTitle:@"取消"
+                                                              cancelBlock:nil
+                                                         destructiveTitle:@"确定"
+                                                         destructiveBlock:^(TAlertController * _Nonnull alert, UIAlertAction * _Nonnull action) {
         NSMutableArray<TLocationModel *> *tableViewDataArray = [self.tableViewData mutableCopy];
         [tableViewDataArray removeObjectAtIndex:indexPath.row];
         self.tableViewData = tableViewDataArray;
         [self.tableView deleteRowsAtIndexPaths:@[indexPath]
                               withRowAnimation:UITableViewRowAnimationLeft];
-    }]];
+    } ];
     [self presentViewController:alert animated:YES completion:nil];
 }
 
 - (void)editTableViewDataInIndexPath:(NSIndexPath *)indexPath {
     TLocationModel *model = self.tableViewData[indexPath.row];
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"修改数据"
-                                                                   message:model.name
-                                                            preferredStyle:UIAlertControllerStyleAlert];
-    [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
-        [self addLabel:@"名称: " toTextField:textField];
-        textField.text = model.name;
-    }];
-    [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
-        [self addLabel:@"纬度: " toTextField:textField];
-        textField.text = @(model.latitude).stringValue;
-    }];
-    [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
-        [self addLabel:@"经度: " toTextField:textField];
-        textField.text = @(model.longitude).stringValue;
-    }];
-    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
-    [alert addAction:[UIAlertAction actionWithTitle:@"确定"
-                                              style:UIAlertActionStyleDefault
-                                            handler:^(UIAlertAction * _Nonnull action) {
+    TAlertController *alert = [TAlertController editAlertWithTitle:@"修改数据"
+                                                           message:model.name
+                                                        labelTexts:@[@"名称", @"纬度", @"经度"]
+                                                     defaultValues:@[
+                                                         model.name ?: @"",
+                                                         @(model.latitude).stringValue,
+                                                         @(model.longitude).stringValue,
+                                                     ]
+                                                       cancelTitle:@"取消"
+                                                       cancelBlock:nil
+                                                      confirmTitle:@"确定"
+                                                      confirmBlock:^(TAlertController * _Nonnull alert, UIAlertAction * _Nonnull action) {
         model.name = alert.textFields[0].text;
         model.latitude = alert.textFields[1].text.doubleValue;
         model.longitude = alert.textFields[2].text.doubleValue;
         [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
         /// 为了重新保存缓存数据
         self.tableViewData = self.tableViewData;
-    }]];
+    }];
     [self presentViewController:alert animated:YES completion:nil];
-}
-
-- (void)addLabel:(NSString *)text toTextField:(UITextField *)textField {
-    UILabel *label = [[UILabel alloc] init];
-    label.text = text;
-    label.font = [UIFont systemFontOfSize:14];
-    textField.leftView = label;
-    textField.leftViewMode = UITextFieldViewModeAlways;
 }
 
 @end

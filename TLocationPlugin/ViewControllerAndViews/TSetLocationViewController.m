@@ -11,6 +11,7 @@
 #import "TLocationNavigationController.h"
 #import "TLocationManager.h"
 #import "UIImage+TLocationPlugin.h"
+#import "TAlertController.h"
 
 @interface TSetLocationViewController () <UITextFieldDelegate>
 
@@ -20,6 +21,7 @@
 @property (nonatomic, strong) IBOutlet UITextField *rangeTextField;
 @property (nonatomic, strong) IBOutlet UISwitch *usingHookSwitch;
 @property (strong, nonatomic) IBOutlet UISwitch *usingToastSwitch;
+@property (nonatomic, assign) BOOL shouldSave;
 
 @end
 
@@ -47,6 +49,23 @@
 }
 
 - (void)closeSetLocationViewController:(UIBarButtonItem *)sender {
+    [self.view endEditing:YES];
+    if (!self.shouldSave) {
+        [self dismissSelf];
+        return;
+    }
+    TAlertController *alert = [TAlertController confirmAlertWithTitle:@"是否保存数据并启用位置拦截?" message:nil cancelTitle:@"否" cancelBlock:^(TAlertController * _Nonnull alert, UIAlertAction * _Nonnull action) {
+        [self dismissSelf];
+    } confirmTitle:@"是" confirmBlock:^(TAlertController * _Nonnull alert, UIAlertAction * _Nonnull action) {
+        [self storageLocation];
+        TLocationManager.shared.usingHookLocation = YES;
+        [self dismissSelf];
+    }];
+    [alert reverseActions];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)dismissSelf {
     [self dismissViewControllerAnimated:YES completion:^{
         TLocationNavigationController.isShowing = NO;
     }];
@@ -60,6 +79,7 @@
         self.locationNameLabel.text = model.name;
         self.latitudeTextField.text = @(model.latitude).stringValue;
         self.longitudeTextField.text = @(model.longitude).stringValue;
+        self.shouldSave = YES;
     };
     [self.navigationController pushViewController:vc animated:YES];
 }
@@ -67,6 +87,15 @@
 /// 保存到缓存
 - (IBAction)storageLocationToCache:(UIButton *)sender {
     [self.view endEditing:YES];
+    [self storageLocation];
+    TAlertController *alert = [TAlertController singleActionAlertWithTitle:@"保存成功"
+                                                                   message:nil
+                                                               actionTitle:@"确定"
+                                                               actionBlock:nil];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)storageLocation {
     CLLocationDegrees latitude = [self.latitudeTextField.text doubleValue];
     CLLocationDegrees longitude = [self.longitudeTextField.text doubleValue];
     NSInteger range = [self.rangeTextField.text integerValue];
@@ -76,21 +105,17 @@
     TLocationManager.shared.longitude = longitude;
     TLocationManager.shared.range = range;
     
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil
-                                                                   message:@"保存成功"
-                                                            preferredStyle:UIAlertControllerStyleAlert];
-    [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:nil]];
-    [self presentViewController:alert animated:YES completion:nil];
+    self.shouldSave = NO;
 }
 
 /// 开关
 - (IBAction)usingHookLocationValueChanged:(UISwitch *)sender {
     [self.view endEditing:YES];
     TLocationManager.shared.usingHookLocation = sender.isOn;
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:sender.isOn ? @"已开启" : @"已关闭"
+    TAlertController *alert = [TAlertController singleActionAlertWithTitle:sender.isOn ? @"已开启" : @"已关闭"
                                                                    message:nil
-                                                            preferredStyle:UIAlertControllerStyleAlert];
-    [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:nil]];
+                                                               actionTitle:@"确定"
+                                                               actionBlock:nil];
     [self presentViewController:alert animated:YES completion:nil];
 }
 
@@ -114,6 +139,11 @@
         return NO;
     }
     [self.view endEditing:YES];
+    return YES;
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    self.shouldSave = YES;
     return YES;
 }
 

@@ -26,6 +26,8 @@
 		3F0A641123217506002FA767 /* CALayer+TLocationPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0A640F23217506002FA767 /* CALayer+TLocationPlugin.m */; };
 		3F0FE5112320FBFC008B0830 /* TLocationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F0FE50F2320FBFC008B0830 /* TLocationManager.h */; };
 		3F0FE5122320FBFC008B0830 /* TLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0FE5102320FBFC008B0830 /* TLocationManager.m */; };
+		3F344C0C23227F2F000A0D9F /* TAlertController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F344C0A23227F2F000A0D9F /* TAlertController.h */; };
+		3F344C0D23227F2F000A0D9F /* TAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F344C0B23227F2F000A0D9F /* TAlertController.m */; };
 		3F63118F23222EFE0004E0A1 /* TLocationPluginLocationConverter.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F63118D23222EFE0004E0A1 /* TLocationPluginLocationConverter.h */; };
 		3F63119023222EFE0004E0A1 /* TLocationPluginLocationConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F63118E23222EFE0004E0A1 /* TLocationPluginLocationConverter.m */; };
 		3F94F9F7231F7F7800EA742C /* TLocationPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F94F9F5231F7F7800EA742C /* TLocationPlugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -101,6 +103,9 @@
 		3F0A640F23217506002FA767 /* CALayer+TLocationPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CALayer+TLocationPlugin.m"; sourceTree = "<group>"; };
 		3F0FE50F2320FBFC008B0830 /* TLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLocationManager.h; sourceTree = "<group>"; };
 		3F0FE5102320FBFC008B0830 /* TLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLocationManager.m; sourceTree = "<group>"; };
+		3F344C0A23227F2F000A0D9F /* TAlertController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TAlertController.h; sourceTree = "<group>"; };
+		3F344C0B23227F2F000A0D9F /* TAlertController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TAlertController.m; sourceTree = "<group>"; };
+		3F344C0E2322937F000A0D9F /* TLocationDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLocationDefine.h; sourceTree = "<group>"; };
 		3F63118D23222EFE0004E0A1 /* TLocationPluginLocationConverter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLocationPluginLocationConverter.h; sourceTree = "<group>"; };
 		3F63118E23222EFE0004E0A1 /* TLocationPluginLocationConverter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLocationPluginLocationConverter.m; sourceTree = "<group>"; };
 		3F94F9F2231F7F7800EA742C /* TLocationPlugin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TLocationPlugin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -208,7 +213,7 @@
 				3F94F9FE231F813100EA742C /* NSObject+TLocationPlugin.m */,
 				3FEDEEE42320B435002E9C18 /* Others */,
 				3FEDEEE32320B419002E9C18 /* ViewControllerAndViews */,
-				3FEDEEE22320B402002E9C18 /* Categories */,
+				3FEDEEE22320B402002E9C18 /* Tools */,
 				3FEDEED82320B11C002E9C18 /* TLocationPluginImages.bundle */,
 				3F94F9F6231F7F7800EA742C /* Info.plist */,
 			);
@@ -224,9 +229,12 @@
 			path = RunScript;
 			sourceTree = "<group>";
 		};
-		3FEDEEE22320B402002E9C18 /* Categories */ = {
+		3FEDEEE22320B402002E9C18 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				3F344C0E2322937F000A0D9F /* TLocationDefine.h */,
+				3F344C0A23227F2F000A0D9F /* TAlertController.h */,
+				3F344C0B23227F2F000A0D9F /* TAlertController.m */,
 				3FF4458723214E880073D346 /* UIWindow+TLocationPluginToast.h */,
 				3FF4458823214E880073D346 /* UIWindow+TLocationPluginToast.m */,
 				3FEDEECE231FDB49002E9C18 /* UIWindow+TLocationPluginTouch.h */,
@@ -238,7 +246,7 @@
 				3F0A640E23217506002FA767 /* CALayer+TLocationPlugin.h */,
 				3F0A640F23217506002FA767 /* CALayer+TLocationPlugin.m */,
 			);
-			path = Categories;
+			path = Tools;
 			sourceTree = "<group>";
 		};
 		3FEDEEE32320B419002E9C18 /* ViewControllerAndViews */ = {
@@ -313,6 +321,7 @@
 			files = (
 				3FEDEEC5231FAD10002E9C18 /* TSetLocationViewController.h in Headers */,
 				3F94F9FF231F813100EA742C /* NSObject+TLocationPlugin.h in Headers */,
+				3F344C0C23227F2F000A0D9F /* TAlertController.h in Headers */,
 				3FB305FC2320063F00FD85A4 /* TAddLocationDataViewController.h in Headers */,
 				3FEDEED0231FDB49002E9C18 /* UIWindow+TLocationPluginTouch.h in Headers */,
 				3FEDEEEB2320C82E002E9C18 /* TBaseViewController.h in Headers */,
@@ -491,6 +500,7 @@
 				3FE3DFB8231FA8A5002711B6 /* TSafeRuntimeCFunc.m in Sources */,
 				3FEDEEEC2320C82E002E9C18 /* TBaseViewController.m in Sources */,
 				3F0A641123217506002FA767 /* CALayer+TLocationPlugin.m in Sources */,
+				3F344C0D23227F2F000A0D9F /* TAlertController.m in Sources */,
 				3FB305FD2320063F00FD85A4 /* TAddLocationDataViewController.m in Sources */,
 				3FEDEED72320AE6D002E9C18 /* TAddLocationTableViewCell.m in Sources */,
 				3FEDEEDD2320B14B002E9C18 /* UIImage+TLocationPlugin.m in Sources */,

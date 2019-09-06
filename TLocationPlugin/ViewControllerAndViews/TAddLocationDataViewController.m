@@ -11,6 +11,7 @@
 #import "TAddLocationDataViewController.h"
 #import "TAddLocationTableViewCell.h"
 #import "UIImage+TLocationPlugin.h"
+#import "TAlertController.h"
 
 typedef void (^GetPlaceInfoBlock)(NSArray<TLocationModel *> *_Nullable models);
 
@@ -96,38 +97,50 @@ static NSString * const TAddLocationDataTableViewCellID = @"TAddLocationDataTabl
 
 - (IBAction)addALocationModelToLocalList:(UIButton *)sender {
     if (self.selectedModel == nil) {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil
-                                                                       message:@"请选择一个位置"
-                                                                preferredStyle:UIAlertControllerStyleAlert];
-        [alert addAction:[UIAlertAction actionWithTitle:@"确定"
-                                                  style:UIAlertActionStyleDefault
-                                                handler:nil]];
+        TAlertController *alert = [TAlertController singleActionAlertWithTitle:@"请选择一个位置"
+                                                                       message:nil
+                                                                   actionTitle:@"确定"
+                                                                   actionBlock:nil];
         [self presentViewController:alert animated:YES completion:nil];
         return;
     }
     
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"输入标签" message:nil preferredStyle:UIAlertControllerStyleAlert];
-    [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
-        textField.placeholder = @"请输入标记名称";
-        textField.text = self.selectedModel.name;
-    }];
-    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
-    [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    TAlertController *alert = [TAlertController editAlertWithTitle:@"请输入标记名称"
+                                                           message:nil
+                                                        labelTexts:nil
+                                                     defaultValues:@[self.selectedModel.name ?: @""]
+                                                       cancelTitle:@"取消"
+                                                       cancelBlock:nil
+                                                      confirmTitle:@"确定"
+                                                      confirmBlock:^(TAlertController * _Nonnull alert, UIAlertAction * _Nonnull action) {
         NSString *name = alert.textFields.firstObject.text;
-        if (name.length <= 0) {
-            UIAlertController *alert2 = [UIAlertController alertControllerWithTitle:nil
-                                                                            message:@"请输入标记名称"
-                                                                     preferredStyle:UIAlertControllerStyleAlert];
-            [alert2 addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:nil]];
-            [self presentViewController:alert2 animated:YES completion:nil];
-            return;
-        }
-        self.selectedModel.name = name;
-        if (self.addLocationBlock) {
-            self.addLocationBlock(self.selectedModel);
-        }
-    }]];
+        [self saveSelectedModelWithNewName:name];
+    }];
     [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)saveSelectedModelWithNewName:(NSString *)name {
+    if (name.length <= 0) {
+        TAlertController *alertError = [TAlertController singleActionAlertWithTitle:@"请输入标记名称"
+                                                                            message:nil
+                                                                        actionTitle:@"确定"
+                                                                        actionBlock:nil];
+        [self presentViewController:alertError animated:YES completion:nil];
+        return;
+    }
+    self.selectedModel.name = name;
+    if (self.addLocationBlock) {
+        self.addLocationBlock(self.selectedModel);
+    }
+    TAlertController *alertSuccess = [TAlertController confirmAlertWithTitle:@"添加成功"
+                                                                     message:nil
+                                                                 cancelTitle:@"继续添加"
+                                                                 cancelBlock:nil
+                                                                confirmTitle:@"返回列表"
+                                                                confirmBlock:^(TAlertController * _Nonnull alert, UIAlertAction * _Nonnull action) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
+    [self presentViewController:alertSuccess animated:YES completion:nil];
 }
 
 - (void)setMapViewCenter:(CLLocationCoordinate2D)coordinate {
