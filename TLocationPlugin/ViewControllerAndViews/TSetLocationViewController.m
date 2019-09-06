@@ -8,6 +8,7 @@
 
 #import "TSetLocationViewController.h"
 #import "TSelectLocationDataViewController.h"
+#import "TLocationNavigationController.h"
 #import "TLocationManager.h"
 #import "UIImage+TLocationPlugin.h"
 
@@ -46,7 +47,9 @@
 }
 
 - (void)closeSetLocationViewController:(UIBarButtonItem *)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:^{
+        TLocationNavigationController.isShowing = NO;
+    }];
 }
 
 /// 选择数据
