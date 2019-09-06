@@ -14,6 +14,7 @@
 		3F94F9F7231F7F7800EA742C /* TLocationPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F94F9F5231F7F7800EA742C /* TLocationPlugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3F94F9FF231F813100EA742C /* NSObject+TLocationPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F94F9FD231F813100EA742C /* NSObject+TLocationPlugin.h */; };
 		3F94FA00231F813100EA742C /* NSObject+TLocationPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F94F9FE231F813100EA742C /* NSObject+TLocationPlugin.m */; };
+		3F9CDAA52321F020000E7A24 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F9CDAA42321F020000E7A24 /* QuartzCore.framework */; };
 		3FB305F62320044900FD85A4 /* TSelectLocationDataViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FB305F32320044900FD85A4 /* TSelectLocationDataViewController.h */; };
 		3FB305F72320044900FD85A4 /* TSelectLocationDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB305F42320044900FD85A4 /* TSelectLocationDataViewController.m */; };
 		3FB305F82320044900FD85A4 /* TSelectLocationDataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FB305F52320044900FD85A4 /* TSelectLocationDataViewController.xib */; };
@@ -88,6 +89,8 @@
 		3F94F9F6231F7F7800EA742C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F94F9FD231F813100EA742C /* NSObject+TLocationPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+TLocationPlugin.h"; sourceTree = "<group>"; };
 		3F94F9FE231F813100EA742C /* NSObject+TLocationPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+TLocationPlugin.m"; sourceTree = "<group>"; };
+		3F9CDAA22321F013000E7A24 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
+		3F9CDAA42321F020000E7A24 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 		3FB305F32320044900FD85A4 /* TSelectLocationDataViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSelectLocationDataViewController.h; sourceTree = "<group>"; };
 		3FB305F42320044900FD85A4 /* TSelectLocationDataViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSelectLocationDataViewController.m; sourceTree = "<group>"; };
 		3FB305F52320044900FD85A4 /* TSelectLocationDataViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TSelectLocationDataViewController.xib; sourceTree = "<group>"; };
@@ -136,6 +139,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F9CDAA52321F020000E7A24 /* QuartzCore.framework in Frameworks */,
 				3FEDEED3231FDCF3002E9C18 /* AudioToolbox.framework in Frameworks */,
 				3FB30600232008E100FD85A4 /* MapKit.framework in Frameworks */,
 				3FEDEEC8231FAF5B002E9C18 /* CoreLocation.framework in Frameworks */,
@@ -258,6 +262,8 @@
 		EC41FADB1E5A492BCB391115 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3F9CDAA42321F020000E7A24 /* QuartzCore.framework */,
+				3F9CDAA22321F013000E7A24 /* CoreGraphics.framework */,
 				3FB305FF232008E100FD85A4 /* MapKit.framework */,
 				3FEDEED2231FDCF3002E9C18 /* AudioToolbox.framework */,
 				3FEDEEC0231FAA46002E9C18 /* CoreLocation.framework */,
