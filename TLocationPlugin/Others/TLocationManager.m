@@ -7,6 +7,7 @@
 //
 
 #import "TLocationManager.h"
+#import "TLocationPluginLocationConverter.h"
 
 @implementation TLocationManager {
     NSString                    *_locationName;
@@ -217,9 +218,15 @@ static NSString * const _t_usingToastKey = @"_T_CacheKeyTypeUsingToast";
     return [self rangeDegressForDegrees:self.longitude];
 }
 
-- (CLLocationCoordinate2D)randomCoordinate {
+- (CLLocationCoordinate2D)randomGCJ02CoordinateCoordinate {
+    /// 地图点击的坐标默认就是国测局坐标
     return CLLocationCoordinate2DMake(self.randomLatitude, self.randomLongitude);
 }
+
+- (CLLocationCoordinate2D)randomWGS84Coordinate {
+    return [TLocationPluginLocationConverter gcj02ToWgs84:self.randomGCJ02CoordinateCoordinate];
+}
+
 
 /// 取 15/16 位有效数字
 - (CLLocationDegrees)rangeDegressForDegrees:(CLLocationDegrees)degrees {

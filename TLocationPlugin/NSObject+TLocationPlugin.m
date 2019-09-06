@@ -28,7 +28,6 @@
 }
 
 + (void)replaceCLLocationsFunctionToClass:(Class)cls {
-    
     if ([cls instancesRespondToSelector:@selector(locationManager:didUpdateToLocation:fromLocation:)]) {
         t_exchange_instance_method(cls,
                                    @selector(locationManager:didUpdateToLocation:fromLocation:),
@@ -54,7 +53,8 @@
         return;
     }
     
-    CLLocation *t_newLocation = [[CLLocation alloc] initWithCoordinate:TLocationManager.shared.randomCoordinate
+    /// CLLocation 使用WGS84坐标
+    CLLocation *t_newLocation = [[CLLocation alloc] initWithCoordinate:TLocationManager.shared.randomWGS84Coordinate
                                                               altitude:newLocation.altitude
                                                     horizontalAccuracy:newLocation.horizontalAccuracy
                                                       verticalAccuracy:newLocation.verticalAccuracy
@@ -79,7 +79,8 @@
     }
     NSMutableArray<CLLocation *> *t_locations = [NSMutableArray<CLLocation *> array];
     for (CLLocation *location in locations) {
-        CLLocation *t_location = [[CLLocation alloc] initWithCoordinate:TLocationManager.shared.randomCoordinate
+        /// CLLocation 使用WGS84坐标
+        CLLocation *t_location = [[CLLocation alloc] initWithCoordinate:TLocationManager.shared.randomWGS84Coordinate
                                                                altitude:location.altitude
                                                      horizontalAccuracy:location.horizontalAccuracy
                                                        verticalAccuracy:location.verticalAccuracy
