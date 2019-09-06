@@ -9,12 +9,10 @@
 #import <CoreLocation/CoreLocation.h>
 #import "NSObject+TLocationPlugin.h"
 #import "TSafeRuntimeCFunc.h"
-#import "TLocationCache.h"
+#import "TLocationManager.h"
 #import "UIWindow+TLocationPluginToast.h"
 
 #define CLASS(_cls) NSClassFromString(@#_cls)
-
-// CLLocationManagerDelegate
 
 @implementation NSObject (TLocationPlugin)
 
@@ -47,23 +45,23 @@
 - (void)__t_locationManager:(CLLocationManager *)manager
         didUpdateToLocation:(CLLocation *)newLocation
                fromLocation:(CLLocation *)oldLocation API_AVAILABLE(macos(10.6)) {
-    BOOL useHook = TLocationCache.shared.usingHookLocation && TLocationCache.shared.hasCachedLocation;
+    BOOL useHook = TLocationManager.shared.usingHookLocation && TLocationManager.shared.hasCachedLocation;
     if (!useHook) {
-        if (TLocationCache.shared.usingToast) {
+        if (TLocationManager.shared.usingToast) {
             [UIWindow t_showTostForCLLocation:newLocation];
         }
         [self __t_locationManager:manager didUpdateToLocation:newLocation fromLocation:oldLocation];
         return;
     }
     
-    CLLocation *t_newLocation = [[CLLocation alloc] initWithCoordinate:TLocationCache.shared.randomCoordinate
+    CLLocation *t_newLocation = [[CLLocation alloc] initWithCoordinate:TLocationManager.shared.randomCoordinate
                                                               altitude:newLocation.altitude
                                                     horizontalAccuracy:newLocation.horizontalAccuracy
                                                       verticalAccuracy:newLocation.verticalAccuracy
                                                                 course:newLocation.course
                                                                  speed:newLocation.speed
                                                              timestamp:newLocation.timestamp];
-    if (TLocationCache.shared.usingToast) {
+    if (TLocationManager.shared.usingToast) {
         [UIWindow t_showTostForCLLocation:t_newLocation];
     }
     [self __t_locationManager:manager didUpdateToLocation:t_newLocation fromLocation:oldLocation];
@@ -71,9 +69,9 @@
 
 - (void)__t_locationManager:(CLLocationManager *)manager
          didUpdateLocations:(NSArray<CLLocation *> *)locations {
-    BOOL useHook = TLocationCache.shared.usingHookLocation && TLocationCache.shared.hasCachedLocation;
+    BOOL useHook = TLocationManager.shared.usingHookLocation && TLocationManager.shared.hasCachedLocation;
     if (!useHook) {
-        if (TLocationCache.shared.usingToast) {
+        if (TLocationManager.shared.usingToast) {
             [UIWindow t_showTostForCLLocations:locations];
         }
         [self __t_locationManager:manager didUpdateLocations:locations];
@@ -81,7 +79,7 @@
     }
     NSMutableArray<CLLocation *> *t_locations = [NSMutableArray<CLLocation *> array];
     for (CLLocation *location in locations) {
-        CLLocation *t_location = [[CLLocation alloc] initWithCoordinate:TLocationCache.shared.randomCoordinate
+        CLLocation *t_location = [[CLLocation alloc] initWithCoordinate:TLocationManager.shared.randomCoordinate
                                                                altitude:location.altitude
                                                      horizontalAccuracy:location.horizontalAccuracy
                                                        verticalAccuracy:location.verticalAccuracy
@@ -91,7 +89,7 @@
         [t_locations addObject:t_location];
     }
     
-    if (TLocationCache.shared.usingToast) {
+    if (TLocationManager.shared.usingToast) {
         [UIWindow t_showTostForCLLocations:t_locations];
     }
     [self __t_locationManager:manager didUpdateLocations:t_locations];

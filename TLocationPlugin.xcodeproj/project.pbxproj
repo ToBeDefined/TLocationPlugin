@@ -23,8 +23,8 @@
 /* Begin PBXBuildFile section */
 		3F0A641023217506002FA767 /* CALayer+TLocationPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F0A640E23217506002FA767 /* CALayer+TLocationPlugin.h */; };
 		3F0A641123217506002FA767 /* CALayer+TLocationPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0A640F23217506002FA767 /* CALayer+TLocationPlugin.m */; };
-		3F0FE5112320FBFC008B0830 /* TLocationCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F0FE50F2320FBFC008B0830 /* TLocationCache.h */; };
-		3F0FE5122320FBFC008B0830 /* TLocationCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0FE5102320FBFC008B0830 /* TLocationCache.m */; };
+		3F0FE5112320FBFC008B0830 /* TLocationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F0FE50F2320FBFC008B0830 /* TLocationManager.h */; };
+		3F0FE5122320FBFC008B0830 /* TLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0FE5102320FBFC008B0830 /* TLocationManager.m */; };
 		3F94F9F7231F7F7800EA742C /* TLocationPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F94F9F5231F7F7800EA742C /* TLocationPlugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3F94F9FF231F813100EA742C /* NSObject+TLocationPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F94F9FD231F813100EA742C /* NSObject+TLocationPlugin.h */; };
 		3F94FA00231F813100EA742C /* NSObject+TLocationPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F94F9FE231F813100EA742C /* NSObject+TLocationPlugin.m */; };
@@ -96,8 +96,8 @@
 /* Begin PBXFileReference section */
 		3F0A640E23217506002FA767 /* CALayer+TLocationPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CALayer+TLocationPlugin.h"; sourceTree = "<group>"; };
 		3F0A640F23217506002FA767 /* CALayer+TLocationPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CALayer+TLocationPlugin.m"; sourceTree = "<group>"; };
-		3F0FE50F2320FBFC008B0830 /* TLocationCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLocationCache.h; sourceTree = "<group>"; };
-		3F0FE5102320FBFC008B0830 /* TLocationCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLocationCache.m; sourceTree = "<group>"; };
+		3F0FE50F2320FBFC008B0830 /* TLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLocationManager.h; sourceTree = "<group>"; };
+		3F0FE5102320FBFC008B0830 /* TLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLocationManager.m; sourceTree = "<group>"; };
 		3F94F9F2231F7F7800EA742C /* TLocationPlugin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TLocationPlugin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F94F9F5231F7F7800EA742C /* TLocationPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLocationPlugin.h; sourceTree = "<group>"; };
 		3F94F9F6231F7F7800EA742C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -259,8 +259,8 @@
 		3FEDEEE42320B435002E9C18 /* ModelAndCache */ = {
 			isa = PBXGroup;
 			children = (
-				3F0FE50F2320FBFC008B0830 /* TLocationCache.h */,
-				3F0FE5102320FBFC008B0830 /* TLocationCache.m */,
+				3F0FE50F2320FBFC008B0830 /* TLocationManager.h */,
+				3F0FE5102320FBFC008B0830 /* TLocationManager.m */,
 				3FB306012320144700FD85A4 /* TLocationModel.h */,
 				3FB306022320144700FD85A4 /* TLocationModel.m */,
 			);
@@ -316,7 +316,7 @@
 				3F0A641023217506002FA767 /* CALayer+TLocationPlugin.h in Headers */,
 				3FEDEED62320AE6D002E9C18 /* TAddLocationTableViewCell.h in Headers */,
 				3F94F9F7231F7F7800EA742C /* TLocationPlugin.h in Headers */,
-				3F0FE5112320FBFC008B0830 /* TLocationCache.h in Headers */,
+				3F0FE5112320FBFC008B0830 /* TLocationManager.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -456,7 +456,7 @@
 				3FEDEEE82320B51F002E9C18 /* TLocationNavigationController.m in Sources */,
 				3FEDEEE12320B1AF002E9C18 /* NSBundle+TLocationPlugin.m in Sources */,
 				3FEDEEC6231FAD10002E9C18 /* TSetLocationViewController.m in Sources */,
-				3F0FE5122320FBFC008B0830 /* TLocationCache.m in Sources */,
+				3F0FE5122320FBFC008B0830 /* TLocationManager.m in Sources */,
 				3FEDEED1231FDB49002E9C18 /* UIWindow+TLocationPluginShake.m in Sources */,
 				3FF4458A23214E880073D346 /* UIWindow+TLocationPluginToast.m in Sources */,
 				3FE3DFB8231FA8A5002711B6 /* TSafeRuntimeCFunc.m in Sources */,

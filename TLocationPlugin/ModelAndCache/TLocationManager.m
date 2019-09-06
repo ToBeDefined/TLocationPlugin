@@ -1,14 +1,14 @@
 //
-//  TLocationCache.m
+//  TLocationManager.m
 //  TLocationPlugin
 //
 //  Created by TBD on 2019/9/4.
 //  Copyright © 2019 TBD. All rights reserved.
 //
 
-#import "TLocationCache.h"
+#import "TLocationManager.h"
 
-@implementation TLocationCache {
+@implementation TLocationManager {
     NSString                    *_locationName;
     CLLocationDegrees           _latitude;
     CLLocationDegrees           _longitude;
@@ -30,8 +30,8 @@
 #pragma mark - Singletion
 #pragma mark -
 
-static TLocationCache *_instance;
-+ (TLocationCache *)shared {
+static TLocationManager *_instance;
++ (TLocationManager *)shared {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
 #if __has_feature(objc_arc)

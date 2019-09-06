@@ -8,7 +8,7 @@
 
 #import "TSetLocationViewController.h"
 #import "TSelectLocationDataViewController.h"
-#import "TLocationCache.h"
+#import "TLocationManager.h"
 #import "UIImage+TLocationPlugin.h"
 
 @interface TSetLocationViewController () <UITextFieldDelegate>
@@ -31,12 +31,12 @@
                                                                              style:UIBarButtonItemStylePlain
                                                                             target:self
                                                                             action:@selector(closeSetLocationViewController:)];
-    NSString *locationName = TLocationCache.shared.locationName;
-    CLLocationDegrees latitude = TLocationCache.shared.latitude;
-    CLLocationDegrees longitude = TLocationCache.shared.longitude;
-    NSInteger range = TLocationCache.shared.range;
-    BOOL isUsingHook = TLocationCache.shared.usingHookLocation;
-    BOOL isUsingToast = TLocationCache.shared.usingToast;
+    NSString *locationName = TLocationManager.shared.locationName;
+    CLLocationDegrees latitude = TLocationManager.shared.latitude;
+    CLLocationDegrees longitude = TLocationManager.shared.longitude;
+    NSInteger range = TLocationManager.shared.range;
+    BOOL isUsingHook = TLocationManager.shared.usingHookLocation;
+    BOOL isUsingToast = TLocationManager.shared.usingToast;
     self.locationNameLabel.text = locationName;
     self.latitudeTextField.text = @(latitude).stringValue;
     self.longitudeTextField.text = @(longitude).stringValue;
@@ -68,10 +68,10 @@
     CLLocationDegrees longitude = [self.longitudeTextField.text doubleValue];
     NSInteger range = [self.rangeTextField.text integerValue];
     
-    TLocationCache.shared.locationName = self.locationNameLabel.text;
-    TLocationCache.shared.latitude = latitude;
-    TLocationCache.shared.longitude = longitude;
-    TLocationCache.shared.range = range;
+    TLocationManager.shared.locationName = self.locationNameLabel.text;
+    TLocationManager.shared.latitude = latitude;
+    TLocationManager.shared.longitude = longitude;
+    TLocationManager.shared.range = range;
     
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil
                                                                    message:@"保存成功"
@@ -83,7 +83,7 @@
 /// 开关
 - (IBAction)usingHookLocationValueChanged:(UISwitch *)sender {
     [self.view endEditing:YES];
-    TLocationCache.shared.usingHookLocation = sender.isOn;
+    TLocationManager.shared.usingHookLocation = sender.isOn;
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:sender.isOn ? @"已开启" : @"已关闭"
                                                                    message:nil
                                                             preferredStyle:UIAlertControllerStyleAlert];
@@ -93,7 +93,7 @@
 
 - (IBAction)usingToastValueChanged:(UISwitch *)sender {
     [self.view endEditing:YES];
-    TLocationCache.shared.usingToast = sender.isOn;
+    TLocationManager.shared.usingToast = sender.isOn;
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {

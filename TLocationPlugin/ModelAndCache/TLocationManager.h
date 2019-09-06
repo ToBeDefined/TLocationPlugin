@@ -1,5 +1,5 @@
 //
-//  TLocationCache.h
+//  TLocationManager.h
 //  TLocationPlugin
 //
 //  Created by TBD on 2019/9/4.
@@ -12,9 +12,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TLocationCache : NSObject
+@interface TLocationManager : NSObject
 
-@property (class, nonatomic, assign, readonly) TLocationCache *shared;
+@property (class, nonatomic, assign, readonly) TLocationManager *shared;
 
 /// 当前使用的名称
 @property (nonatomic, copy  ) NSString *locationName;

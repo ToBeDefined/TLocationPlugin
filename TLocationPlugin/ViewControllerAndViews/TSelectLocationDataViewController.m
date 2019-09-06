@@ -8,7 +8,7 @@
 
 #import "TSelectLocationDataViewController.h"
 #import "TAddLocationDataViewController.h"
-#import "TLocationCache.h"
+#import "TLocationManager.h"
 #import "UIImage+TLocationPlugin.h"
 
 static NSString * const TSelectLocationDataTableViewCellID = @"TSelectLocationDataTableViewCellID";
@@ -32,11 +32,11 @@ static NSString * const TSelectLocationDataTableViewCellID = @"TSelectLocationDa
 }
 
 - (NSArray<TLocationModel *> *)tableViewData {
-    return TLocationCache.shared.cacheDataArray;
+    return TLocationManager.shared.cacheDataArray;
 }
 
 - (void)setTableViewData:(NSArray<TLocationModel *> *)tableViewData {
-    TLocationCache.shared.cacheDataArray = tableViewData;
+    TLocationManager.shared.cacheDataArray = tableViewData;
 }
 
 - (void)cleanCacheData:(UIBarButtonItem *)barButtonItem {
