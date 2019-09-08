@@ -89,7 +89,7 @@
         NSInteger range = [self.rangeTextField.text integerValue];
         if (TLocationManager.shared.range != range) {
             TLocationManager.shared.range = range;
-            NSString *tostText = [NSString stringWithFormat:@"已保存范围: %ld", range];
+            NSString *tostText = [NSString stringWithFormat:@"已保存范围: %ld", (long)range];
             [UIWindow t_showTostForMessage:tostText];
         }
     }
