@@ -117,6 +117,9 @@
 		3F35B14C2325431200E785B9 /* UIApplication+TLocationPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+TLocationPlugin.m"; sourceTree = "<group>"; };
 		3F35B14F2325436B00E785B9 /* UIViewController+TLocationPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+TLocationPlugin.h"; sourceTree = "<group>"; };
 		3F35B1502325436B00E785B9 /* UIViewController+TLocationPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+TLocationPlugin.m"; sourceTree = "<group>"; };
+		3F542A922325F15600497668 /* env.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = env.sh; sourceTree = "<group>"; };
+		3F542A9323261BE200497668 /* inject_app_icon.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = inject_app_icon.py; sourceTree = "<group>"; };
+		3F542A9423261EAB00497668 /* logos */ = {isa = PBXFileReference; lastKnownFileType = folder; path = logos; sourceTree = "<group>"; };
 		3F63118D23222EFE0004E0A1 /* TLocationPluginLocationConverter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLocationPluginLocationConverter.h; sourceTree = "<group>"; };
 		3F63118E23222EFE0004E0A1 /* TLocationPluginLocationConverter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLocationPluginLocationConverter.m; sourceTree = "<group>"; };
 		3F94F9F2231F7F7800EA742C /* TLocationPlugin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TLocationPlugin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -236,9 +239,12 @@
 		3F9CDAAB2321F28A000E7A24 /* RunScript */ = {
 			isa = PBXGroup;
 			children = (
+				3F542A922325F15600497668 /* env.sh */,
+				3F35B14A2325405F00E785B9 /* devices_arm_info.sh */,
 				3F9CDAAC2321F2A7000E7A24 /* build_all.sh */,
 				3FC34C7E2322536600C15E66 /* inject.sh */,
-				3F35B14A2325405F00E785B9 /* devices_arm_info.sh */,
+				3F542A9323261BE200497668 /* inject_app_icon.py */,
+				3F542A9423261EAB00497668 /* logos */,
 			);
 			path = RunScript;
 			sourceTree = "<group>";

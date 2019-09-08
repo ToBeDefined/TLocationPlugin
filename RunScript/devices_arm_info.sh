@@ -1,5 +1,7 @@
+#!/usr/bin/env zsh --login
 
-ARM64_DEVICES=\
+# arm64 Support
+export ARM64_DEVICES=\
 '
 "iPhone6,1",
 "iPhone6,2",
@@ -63,7 +65,7 @@ ARM64_DEVICES=\
 '
 
 # armv7 Support
-ARMV7_DEVICES=\
+export ARMV7_DEVICES=\
 '
 "iPhone2,1",
 "iPhone3,1",
