@@ -61,11 +61,11 @@
 - (IBAction)usingToastValueChanged:(UISwitch *)sender {
     [self.view endEditing:YES];
     TLocationManager.shared.usingToast = sender.isOn;
-    [UIWindow t_showTostForMessage:sender.isOn ? @"已开启定位提示" : @"已关闭定位提速"];
+    [UIWindow t_showTostForMessage:sender.isOn ? @"已开启定位提示" : @"已关闭定位提示"];
 }
 
 - (IBAction)cleanCacheData:(UIButton *)sender {
-    TAlertController *alert = [TAlertController destructiveAlertWithTitle:@"确定清空已保存数据?"
+    TAlertController *alert = [TAlertController destructiveAlertWithTitle:@"确定清空保存的位置列表数据?"
                                                                   message:nil
                                                               cancelTitle:@"取消"
                                                               cancelBlock:nil
@@ -73,6 +73,7 @@
                                                          destructiveBlock:^(TAlertController * _Nonnull alert, UIAlertAction * _Nonnull action) {
         TLocationManager.shared.cacheDataArray = nil;
         [TLocationManager.shared saveCacheDataArray];
+        [UIWindow t_showTostForMessage:@"已清空保存的位置列表数据"];
     }];
     [self presentViewController:alert animated:YES completion:nil];
 }
