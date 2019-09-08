@@ -54,7 +54,7 @@ static UIView *_t_cllocationToastView = nil;
     CGFloat toastWidth = view.frame.size.width;
     CGFloat toastHeight = view.frame.size.height;
     CGFloat toastX = (SCREEN_WIDTH - toastWidth) / 2;
-    CGFloat toastY = SCREEN_HEIGHT - toastHeight - 40;
+    CGFloat toastY = SCREEN_HEIGHT - toastHeight -  100;
     view.frame = CGRectMake(toastX, toastY, toastWidth, toastHeight);
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [UIView animateWithDuration:0.5 animations:^{
@@ -81,7 +81,7 @@ static UIView *_t_cllocationToastView = nil;
     NSMutableString *text = [NSMutableString string];
     for (NSUInteger idx = 0; idx < locations.count; ++idx) {
         CLLocation *location = locations[idx];
-        if (idx != 0) [text appendString:@"\n\n"];
+        if (idx != 0) [text appendString:@"定位数据\n\n"];
         [text appendString:@"纬度"];
         [text appendString:@(location.coordinate.latitude).stringValue];
         [text appendString:@"\n"];
@@ -89,11 +89,11 @@ static UIView *_t_cllocationToastView = nil;
         [text appendString:@(location.coordinate.longitude).stringValue];
     }
     UIView *toast = [self t_showTostForMessage:text fontSize:10];
-//    CGFloat toastWidth = toast.frame.size.width;
-//    CGFloat toastHeight = toast.frame.size.height;
-//    CGFloat toastX = (SCREEN_WIDTH - toastWidth) / 2;
-//    CGFloat toastY = SCREEN_HEIGHT - toastHeight - 40;
-//    toast.frame = CGRectMake(toastX, toastY, toastWidth, toastHeight);
+    CGFloat toastWidth = toast.frame.size.width;
+    CGFloat toastHeight = toast.frame.size.height;
+    CGFloat toastX = (SCREEN_WIDTH - toastWidth) / 2;
+    CGFloat toastY = SCREEN_HEIGHT - toastHeight - 40;
+    toast.frame = CGRectMake(toastX, toastY, toastWidth, toastHeight);
     return toast;
 }
 
