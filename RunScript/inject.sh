@@ -58,8 +58,9 @@ zip -r "${NEW_APP_NAME}" ./Payload
 # clean
 rm -rf ./Payload
 
-# sign
 set +ex
+
+# sign
 echo "new app: ${NEW_APP_NAME}; \nyou should sign it, recommend fastlane"
 
 

@@ -31,5 +31,10 @@ cp -R "${UNIVERSAL_OUTPUTFOLDER}/${FMK_NAME}.framework" "${PROJECT_DIR}"
 # Step 6. strip
 strip -ur "${PROJECT_DIR}/${FMK_NAME}.framework/${FMK_NAME}"
 
-# Step 7. Convenience step to open the project's directory in Finder
+# Step 7. show nm
+nm "${PROJECT_DIR}/${FMK_NAME}.framework/${FMK_NAME}"
+
+# Step 8. Convenience step to open the project's directory in Finder
 rm -rf build
+
+set +ex
