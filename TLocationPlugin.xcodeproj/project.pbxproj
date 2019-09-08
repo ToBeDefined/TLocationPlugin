@@ -108,6 +108,7 @@
 		3F344C0A23227F2F000A0D9F /* TAlertController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TAlertController.h; sourceTree = "<group>"; };
 		3F344C0B23227F2F000A0D9F /* TAlertController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TAlertController.m; sourceTree = "<group>"; };
 		3F344C0E2322937F000A0D9F /* TLocationDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLocationDefine.h; sourceTree = "<group>"; };
+		3F35B14A2325405F00E785B9 /* devices_arm_info.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = devices_arm_info.sh; sourceTree = "<group>"; };
 		3F63118D23222EFE0004E0A1 /* TLocationPluginLocationConverter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLocationPluginLocationConverter.h; sourceTree = "<group>"; };
 		3F63118E23222EFE0004E0A1 /* TLocationPluginLocationConverter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLocationPluginLocationConverter.m; sourceTree = "<group>"; };
 		3F94F9F2231F7F7800EA742C /* TLocationPlugin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TLocationPlugin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -229,6 +230,7 @@
 			children = (
 				3F9CDAAC2321F2A7000E7A24 /* build_all.sh */,
 				3FC34C7E2322536600C15E66 /* inject.sh */,
+				3F35B14A2325405F00E785B9 /* devices_arm_info.sh */,
 			);
 			path = RunScript;
 			sourceTree = "<group>";
