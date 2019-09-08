@@ -7,9 +7,10 @@
 //
 
 #import <AudioToolbox/AudioToolbox.h>
-#import "UIWindow+TLocationPluginTouch.h"
 #import "TSelectLocationDataViewController.h"
 #import "TLocationNavigationController.h"
+#import "UIWindow+TLocationPluginTouch.h"
+#import "UIApplication+TLocationPlugin.h"
 
 @implementation UIWindow (TLocationPluginTouch)
 
@@ -32,7 +33,7 @@ static NSInteger _t_windowTouchedTimes = 0;
     TLocationNavigationController.isShowing = YES;
     _t_windowTouchedTimes = 0;
     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
-    UIViewController *rootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
+    UIViewController *rootVC = [UIApplication sharedApplication].t_topViewController;
     TSelectLocationDataViewController *vc = [[TSelectLocationDataViewController alloc] init];
     TLocationNavigationController *nav = [[TLocationNavigationController alloc] initWithRootViewController:vc];
     [rootVC presentViewController:nav animated:YES completion:^{
