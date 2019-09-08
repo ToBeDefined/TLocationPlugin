@@ -289,19 +289,18 @@ static NSString * const TAddLocationDataTableViewCellID = @"TAddLocationDataTabl
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.view endEditing:YES];
+    self.shouldRefreshUserLocation = NO;
+    
     NSMutableArray<NSIndexPath *> *reloadIndexPaths = [NSMutableArray<NSIndexPath *> array];
     [reloadIndexPaths addObject:indexPath];
-    
-    self.selectedModel.isSelect = NO;
-    self.shouldRefreshUserLocation = NO;
-    [self.view endEditing:YES];
     
     NSUInteger oldIndex = [self.tableViewData indexOfObject:self.selectedModel];
     if (oldIndex != NSNotFound) {
         NSIndexPath *oldIndexPath = [NSIndexPath indexPathForRow:oldIndex inSection:0];
         [reloadIndexPaths addObject:oldIndexPath];
     }
-    
+    self.selectedModel.isSelect = NO;
     self.selectedModel = self.tableViewData[indexPath.row];
     self.selectedModel.isSelect = YES;
     [self.tableView reloadRowsAtIndexPaths:reloadIndexPaths

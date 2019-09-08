@@ -222,7 +222,11 @@ static NSString * const TSelectLocationDataTableViewCellID = @"TSelectLocationDa
         cell = [[TLocationTableViewCell alloc] initWithReuseIdentifier:TSelectLocationDataTableViewCellID];
         cell.tableView = tableView;
     }
-    cell.model = self.tableViewData[indexPath.row];
+    TLocationModel *model = self.tableViewData[indexPath.row];
+    if (model.isSelect) {
+        self.selectedModel = self.tableViewData[indexPath.row];
+    }
+    cell.model = model;
     return cell;
 }
 
@@ -231,17 +235,24 @@ static NSString * const TSelectLocationDataTableViewCellID = @"TSelectLocationDa
         return;
     }
     
-    NSIndexPath *oldIndex = self.currentSelectIndex;
-    if (oldIndex) {
-        self.tableViewData[oldIndex.row].isSelect = NO;
-        [tableView reloadRowsAtIndexPaths:@[oldIndex] withRowAnimation:UITableViewRowAnimationNone];
+    NSMutableArray<NSIndexPath *> *reloadIndexPaths = [NSMutableArray<NSIndexPath *> array];
+    [reloadIndexPaths addObject:indexPath];
+    
+    NSUInteger oldIndex = [self.tableViewData indexOfObject:self.selectedModel];
+    if (oldIndex != NSNotFound) {
+        NSIndexPath *oldIndexPath = [NSIndexPath indexPathForRow:oldIndex inSection:0];
+        [reloadIndexPaths addObject:oldIndexPath];
     }
-    TLocationModel *model = self.tableViewData[indexPath.row];
-    model.isSelect = YES;
-    [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-    [self storageLocation:model];
+    self.selectedModel.isSelect = NO;
+    self.selectedModel = self.tableViewData[indexPath.row];
+    self.selectedModel.isSelect = YES;
+    [self.tableView reloadRowsAtIndexPaths:reloadIndexPaths
+                          withRowAnimation:UITableViewRowAnimationNone];
+    
+    [self storageLocation:self.selectedModel];
     [self storageCacheDataArray];
-    NSString *toastText = [NSString stringWithFormat:@"已保存为: %@\n%@", model.name, model.locationText];
+    
+    NSString *toastText = [NSString stringWithFormat:@"已保存为: %@\n%@", self.selectedModel.name, self.selectedModel.locationText];
     [UIWindow t_showTostForMessage:toastText];
 }
 
