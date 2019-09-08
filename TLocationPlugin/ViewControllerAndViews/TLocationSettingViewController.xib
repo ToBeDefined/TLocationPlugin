@@ -145,7 +145,7 @@
                                     <rect key="frame" x="65" y="40" width="258" height="30"/>
                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                    <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="done"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
                                     <connections>
                                         <outlet property="delegate" destination="-1" id="H3U-gv-Jzo"/>
                                     </connections>

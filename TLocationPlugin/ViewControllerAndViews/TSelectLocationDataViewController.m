@@ -61,6 +61,7 @@ static NSString * const TSelectLocationDataTableViewCellID = @"TSelectLocationDa
     self.tableView.allowsMultipleSelectionDuringEditing = YES;
     self.lastSavedCacheDataArrayHash = TLocationManager.shared.cacheDataArrayHash;
 }
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self refreshTableView];

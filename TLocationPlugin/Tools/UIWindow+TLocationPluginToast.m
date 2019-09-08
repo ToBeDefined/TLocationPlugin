@@ -20,6 +20,7 @@ static UIView *_t_cllocationToastView = nil;
 }
 
 + (UIView *)t_showTostForMessage:(NSString *)message fontSize:(CGFloat)fontSize {
+    _t_cllocationToastView.hidden = YES;
     [_t_cllocationToastView removeFromSuperview];
     UIFont *textFont = [UIFont systemFontOfSize:fontSize];
     CGSize maxSize = CGSizeMake(200, 100);
@@ -49,7 +50,6 @@ static UIView *_t_cllocationToastView = nil;
     UITapGestureRecognizer *touch = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                             action:@selector(_t_touchToastView:)];
     [view addGestureRecognizer:touch];
-    _t_cllocationToastView = view;
     [UIApplication.sharedApplication.keyWindow addSubview:view];
     CGFloat toastWidth = view.frame.size.width;
     CGFloat toastHeight = view.frame.size.height;
@@ -64,6 +64,7 @@ static UIView *_t_cllocationToastView = nil;
             _t_cllocationToastView = nil;
         }];
     });
+    _t_cllocationToastView = view;
     return view;
 }
 

@@ -22,6 +22,7 @@
         self.detailTextLabel.numberOfLines = 0;
         self.detailTextLabel.textColor = UIColor.darkGrayColor;
         self.detailTextLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:12];
+        self.tintColor = UIColor.blackColor;
     }
     return self;
 }
