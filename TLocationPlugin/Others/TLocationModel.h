@@ -22,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// 经度
 @property (nonatomic, assign) CLLocationDegrees longitude;
 
-/// 是否是当前选择的数据, 选择数据页面使用
+/// 是否是当前选择的数据
 @property (nonatomic, assign) BOOL isSelect;
 
 + (instancetype)modelWithName:(NSString *)name
