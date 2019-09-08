@@ -289,17 +289,24 @@ static NSString * const TAddLocationDataTableViewCellID = @"TAddLocationDataTabl
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSMutableArray<NSIndexPath *> *reloadIndexPaths = [NSMutableArray<NSIndexPath *> array];
+    [reloadIndexPaths addObject:indexPath];
+    
     self.selectedModel.isSelect = NO;
     self.shouldRefreshUserLocation = NO;
     [self.view endEditing:YES];
+    
     NSUInteger oldIndex = [self.tableViewData indexOfObject:self.selectedModel];
     if (oldIndex != NSNotFound) {
         NSIndexPath *oldIndexPath = [NSIndexPath indexPathForRow:oldIndex inSection:0];
-        [self.tableView reloadRowsAtIndexPaths:@[oldIndexPath] withRowAnimation:UITableViewRowAnimationNone];
+        [reloadIndexPaths addObject:oldIndexPath];
     }
+    
     self.selectedModel = self.tableViewData[indexPath.row];
     self.selectedModel.isSelect = YES;
-    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+    [self.tableView reloadRowsAtIndexPaths:reloadIndexPaths
+                          withRowAnimation:UITableViewRowAnimationNone];
+    
     CLLocation *location = [[CLLocation alloc] initWithLatitude:self.selectedModel.latitude
                                                       longitude:self.selectedModel.longitude];
     [self setMapViewCenter:location.coordinate animated:NO];
