@@ -10,6 +10,10 @@
 
 @implementation TLocationModel
 
+- (NSUInteger)hash {
+    return self.name.hash ^ @(self.latitude).hash ^ @(self.longitude).hash ^ @(self.isSelect).hash;
+}
+
 + (instancetype)modelWithName:(NSString *)name
                      latitude:(CLLocationDegrees)latitude
                     longitude:(CLLocationDegrees)longitude {
@@ -54,6 +58,7 @@
     [aCoder encodeObject:self.name forKey:@"name"];
     [aCoder encodeDouble:self.latitude forKey:@"latitude"];
     [aCoder encodeDouble:self.longitude forKey:@"longitude"];
+    [aCoder encodeBool:self.isSelect forKey:@"isSelect"];
 }
 
 - (nullable instancetype)initWithCoder:(nonnull NSCoder *)aDecoder {
@@ -62,8 +67,17 @@
         self.name = [aDecoder decodeObjectForKey:@"name"];
         self.latitude = [aDecoder decodeDoubleForKey:@"latitude"];
         self.longitude = [aDecoder decodeDoubleForKey:@"longitude"];
+        self.isSelect = [aDecoder decodeBoolForKey:@"isSelect"];
     }
     return self;
+}
+
+- (nonnull id)copyWithZone:(nullable NSZone *)zone {
+    TLocationModel *model = [[self.class allocWithZone:zone] init];
+    model.name = self.name;
+    model.latitude = self.latitude;
+    model.longitude = self.longitude;
+    return model;
 }
 
 @end

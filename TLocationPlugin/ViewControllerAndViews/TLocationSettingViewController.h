@@ -1,5 +1,5 @@
 //
-//  TSetLocationViewController.h
+//  TLocationSettingViewController.h
 //  TLocationPlugin
 //
 //  Created by TBD on 2019/9/4.
@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TSetLocationViewController : TBaseViewController
+@interface TLocationSettingViewController : TBaseViewController
 
 @end
 

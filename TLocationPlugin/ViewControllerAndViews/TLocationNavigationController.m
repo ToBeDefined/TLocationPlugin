@@ -33,7 +33,7 @@
     self.navigationBar.tintColor = UIColor.blackColor;
     self.navigationBar.titleTextAttributes = @{
         NSForegroundColorAttributeName:UIColor.blackColor,
-        NSFontAttributeName:[UIFont systemFontOfSize:17.0f]
+        NSFontAttributeName:[UIFont boldSystemFontOfSize:17],
     };
 }
 

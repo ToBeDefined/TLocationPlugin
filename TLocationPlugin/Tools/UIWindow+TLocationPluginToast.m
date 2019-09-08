@@ -15,12 +15,69 @@
 
 static UIView *_t_cllocationToastView = nil;
 
-+ (void)t_showTostForCLLocation:(CLLocation *)location {
-    [self t_showTostForCLLocations:@[location]];
++ (UIView *)t_showTostForMessage:(NSString *)message {
+    return [self t_showTostForMessage:message fontSize:12];
 }
 
-+ (void)t_showTostForCLLocations:(NSArray<CLLocation *> *)locations {
++ (UIView *)t_showTostForMessage:(NSString *)message fontSize:(CGFloat)fontSize {
     [_t_cllocationToastView removeFromSuperview];
+    UIFont *textFont = [UIFont systemFontOfSize:fontSize];
+    CGSize maxSize = CGSizeMake(200, 100);
+    CGRect frame = [message boundingRectWithSize:maxSize
+                                         options:NSStringDrawingUsesLineFragmentOrigin
+                                      attributes:@{NSFontAttributeName: textFont}
+                                         context:nil];
+    frame = CGRectMake(0, 0, frame.size.width+40, frame.size.height+20);
+    UIView *view = [[UIView alloc] initWithFrame:frame];
+    
+    UIView *bgView = [[UIView alloc] initWithFrame:frame];
+    bgView.backgroundColor = UIColor.grayColor;
+    bgView.alpha = 0.9;
+    [view addSubview:bgView];
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:frame];
+    label.textColor = UIColor.whiteColor;
+    label.textAlignment = NSTextAlignmentCenter;
+    label.numberOfLines = 0;
+    label.font = textFont;
+    label.text = message;
+    label.contentMode = UIViewContentModeCenter;
+    [view addSubview:label];
+    view.layer.cornerRadius = 5;
+    view.layer.masksToBounds = YES;
+    
+    UITapGestureRecognizer *touch = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                            action:@selector(_t_touchToastView:)];
+    [view addGestureRecognizer:touch];
+    _t_cllocationToastView = view;
+    [UIApplication.sharedApplication.keyWindow addSubview:view];
+    CGFloat toastWidth = view.frame.size.width;
+    CGFloat toastHeight = view.frame.size.height;
+    CGFloat toastX = (SCREEN_WIDTH - toastWidth) / 2;
+    CGFloat toastY = SCREEN_HEIGHT - toastHeight - 40;
+    view.frame = CGRectMake(toastX, toastY, toastWidth, toastHeight);
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [UIView animateWithDuration:0.5 animations:^{
+            view.alpha = 0.0;
+        } completion:^(BOOL finished) {
+            [view removeFromSuperview];
+            _t_cllocationToastView = nil;
+        }];
+    });
+    return view;
+}
+
++ (UIView *)t_showTostForCLLocation:(CLLocation *)location {
+    if (location == nil) {
+        return nil;
+    }
+    return [self t_showTostForCLLocations:@[location]];
+}
+
++ (UIView *)t_showTostForCLLocations:(NSArray<CLLocation *> *)locations {
+    if (locations.count == 0) {
+        return nil;
+    }
     NSMutableString *text = [NSMutableString string];
     for (NSUInteger idx = 0; idx < locations.count; ++idx) {
         CLLocation *location = locations[idx];
@@ -31,42 +88,13 @@ static UIView *_t_cllocationToastView = nil;
         [text appendString:@"经度"];
         [text appendString:@(location.coordinate.longitude).stringValue];
     }
-    
-    CGFloat width = 150;
-    CGFloat height = 37*locations.count;
-    CGFloat x = (SCREEN_WIDTH - width)/2;
-    CGFloat y = SCREEN_HEIGHT - height - 40; // bottomMargin 40
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(x, y, width, height)];
-    
-    UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, width, height)];
-    bgView.backgroundColor = UIColor.blackColor;
-    bgView.alpha = 0.5;
-    [view addSubview:bgView];
-    
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, width, height)];
-    label.textColor = UIColor.whiteColor;
-    label.textAlignment = NSTextAlignmentCenter;
-    label.numberOfLines = 0;
-    label.font = [UIFont systemFontOfSize:10];
-    label.text = text;
-    [view addSubview:label];
-    view.layer.cornerRadius = 5;
-    view.layer.masksToBounds = YES;
-    
-    UITapGestureRecognizer *touch = [[UITapGestureRecognizer alloc] initWithTarget:self
-                                                                            action:@selector(_t_touchToastView:)];
-    [view addGestureRecognizer:touch];
-    _t_cllocationToastView = view;
-    [UIApplication.sharedApplication.keyWindow addSubview:view];
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [UIView animateWithDuration:0.5 animations:^{
-            _t_cllocationToastView.alpha = 0.0;
-        } completion:^(BOOL finished) {
-            [_t_cllocationToastView removeFromSuperview];
-            _t_cllocationToastView = nil;
-        }];
-    });
+    UIView *toast = [self t_showTostForMessage:text fontSize:10];
+//    CGFloat toastWidth = toast.frame.size.width;
+//    CGFloat toastHeight = toast.frame.size.height;
+//    CGFloat toastX = (SCREEN_WIDTH - toastWidth) / 2;
+//    CGFloat toastY = SCREEN_HEIGHT - toastHeight - 40;
+//    toast.frame = CGRectMake(toastX, toastY, toastWidth, toastHeight);
+    return toast;
 }
 
 + (void)_t_touchToastView:(UIGestureRecognizer*)gestureRecognizer {

@@ -9,9 +9,10 @@
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "TAddLocationDataViewController.h"
-#import "TAddLocationTableViewCell.h"
-#import "UIImage+TLocationPlugin.h"
+#import "TLocationTableViewCell.h"
 #import "TAlertController.h"
+#import "UIImage+TLocationPlugin.h"
+#import "UIWindow+TLocationPluginToast.h"
 
 typedef void (^GetPlaceInfoBlock)(NSArray<TLocationModel *> *_Nullable models);
 
@@ -42,21 +43,28 @@ static NSString * const TAddLocationDataTableViewCellID = @"TAddLocationDataTabl
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"添加位置数据";
+    self.title = @"添加位置";
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage t_imageNamed:@"my_location"]
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage t_imageNamed:@"user_location"]
                                                                               style:UIBarButtonItemStylePlain
                                                                              target:self
                                                                              action:@selector(backUserLocation:)];
     [self requestLocationAuthorization];
+    if (self.mapView.userLocation.location) {
+        [self refreshViewWithLocation:self.mapView.userLocation.location
+                     setMapViewCenter:YES
+                             animated:NO
+                       annotationType:TMapViewAnnotationTypeFirst];
+    }
     self.shouldRefreshUserLocation = YES;
+    UITapGestureRecognizer *mapViewTouch = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                   action:@selector(touchMapView:)];
+    [self.mapView addGestureRecognizer:mapViewTouch];
+    
     self.searchContent.layer.shadowColor = UIColor.blackColor.CGColor;
     self.searchContent.layer.shadowOpacity = 0.5;
     self.searchContent.layer.shadowOffset = CGSizeMake(0, 5);
     self.searchContent.layer.shadowRadius = 10;
-    UITapGestureRecognizer *mapViewTouch = [[UITapGestureRecognizer alloc] initWithTarget:self
-                                                                                   action:@selector(touchMapView:)];
-    [self.mapView addGestureRecognizer:mapViewTouch];
 }
 
 - (void)requestLocationAuthorization {
@@ -71,8 +79,8 @@ static NSString * const TAddLocationDataTableViewCellID = @"TAddLocationDataTabl
     [self.locationManager requestWhenInUseAuthorization];
 }
 
-- (void)touchMapView:(UIGestureRecognizer*)gestureRecognizer {
-    if (self.searchTextField.isFirstResponder) {
+- (void)touchMapView:(UIGestureRecognizer *)gestureRecognizer {
+    if (self.searchTextField.isEditing) {
         [self.searchTextField resignFirstResponder];
         return;
     }
@@ -84,6 +92,7 @@ static NSString * const TAddLocationDataTableViewCellID = @"TAddLocationDataTabl
                                                       longitude:touchMapCoordinate.longitude];
     [self refreshViewWithLocation:location
                  setMapViewCenter:NO
+                         animated:YES
                    annotationType:TMapViewAnnotationTypeFirst];
 }
 
@@ -91,6 +100,7 @@ static NSString * const TAddLocationDataTableViewCellID = @"TAddLocationDataTabl
     self.shouldRefreshUserLocation = YES;
     [self refreshViewWithLocation:self.mapView.userLocation.location
                  setMapViewCenter:YES
+                         animated:NO
                    annotationType:TMapViewAnnotationTypeFirst];
 }
 
@@ -128,30 +138,28 @@ static NSString * const TAddLocationDataTableViewCellID = @"TAddLocationDataTabl
         [self presentViewController:alertError animated:YES completion:nil];
         return;
     }
-    self.selectedModel.name = name;
+    
+    /// 使用 copy 防止添加多次同一个对象出现问题
+    TLocationModel *model = [self.selectedModel copy];
+    model.name = name;
+    /// 默认不选择
+    model.isSelect = NO;
     if (self.addLocationBlock) {
-        self.addLocationBlock(self.selectedModel);
+        self.addLocationBlock(model);
+        NSString *toastText = [NSString stringWithFormat:@"添加成功: %@\n%@", model.name, model.locationText];
+        [UIWindow t_showTostForMessage:toastText];
     }
-    TAlertController *alertSuccess = [TAlertController confirmAlertWithTitle:@"添加成功"
-                                                                     message:nil
-                                                                 cancelTitle:@"继续添加"
-                                                                 cancelBlock:nil
-                                                                confirmTitle:@"返回列表"
-                                                                confirmBlock:^(TAlertController * _Nonnull alert, UIAlertAction * _Nonnull action) {
-        [self.navigationController popViewControllerAnimated:YES];
-    }];
-    [self presentViewController:alertSuccess animated:YES completion:nil];
 }
 
-- (void)setMapViewCenter:(CLLocationCoordinate2D)coordinate {
+- (void)setMapViewCenter:(CLLocationCoordinate2D)coordinate animated:(BOOL)animated {
     self.mapView.centerCoordinate = coordinate;
-    MKCoordinateSpan span = MKCoordinateSpanMake(0.001, 0.001);
+    MKCoordinateSpan span = MKCoordinateSpanMake(0.0015, 0.0015);
     MKCoordinateRegion region = MKCoordinateRegionMake(coordinate, span);
     MKCoordinateRegion fitRegion = [self.mapView regionThatFits:region];
     if (CLLocationCoordinate2DIsValid(fitRegion.center)) {
-        [self.mapView setRegion:fitRegion animated:YES];
+        [self.mapView setRegion:fitRegion animated:animated];
     } else {
-        [self.mapView setRegion:region animated:YES];
+        [self.mapView setRegion:region animated:animated];
     }
 }
 
@@ -160,14 +168,12 @@ static NSString * const TAddLocationDataTableViewCellID = @"TAddLocationDataTabl
     /// 刷新清空
     self.selectedModel = nil;
     self.tableViewData = array;
-    [self.tableView reloadData];
-    /// 默认选择第一个
     if (self.tableViewData.count > 0) {
+        /// 默认选择第一个
         self.selectedModel = self.tableViewData.firstObject;
-        [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]
-                                    animated:YES
-                              scrollPosition:UITableViewScrollPositionTop];
+        self.selectedModel.isSelect = YES;
     }
+    [self.tableView reloadData];
 }
 
 - (void)refreshAnnotationsForModelArray:(NSArray<TLocationModel *> *)modelArray {
@@ -184,6 +190,7 @@ static NSString * const TAddLocationDataTableViewCellID = @"TAddLocationDataTabl
 /// 刷新标记
 - (void)refreshViewWithLocation:(CLLocation *)location
                setMapViewCenter:(BOOL)setMapViewCenter
+                       animated:(BOOL)animated
                  annotationType:(TMapViewAnnotationType)annotationType {
     if (location == nil) {
         self.tableViewData = nil;
@@ -192,7 +199,7 @@ static NSString * const TAddLocationDataTableViewCellID = @"TAddLocationDataTabl
         return;
     }
     if (setMapViewCenter) {
-        [self setMapViewCenter:location.coordinate];
+        [self setMapViewCenter:location.coordinate animated:animated];
     }
     CLGeocoder *geocoder = [[CLGeocoder alloc] init];
     [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
@@ -222,7 +229,7 @@ static NSString * const TAddLocationDataTableViewCellID = @"TAddLocationDataTabl
 }
 
 - (IBAction)searchMap:(UIButton *)sender {
-    [self.searchTextField resignFirstResponder];
+    [self.view endEditing:YES];
     [self searchMapForText:self.searchTextField.text];
 }
 
@@ -233,6 +240,7 @@ static NSString * const TAddLocationDataTableViewCellID = @"TAddLocationDataTabl
         self.shouldRefreshUserLocation = YES;
         [self refreshViewWithLocation:self.mapView.userLocation.location
                      setMapViewCenter:YES
+                             animated:YES
                        annotationType:TMapViewAnnotationTypeFirst];
         return;
     }
@@ -253,7 +261,8 @@ static NSString * const TAddLocationDataTableViewCellID = @"TAddLocationDataTabl
             [locationModelArray addObject:model];
         }
         
-        [self setMapViewCenter:response.mapItems.firstObject.placemark.location.coordinate];
+        [self setMapViewCenter:response.mapItems.firstObject.placemark.location.coordinate
+                      animated:YES];
         [self refreshAnnotationsForModelArray:locationModelArray];
         [self updateTableViewForArray:locationModelArray];
     }];
@@ -270,36 +279,37 @@ static NSString * const TAddLocationDataTableViewCellID = @"TAddLocationDataTabl
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    self.shouldRefreshUserLocation = NO;
-    [self.searchTextField resignFirstResponder];
-    TAddLocationTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:TAddLocationDataTableViewCellID];
+    TLocationTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:TAddLocationDataTableViewCellID];
     if (cell == nil) {
-        cell = [[TAddLocationTableViewCell alloc] initWithReuseIdentifier:TAddLocationDataTableViewCellID];
-        cell.textLabel.numberOfLines = 0;
-        cell.detailTextLabel.numberOfLines = 0;
-        cell.detailTextLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:13];
+        cell = [[TLocationTableViewCell alloc] initWithReuseIdentifier:TAddLocationDataTableViewCellID];
+        cell.tableView = tableView;
     }
-    TLocationModel *model = self.tableViewData[indexPath.row];
-    cell.textLabel.text = model.name;
-    cell.detailTextLabel.text = model.locationText;
+    cell.model = self.tableViewData[indexPath.row];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    self.selectedModel.isSelect = NO;
+    self.shouldRefreshUserLocation = NO;
+    [self.view endEditing:YES];
+    NSUInteger oldIndex = [self.tableViewData indexOfObject:self.selectedModel];
+    if (oldIndex != NSNotFound) {
+        NSIndexPath *oldIndexPath = [NSIndexPath indexPathForRow:oldIndex inSection:0];
+        [self.tableView reloadRowsAtIndexPaths:@[oldIndexPath] withRowAnimation:UITableViewRowAnimationNone];
+    }
     self.selectedModel = self.tableViewData[indexPath.row];
+    self.selectedModel.isSelect = YES;
+    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
     CLLocation *location = [[CLLocation alloc] initWithLatitude:self.selectedModel.latitude
                                                       longitude:self.selectedModel.longitude];
-    [self setMapViewCenter:location.coordinate];
+    [self setMapViewCenter:location.coordinate animated:NO];
 }
 
 
 #pragma mark - UITextFieldDelegate
-- (void)textFieldDidEndEditing:(UITextField *)textField {
-    [self searchMapForText:textField.text];
-}
-
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
+    [self searchMapForText:textField.text];
     return YES;
 }
 
@@ -309,6 +319,7 @@ static NSString * const TAddLocationDataTableViewCellID = @"TAddLocationDataTabl
     if (self.shouldRefreshUserLocation) {
         [self refreshViewWithLocation:userLocation.location
                      setMapViewCenter:YES
+                             animated:YES
                        annotationType:TMapViewAnnotationTypeFirst];
     }
 }
@@ -316,10 +327,5 @@ static NSString * const TAddLocationDataTableViewCellID = @"TAddLocationDataTabl
 //- (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
 //}
 
-
-#pragma mark - Touch
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    [self.view endEditing:YES];
-}
 
 @end

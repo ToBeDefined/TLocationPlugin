@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TLocationModel : NSObject <NSCoding>
+@interface TLocationModel : NSObject <NSCoding, NSCopying>
 
 /// 名称
 @property (nonatomic, copy) NSString *name;
@@ -21,6 +21,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 经度
 @property (nonatomic, assign) CLLocationDegrees longitude;
+
+/// 是否是当前选择的数据, 选择数据页面使用
+@property (nonatomic, assign) BOOL isSelect;
 
 + (instancetype)modelWithName:(NSString *)name
                      latitude:(CLLocationDegrees)latitude

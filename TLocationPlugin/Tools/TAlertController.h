@@ -10,30 +10,33 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class TAlertController;
+typedef void(^TAlertControllerBlock)(TAlertController *alert, UIAlertAction *action);
+
 @interface TAlertController: UIAlertController
 
 /// 一个取消按钮
 + (instancetype)singleActionAlertWithTitle:(nullable NSString *)title
                                    message:(nullable NSString *)message
                                actionTitle:(nullable NSString *)actionTitle
-                               actionBlock:(void (^ __nullable)(TAlertController *alert, UIAlertAction *action))actionBlock;
+                               actionBlock:(nullable TAlertControllerBlock)actionBlock;
 
 
 /// confirmTitle 在左, cancelTitle 在右
 + (instancetype)confirmAlertWithTitle:(nullable NSString *)title
                               message:(nullable NSString *)message
                           cancelTitle:(nullable NSString *)cancelTitle
-                          cancelBlock:(void (^ __nullable)(TAlertController *alert, UIAlertAction *action))cancelBlock
+                          cancelBlock:(nullable TAlertControllerBlock)cancelBlock
                          confirmTitle:(nullable NSString *)confirmTitle
-                         confirmBlock:(void (^ __nullable)(TAlertController *alert, UIAlertAction *action))confirmBlock;
+                         confirmBlock:(nullable TAlertControllerBlock)confirmBlock;
 
 /// destructiveTitle 在左, cancelTitle 在右
 + (instancetype)destructiveAlertWithTitle:(nullable NSString *)title
                                   message:(nullable NSString *)message
                               cancelTitle:(nullable NSString *)cancelTitle
-                              cancelBlock:(void (^ __nullable)(TAlertController *alert, UIAlertAction *action))cancelBlock
+                              cancelBlock:(nullable TAlertControllerBlock)cancelBlock
                          destructiveTitle:(nullable NSString *)destructiveTitle
-                         destructiveBlock:(void (^ __nullable)(TAlertController *alert, UIAlertAction *action))destructiveBlock;
+                         destructiveBlock:(nullable TAlertControllerBlock)destructiveBlock;
 
 /// 编辑框
 + (instancetype)editAlertWithTitle:(nullable NSString *)title
@@ -41,9 +44,9 @@ NS_ASSUME_NONNULL_BEGIN
                         labelTexts:(nullable NSArray<NSString *> *)labelTexts
                      defaultValues:(nullable NSArray<NSString *> *)defaultValues
                        cancelTitle:(nullable NSString *)cancelTitle
-                       cancelBlock:(void (^ __nullable)(TAlertController *alert, UIAlertAction *action))cancelBlock
+                       cancelBlock:(nullable TAlertControllerBlock)cancelBlock
                       confirmTitle:(nullable NSString *)confirmTitle
-                      confirmBlock:(void (^ __nullable)(TAlertController *alert, UIAlertAction *action))confirmBlock;
+                      confirmBlock:(nullable TAlertControllerBlock)confirmBlock;
 /// 翻转 Actions 顺序
 - (void)reverseActions;
 /// 添加 Action

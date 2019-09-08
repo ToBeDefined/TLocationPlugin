@@ -37,6 +37,10 @@ static TLocationManager *_instance;
     dispatch_once(&onceToken, ^{
 #if __has_feature(objc_arc)
         _instance = [[self alloc] init];
+        NSString *path = _instance.cacheDataArrayArchivePath;
+        if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
+            _instance->_cacheDataArray = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+        }
 #else
         _instance = [[[self alloc] init] autorelease];
 #endif
@@ -184,24 +188,29 @@ static NSString * const _t_usingToastKey = @"_T_CacheKeyTypeUsingToast";
 }
 
 - (NSArray<TLocationModel *> *)cacheDataArray {
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        NSString *path = self.cacheDataArrayArchivePath;
-        if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
-            self->_cacheDataArray = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
-        }
-    });
     return self->_cacheDataArray;
 }
 
 - (void)setCacheDataArray:(NSArray<TLocationModel *> *)cacheDataArray {
     self->_cacheDataArray = cacheDataArray;
+}
+
+- (NSUInteger)cacheDataArrayHash {
+    NSUInteger hash = 0;
+    for (TLocationModel *model in self->_cacheDataArray) {
+        // 左移确保返回 hash 与顺序相关
+        hash = (hash << 1) ^ model.hash;
+    }
+    return hash;
+}
+
+- (void)saveCacheDataArray {
     NSString *path = self.cacheDataArrayArchivePath;
     if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
         [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
     }
-    if (cacheDataArray != nil) {
-        [NSKeyedArchiver archiveRootObject:cacheDataArray toFile:self.cacheDataArrayArchivePath];
+    if (self->_cacheDataArray != nil) {
+        [NSKeyedArchiver archiveRootObject:self->_cacheDataArray toFile:self.cacheDataArrayArchivePath];
     }
 }
 

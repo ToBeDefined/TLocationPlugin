@@ -9,9 +9,11 @@
 #import "TAlertController.h"
 #import "TLocationDefine.h"
 
-@interface TAlertController ()
+@interface TAlertController () <UITextFieldDelegate>
 
 @property (nonatomic, assign) BOOL isLoaded;
+@property (nonatomic, strong)  UIAlertAction *confirmAction;
+@property (nonatomic, copy)  TAlertControllerBlock confirmBlock;
 @property (nonatomic, strong) NSMutableArray<UIAlertAction *> *mutableActions;
 
 @end
@@ -43,6 +45,8 @@
                 confirmBlock(alert, action);
             }
         }];
+        alert.confirmAction = confirmAction;
+        alert.confirmBlock = confirmBlock;
     }
     if (cancelTitle || cancelBlock || confirmAction == nil) {
         cancelAction = [UIAlertAction actionWithTitle:cancelTitle ?: @"取消"
@@ -131,31 +135,37 @@
                                                          destructiveTitle:confirmTitle
                                                          destructiveBlock:confirmBlock];
     [alert reverseActions];
-    BOOL isNeedLabel = NO;
-    if (labelTexts.count != 0) {
-        isNeedLabel = YES;
-    }
+    __block BOOL isNeedLabel = NO;
+    [labelTexts enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (obj.length > 0) {
+            isNeedLabel = YES;
+            *stop = YES;
+        }
+    }];
     for (NSUInteger index=0; index<MAX(labelTexts.count, defaultValues.count); ++index) {
+        @weakify(alert);
         [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
-            if (isNeedLabel) {
-                NSString *text = @"";
-                if (index < labelTexts.count) {
-                    text = [labelTexts[index] stringByAppendingString:@": "];
-                }
+            @strongify(alert)
+            NSString *text = @"";
+            if (index < labelTexts.count) {
+                text = labelTexts[index];
+            }
+            if (isNeedLabel && text.length > 0) {
                 UILabel *label = [[UILabel alloc] init];
-                label.text = text;
+                label.text = [text stringByAppendingString:@": "];
                 label.font = [UIFont systemFontOfSize:14];
                 textField.leftView = label;
                 textField.leftViewMode = UITextFieldViewModeAlways;
-                textField.placeholder = text;
             }
-            NSString *defaultValue = @"";
             if (index < defaultValues.count) {
-                defaultValue = defaultValues[index];
+                textField.text = defaultValues[index];
             }
-            textField.text = defaultValue;
+            textField.delegate = alert;
+            textField.placeholder = text;
+            textField.returnKeyType = UIReturnKeyNext;
         }];
     }
+    alert.textFields.lastObject.returnKeyType = UIReturnKeyDone;
     return alert;
 }
 
@@ -195,6 +205,23 @@
 
 - (void)removeAction:(UIAlertAction *)action {
     [self.mutableActions removeObject:action];
+    if (self.confirmAction == action) {
+        self.confirmAction = nil;
+        self.confirmBlock = nil;
+    }
 }
+
+#pragma mark - UITextFieldDelegate
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if (textField == self.textFields.lastObject) {
+        if (self.confirmBlock && self.confirmAction) {
+            [self.presentingViewController dismissViewControllerAnimated:YES completion:^{
+                self.confirmBlock(self, self.confirmAction);
+            }];
+        }
+    }
+    return YES;
+}
+
 
 @end

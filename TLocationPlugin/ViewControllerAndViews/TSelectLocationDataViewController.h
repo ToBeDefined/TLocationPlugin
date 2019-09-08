@@ -16,8 +16,6 @@ typedef void(^TSelectLocationDataCompletionBlock)(TLocationModel *model);
 
 @interface TSelectLocationDataViewController : TBaseViewController
 
-@property (nonatomic, copy) TSelectLocationDataCompletionBlock selectLocationBlock;
-
 @end
 
 NS_ASSUME_NONNULL_END

@@ -39,14 +39,23 @@
                             </connections>
                         </tableView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0jz-tV-Ftd">
-                            <rect key="frame" x="20" y="720" width="335" height="40"/>
+                            <rect key="frame" x="8" y="720" width="359" height="40"/>
                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="jKX-Zi-9MV"/>
                             </constraints>
-                            <state key="normal" title="添加位置">
+                            <state key="normal" title="添加">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
+                            <state key="highlighted">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="addALocationModelToLocalList:" destination="-1" eventType="touchUpInside" id="Qbc-c6-00S"/>
                             </connections>
@@ -101,15 +110,15 @@
                         <constraint firstItem="Sfn-98-YBq" firstAttribute="top" secondItem="D4z-bk-QeD" secondAttribute="topMargin" constant="10" id="4iG-O7-EuD"/>
                         <constraint firstItem="5p4-nj-99t" firstAttribute="leading" secondItem="D4z-bk-QeD" secondAttribute="leading" id="7Yg-wi-Nfh"/>
                         <constraint firstItem="0jz-tV-Ftd" firstAttribute="top" secondItem="5p4-nj-99t" secondAttribute="bottom" constant="10" id="E32-8V-vP5"/>
+                        <constraint firstAttribute="trailingMargin" secondItem="0jz-tV-Ftd" secondAttribute="trailing" id="GIc-YZ-iyT"/>
                         <constraint firstItem="hQU-PM-GHy" firstAttribute="leading" secondItem="D4z-bk-QeD" secondAttribute="leading" id="IKR-Bq-B5I"/>
                         <constraint firstItem="5p4-nj-99t" firstAttribute="top" secondItem="hQU-PM-GHy" secondAttribute="bottom" id="LLJ-b7-CKy"/>
                         <constraint firstItem="Sfn-98-YBq" firstAttribute="leading" secondItem="D4z-bk-QeD" secondAttribute="leading" constant="20" id="NP0-cl-HrV"/>
                         <constraint firstAttribute="trailing" secondItem="hQU-PM-GHy" secondAttribute="trailing" id="OTf-aC-xnW"/>
+                        <constraint firstItem="0jz-tV-Ftd" firstAttribute="leading" secondItem="D4z-bk-QeD" secondAttribute="leadingMargin" id="aIY-47-qUI"/>
                         <constraint firstItem="hQU-PM-GHy" firstAttribute="height" secondItem="D4z-bk-QeD" secondAttribute="height" multiplier="0.5" id="fVm-X9-nZ1"/>
                         <constraint firstAttribute="bottomMargin" secondItem="0jz-tV-Ftd" secondAttribute="bottom" constant="10" id="gM2-XT-GWW"/>
                         <constraint firstAttribute="trailing" secondItem="Sfn-98-YBq" secondAttribute="trailing" constant="20" id="gUV-mg-1pL"/>
-                        <constraint firstAttribute="trailing" secondItem="0jz-tV-Ftd" secondAttribute="trailing" constant="20" id="mMf-OS-UAd"/>
-                        <constraint firstItem="0jz-tV-Ftd" firstAttribute="leading" secondItem="D4z-bk-QeD" secondAttribute="leading" constant="20" id="s15-9V-OdB"/>
                         <constraint firstAttribute="trailing" secondItem="5p4-nj-99t" secondAttribute="trailing" id="wxg-ut-0Ts"/>
                     </constraints>
                 </view>

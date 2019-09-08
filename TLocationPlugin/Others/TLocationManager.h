@@ -29,9 +29,10 @@ NS_ASSUME_NONNULL_BEGIN
 /// 是否开启 toast 提示
 @property (nonatomic, assign) BOOL usingToast;
 
-/// 缓存的所有位置数据
+/// 缓存的所有位置数据, setter 方法不自动保存, 保存调用 `- saveCacheDataArray`
 @property (nonatomic, copy, nullable) NSArray<TLocationModel *> *cacheDataArray;
 
+@property (nonatomic, assign, readonly) NSUInteger cacheDataArrayHash;
 
 /// 是否有缓存数据, 都为 0 判断为无数据
 @property (nonatomic, assign, readonly) BOOL hasCachedLocation;
@@ -43,6 +44,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign, readonly) CLLocationCoordinate2D randomGCJ02Coordinate;
 /// 取随机坐标 (根据当前经度,纬度以及扩散范围生成)
 @property (nonatomic, assign, readonly) CLLocationCoordinate2D randomWGS84Coordinate;
+
+- (void)saveCacheDataArray;
 
 @end
 

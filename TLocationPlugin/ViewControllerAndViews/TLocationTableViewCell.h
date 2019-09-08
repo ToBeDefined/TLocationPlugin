@@ -1,5 +1,5 @@
 //
-//  TAddLocationTableViewCell.h
+//  TLocationTableViewCell.h
 //  TLocationPlugin
 //
 //  Created by TBD on 2019/9/5.
@@ -7,12 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TLocationModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TAddLocationTableViewCell : UITableViewCell
+@interface TLocationTableViewCell : UITableViewCell
+
+@property (nonatomic, weak) UITableView *tableView;
+@property (nonatomic, weak) TLocationModel *model;
 
 - (instancetype)initWithReuseIdentifier:(NSString *)reuseIdentifier;
+
+//- (void)setSelectedCell:(BOOL)selected;
 
 @end
 
