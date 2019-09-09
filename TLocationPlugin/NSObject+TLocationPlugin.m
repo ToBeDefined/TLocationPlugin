@@ -12,52 +12,27 @@
 #import "TLocationManager.h"
 #import "UIWindow+TLocationPluginToast.h"
 
-#define CLASS(_cls) NSClassFromString(@#_cls)
-
 @implementation NSObject (TLocationPlugin)
 
 + (void)load {
     /// 企业微信的类
-    Class WWKOpenApiCorpAppDetailController_Class = CLASS(WWKOpenApiCorpAppDetailController);
-    if (WWKOpenApiCorpAppDetailController_Class != Nil) {
-        [self replaceCLLocationsFunctionToClass:WWKOpenApiCorpAppDetailController_Class];
-    }
-    Class WWKLocationRetrieverBaseTask_Class = CLASS(WWKLocationRetrieverBaseTask);
-    if (WWKLocationRetrieverBaseTask_Class != Nil) {
-        [self replaceCLLocationsFunctionToClass:WWKLocationRetrieverBaseTask_Class];
-    }
-    Class WWKLocationRetrieve_Class = CLASS(WWKLocationRetrieve);
-    if (WWKLocationRetrieve_Class != Nil) {
-        [self replaceCLLocationsFunctionToClass:WWKLocationRetrieve_Class];
-    }
-    Class JWeixinPlugin_Beacon_Class = CLASS(JWeixinPlugin_Beacon);
-    if (JWeixinPlugin_Beacon_Class != Nil) {
-        [self replaceCLLocationsFunctionToClass:JWeixinPlugin_Beacon_Class];
-    }
-    Class WWKWXWebViewController_Class = CLASS(WWKWXWebViewController);
-    if (WWKWXWebViewController_Class != Nil) {
-        [self replaceCLLocationsFunctionToClass:WWKWXWebViewController_Class];
-    }
-    Class WWKAttendanceCheckViewController_Class = CLASS(WWKAttendanceCheckViewController);
-    if (WWKAttendanceCheckViewController_Class != Nil) {
-        [self replaceCLLocationsFunctionToClass:WWKAttendanceCheckViewController_Class];
-    }
-    
-    Class JWeixinNativeCodeHandler_getLocation_Class = CLASS(JWeixinNativeCodeHandler_getLocation);
-    if (JWeixinNativeCodeHandler_getLocation_Class != Nil) {
-        [self replaceCLLocationsFunctionToClass:JWeixinNativeCodeHandler_getLocation_Class];
-    }
-    Class WAJSContextPlugin_Beacon_Class = CLASS(WAJSContextPlugin_Beacon);
-    if (WAJSContextPlugin_Beacon_Class != Nil) {
-        [self replaceCLLocationsFunctionToClass:WAJSContextPlugin_Beacon_Class];
-    }
-    Class MMLocationMgr_Class = CLASS(MMLocationMgr);
-    if (MMLocationMgr_Class != Nil) {
-        [self replaceCLLocationsFunctionToClass:MMLocationMgr_Class];
-    }
-    Class QMapView_Class = CLASS(QMapView);
-    if (QMapView_Class != Nil) {
-        [self replaceCLLocationsFunctionToClass:QMapView_Class];
+    NSArray<NSString *> *classStrings = @[
+        @"WWKOpenApiCorpAppDetailController",
+        @"WWKLocationRetrieverBaseTask",
+        @"WWKLocationRetrieve",
+        @"JWeixinPlugin_Beacon",
+        @"WWKWXWebViewController",
+        @"WWKAttendanceCheckViewController",
+        @"JWeixinNativeCodeHandler_getLocation",
+        @"WAJSContextPlugin_Beacon",
+        @"MMLocationMgr",
+        @"QMapView",
+    ];
+    for (NSString *classString in classStrings) {
+        Class cls = NSClassFromString(classString);
+        if (cls != Nil) {
+            [self replaceCLLocationsFunctionToClass:cls];
+        }
     }
 }
 
