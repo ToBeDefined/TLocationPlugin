@@ -93,7 +93,7 @@ static UIView *_t_cllocationToastView = nil;
     for (NSUInteger idx = 0; idx < locations.count; ++idx) {
         CLLocation *location = locations[idx];
         if (idx == 0) [text appendString:@"定位数据"];
-        [text appendString:@"\n\n"];
+        [text appendString:@"\n"];
         [text appendString:@"纬度"];
         [text appendString:@(location.coordinate.latitude).stringValue];
         [text appendString:@"\n"];
