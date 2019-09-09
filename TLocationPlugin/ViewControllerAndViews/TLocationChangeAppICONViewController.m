@@ -57,7 +57,7 @@
         if (sender == self.weChat) {
             iconName = @"WeChat";
         }
-        [[UIApplication sharedApplication] setAlternateIconName:iconName completionHandler:^(NSError * _Nullable error) {
+        [UIApplication.sharedApplication setAlternateIconName:iconName completionHandler:^(NSError * _Nullable error) {
             if (error) {
                 NSString *toastMessage = [NSString stringWithFormat:@"App切换图标错误:\n%@", error];
                 [UIWindow t_showTostForMessage:toastMessage];

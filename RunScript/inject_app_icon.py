@@ -103,17 +103,22 @@ def getCFBundleAlternateIcons(names, is_iPhone=True):
     return CFBundleAlternateIcons
 
 
-def getCFBundleIcons(names, primaryIcon, is_iPhone=True):
+def getCFBundleIcons(names, primaryIcon=None, oldPrimaryInfo=None, is_iPhone=True):
     key = "CFBundleIcons" if is_iPhone else "CFBundleIcons~ipad"
     CFBundleIcons = {}
     CFBundleIcons["CFBundleAlternateIcons"] = getCFBundleAlternateIcons(
         names,
         is_iPhone=is_iPhone
     )
-    CFBundleIcons["CFBundlePrimaryIcon"] = getPrimaryIcon(
-        primaryIcon,
-        is_iPhone=is_iPhone
-    )
+    if primaryIcon == None or primaryIcon == "":
+        if oldPrimaryInfo != None:
+            CFBundleIcons["CFBundlePrimaryIcon"] = oldPrimaryInfo
+    else:
+        CFBundleIcons["CFBundlePrimaryIcon"] = getPrimaryIcon(
+            primaryIcon,
+            is_iPhone=is_iPhone
+        )
+
     return (key, CFBundleIcons)
 
 
@@ -159,29 +164,32 @@ if __name__ == '__main__':
     print("Add App Icon Success")
 
     """Edit Info.plist"""
-    primary_icon_name = os.getenv("PRIMARY_ICON_NAME", default=names[0])
-    (iPhone_key, iPhone_value) = getCFBundleIcons(
-        names,
-        primary_icon_name,
-        is_iPhone=True
-    )
-    (iPad_key, iPad_value) = getCFBundleIcons(
-        names,
-        primary_icon_name,
-        is_iPhone=False
-    )
-    pp = pprint.PrettyPrinter(indent=4)
-    pp.pprint(iPhone_key)
-    pp.pprint(iPhone_value)
-    pp.pprint(iPad_key)
-    pp.pprint(iPad_value)
+    primary_icon_name = os.getenv("PRIMARY_ICON_NAME")
     plist_file_path = os.path.join(app_content_path, "Info.plist")
     if not os.path.exists(plist_file_path):
         raise ValueError("%s not Exists" % plist_file_path)
     print("Edit Info.plist: ", plist_file_path)
     plist_info = biplist.readPlist(plist_file_path)
+    iPhoneOldCFBundlePrimaryIcon = plist_info["CFBundleIcons"]["CFBundlePrimaryIcon"]
+    iPadOldCFBundlePrimaryIcon = plist_info["CFBundleIcons~ipad"]["CFBundlePrimaryIcon"]
+    (iPhone_key, iPhone_value) = getCFBundleIcons(
+        names,
+        primary_icon_name,
+        oldPrimaryInfo=iPhoneOldCFBundlePrimaryIcon,
+        is_iPhone=True
+    )
+    (iPad_key, iPad_value) = getCFBundleIcons(
+        names,
+        primary_icon_name,
+        oldPrimaryInfo=iPadOldCFBundlePrimaryIcon,
+        is_iPhone=False
+    )
     plist_info[iPhone_key] = iPhone_value
     plist_info[iPad_key] = iPad_value
     os.remove(plist_file_path)
     biplist.writePlist(plist_info, plist_file_path, binary=False)
+
+    pp = pprint.PrettyPrinter(indent=4)
+    pp.pprint(plist_info)
+
     print("Edit Info.plist Success")
