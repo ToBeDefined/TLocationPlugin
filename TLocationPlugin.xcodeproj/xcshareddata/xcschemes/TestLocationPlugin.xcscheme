@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "3FEDEEF02320C916002E9C18"
-               BuildableName = "TestLocationPlugin.app"
+               BuildableName = "Lark.app"
                BlueprintName = "TestLocationPlugin"
                ReferencedContainer = "container:TLocationPlugin.xcodeproj">
             </BuildableReference>
@@ -29,6 +29,8 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
+      <AdditionalOptions>
+      </AdditionalOptions>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -45,11 +47,13 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3FEDEEF02320C916002E9C18"
-            BuildableName = "TestLocationPlugin.app"
+            BuildableName = "Lark.app"
             BlueprintName = "TestLocationPlugin"
             ReferencedContainer = "container:TLocationPlugin.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <AdditionalOptions>
+      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -62,7 +66,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3FEDEEF02320C916002E9C18"
-            BuildableName = "TestLocationPlugin.app"
+            BuildableName = "Lark.app"
             BlueprintName = "TestLocationPlugin"
             ReferencedContainer = "container:TLocationPlugin.xcodeproj">
          </BuildableReference>
