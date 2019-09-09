@@ -263,7 +263,7 @@
                             </userDefinedRuntimeAttributes>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LV1-LM-h2q">
-                            <rect key="frame" x="16" y="572" width="343" height="40"/>
+                            <rect key="frame" x="16" y="552" width="343" height="40"/>
                             <color key="backgroundColor" red="1" green="0.0" blue="0.20679030879001292" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="bil-oO-rV9"/>
@@ -324,7 +324,7 @@
                         <constraint firstItem="fPk-yc-8np" firstAttribute="trailing" secondItem="Nf7-hy-6Ad" secondAttribute="trailing" id="agg-hg-dT6"/>
                         <constraint firstItem="Pye-GT-934" firstAttribute="top" secondItem="sE3-RS-abB" secondAttribute="bottom" constant="20" id="i0V-M6-e7W"/>
                         <constraint firstItem="fPk-yc-8np" firstAttribute="top" secondItem="Nf7-hy-6Ad" secondAttribute="bottom" constant="50" id="nZq-8d-3Yj"/>
-                        <constraint firstItem="LV1-LM-h2q" firstAttribute="top" secondItem="fPk-yc-8np" secondAttribute="bottom" constant="40" id="xjv-px-Ugr"/>
+                        <constraint firstItem="LV1-LM-h2q" firstAttribute="top" secondItem="fPk-yc-8np" secondAttribute="bottom" constant="20" id="xjv-px-Ugr"/>
                         <constraint firstItem="LV1-LM-h2q" firstAttribute="trailing" secondItem="fPk-yc-8np" secondAttribute="trailing" id="zfV-df-0ob"/>
                     </constraints>
                 </scrollView>
