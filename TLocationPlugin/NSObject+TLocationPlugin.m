@@ -11,102 +11,52 @@
 #import "TSafeRuntimeCFunc.h"
 #import "TLocationManager.h"
 #import "UIWindow+TLocationPluginToast.h"
-#import <dlfcn.h>
 #import <objc/runtime.h>
-#import <mach-o/ldsyms.h>
-#import <mach-o/dyld.h>
-#import <mach-o/loader.h>
-#import <mach-o/nlist.h>
-
-#ifdef __LP64__
-typedef struct mach_header_64       ah_mach_header_t;
-typedef struct segment_command_64   ah_segment_command_t;
-typedef struct section_64           ah_section_t;
-typedef struct nlist_64             ah_nlist_t;
-typedef uint64_t                    ah_local_addr;
-#define AH_LC_SEGMENT_ARCH          LC_SEGMENT_64
-
-#else
-
-typedef struct mach_header          ah_mach_header_t;
-typedef struct segment_command      ah_segment_command_t;
-typedef struct section              ah_section_t;
-typedef struct nlist                ah_nlist_t;
-typedef uint32_t                    ah_local_addr;
-#define AH_LC_SEGMENT_ARCH          LC_SEGMENT
-
-#endif // __LP64__
+#import <dlfcn.h>
 
 @implementation NSObject (TLocationPlugin)
 
-static NSArray<NSString *> *_t_get_mach_o_load_dylibs(uint32_t image_index) {
-    NSMutableArray *array = [NSMutableArray array];
-    const struct mach_header *header = _dyld_get_image_header(image_index);
-    ah_segment_command_t *cur_seg_cmd;
-    uintptr_t cur = (uintptr_t)header + sizeof(ah_mach_header_t);
-    for (uint i = 0; i < header->ncmds; i++,cur += cur_seg_cmd->cmdsize) {
-        cur_seg_cmd = (ah_segment_command_t *)cur;
-        if(cur_seg_cmd->cmd == LC_LOAD_DYLIB || cur_seg_cmd->cmd == LC_LOAD_WEAK_DYLIB) {
-            struct dylib_command *dylib = (struct dylib_command *)cur_seg_cmd;
-            char *name = (char *)((uintptr_t)dylib + dylib->dylib.name.offset);
-            NSString *dylibName = [NSString stringWithUTF8String:name];
-            [array addObject:dylibName];
-        }
-    }
-    return [array copy];
-}
-
 + (void)load {
+    // Selector Name
     const char *old_location_sel_name = sel_getName(@selector(locationManager:didUpdateToLocation:fromLocation:));
     const char *new_location_sel_name = sel_getName(@selector(locationManager:didUpdateLocations:));
-    /// 替换用户实现的代理方法，不替换系统的方法
-    // Dl_info info;
-    // dladdr(&_mh_execute_header, &info);
-    // NSString *exe_path = [NSString stringWithUTF8String:info.dli_fname];
-    NSString *exe_path = [NSBundle mainBundle].executablePath;
-    NSString *exe_dir = [NSBundle mainBundle].bundlePath;
-    NSString *eframework_path = exe_dir;
-    NSString *rframework_path = [exe_dir stringByAppendingString:@"/Frameworks"];
-    NSArray *array = _t_get_mach_o_load_dylibs(0);
-    NSMutableArray<NSString *> *user_code_binary_paths = [NSMutableArray<NSString *> array];
-    [user_code_binary_paths addObject:exe_path];
-    for (NSString *framework_path in array) {
-        // 规避动态库自身
-        if ([framework_path rangeOfString:@"TLocationPlugin"].location != NSNotFound) {
-            continue;
-        }
-        // 记录 rpath
-        if ([framework_path hasPrefix:@"@rpath"]) {
-            NSString *framework_absolute_path = [framework_path stringByReplacingOccurrencesOfString:@"@rpath"
-                                                                                          withString:rframework_path];
-            [user_code_binary_paths addObject:framework_absolute_path];
-        }
-        
-        // 基本上不会出现 @executable_path
-        if ([framework_path hasPrefix:@"@executable_path"]) {
-            NSString *framework_absolute_path = [framework_path stringByReplacingOccurrencesOfString:@"@executable_path"
-                                                                                          withString:eframework_path];
-            [user_code_binary_paths addObject:framework_absolute_path];
-        }
-    }
     
-    unsigned int count;
-    const char **classes;
-    for (NSString *path in user_code_binary_paths) {
-        classes = objc_copyClassNamesForImage([path cStringUsingEncoding:NSUTF8StringEncoding], &count);
-        for (int i = 0; i < count; i++) {
-            Class class = objc_getClass(classes[i]);
-            unsigned int method_list_count;
-            Method *methods = class_copyMethodList(class, &method_list_count);
-            for (int i = 0; i < method_list_count; i++) {
+    // main bundle path
+    CFBundleRef mainBundle = CFBundleGetMainBundle();
+    CFURLRef mainBundleURLRef = CFBundleCopyBundleURL(mainBundle);
+    CFStringRef mainBundleCFString = CFURLCopyPath(mainBundleURLRef);
+    const char *path = CFStringGetCStringPtr(mainBundleCFString, kCFStringEncodingUTF8);
+    
+    /// 替换用户实现的代理方法，不替换系统的方法
+    int all_classes_count;
+    Class *all_classes = NULL;
+    all_classes_count = objc_getClassList(NULL, 0);
+    if (all_classes_count > 0 ) {
+        all_classes = (__unsafe_unretained Class *)malloc(sizeof(Class) * all_classes_count);
+        objc_getClassList(all_classes, all_classes_count);
+        for (int i = 0; i < all_classes_count; i++) {
+            Class cls = all_classes[i];
+            unsigned int methods_count;
+            Method *methods = class_copyMethodList(cls, &methods_count);
+            for (int i = 0; i < methods_count; i++) {
+                Method method = methods[i];
                 const char *selName = sel_getName(method_getName(methods[i]));
+                // 是定位函数
                 if (strcmp(selName, old_location_sel_name) == 0 ||
                     strcmp(selName, new_location_sel_name) == 0) {
-                    [self replaceCLLocationsFunctionToClass:class];
+                    
+                    Dl_info info;
+                    dladdr(method, &info);
+                    // 是 App 包内部的代码，并且不是 TLocationPlugin 动态库内的代码
+                    if (strstr(info.dli_fname, path) != NULL &&
+                        strstr(info.dli_fname, "TLocationPlugin") == NULL) {
+                        [self replaceCLLocationsFunctionToClass:cls];
+                    }
                 }
             }
             free(methods);
         }
+        free(all_classes);
     }
 }
 
