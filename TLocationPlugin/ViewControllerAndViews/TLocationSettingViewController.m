@@ -12,6 +12,7 @@
 #import "UIImage+TLocationPlugin.h"
 #import "TAlertController.h"
 #import "UIWindow+TLocationPluginToast.h"
+#import "TLocationChangeAppICONViewController.h"
 
 @interface TLocationSettingViewController () <UITextFieldDelegate>
 
@@ -62,6 +63,11 @@
     [self.view endEditing:YES];
     TLocationManager.shared.usingToast = sender.isOn;
     [UIWindow t_showTostForMessage:sender.isOn ? @"已开启定位提示" : @"已关闭定位提示"];
+}
+
+- (IBAction)changeAppICON:(UIButton *)sender {
+    TLocationChangeAppICONViewController *vc = [[TLocationChangeAppICONViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (IBAction)cleanCacheData:(UIButton *)sender {

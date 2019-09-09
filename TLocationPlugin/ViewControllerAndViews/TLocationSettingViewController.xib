@@ -263,7 +263,7 @@
                             </userDefinedRuntimeAttributes>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LV1-LM-h2q">
-                            <rect key="frame" x="16" y="492" width="343" height="40"/>
+                            <rect key="frame" x="16" y="572" width="343" height="40"/>
                             <color key="backgroundColor" red="1" green="0.0" blue="0.20679030879001292" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="bil-oO-rV9"/>
@@ -284,23 +284,48 @@
                                 <action selector="cleanCacheData:" destination="-1" eventType="touchUpInside" id="LP7-fr-LaM"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fPk-yc-8np">
+                            <rect key="frame" x="16" y="492" width="343" height="40"/>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="7C9-GN-RTM"/>
+                            </constraints>
+                            <state key="normal" title="修改图标">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <state key="highlighted">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="changeAppICON:" destination="-1" eventType="touchUpInside" id="c6u-Uf-sXB"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstItem="fPk-yc-8np" firstAttribute="leading" secondItem="Nf7-hy-6Ad" secondAttribute="leading" id="0u9-h2-L0m"/>
                         <constraint firstItem="sE3-RS-abB" firstAttribute="top" secondItem="hky-M3-ICB" secondAttribute="top" constant="40" id="4Ys-VA-I9j"/>
                         <constraint firstItem="Pye-GT-934" firstAttribute="leading" secondItem="sE3-RS-abB" secondAttribute="leading" id="9Wq-fc-aZF"/>
-                        <constraint firstItem="Nf7-hy-6Ad" firstAttribute="trailing" secondItem="sE3-RS-abB" secondAttribute="trailing" id="ByM-db-YDV"/>
+                        <constraint firstItem="Nf7-hy-6Ad" firstAttribute="trailing" secondItem="Pye-GT-934" secondAttribute="trailing" id="BrH-CT-lKX"/>
                         <constraint firstItem="sE3-RS-abB" firstAttribute="leading" secondItem="hky-M3-ICB" secondAttribute="leading" constant="16" id="D00-6D-dU0"/>
-                        <constraint firstItem="LV1-LM-h2q" firstAttribute="trailing" secondItem="sE3-RS-abB" secondAttribute="trailing" id="Has-uz-uy9"/>
+                        <constraint firstItem="Nf7-hy-6Ad" firstAttribute="leading" secondItem="Pye-GT-934" secondAttribute="leading" id="Fa0-Ba-XKy"/>
                         <constraint firstItem="sE3-RS-abB" firstAttribute="width" secondItem="hky-M3-ICB" secondAttribute="width" constant="-32" id="Hz7-ON-TT5"/>
                         <constraint firstAttribute="trailing" secondItem="sE3-RS-abB" secondAttribute="trailing" constant="16" id="JBy-ZY-dk6"/>
-                        <constraint firstItem="Nf7-hy-6Ad" firstAttribute="leading" secondItem="sE3-RS-abB" secondAttribute="leading" id="Kmx-jR-ax9"/>
+                        <constraint firstItem="LV1-LM-h2q" firstAttribute="leading" secondItem="fPk-yc-8np" secondAttribute="leading" id="PEj-EN-02j"/>
                         <constraint firstItem="Nf7-hy-6Ad" firstAttribute="top" secondItem="Pye-GT-934" secondAttribute="bottom" constant="20" id="RGb-pm-NXk"/>
-                        <constraint firstItem="LV1-LM-h2q" firstAttribute="leading" secondItem="sE3-RS-abB" secondAttribute="leading" id="TZp-5d-nSt"/>
                         <constraint firstItem="Pye-GT-934" firstAttribute="trailing" secondItem="sE3-RS-abB" secondAttribute="trailing" id="Wf1-AG-igz"/>
                         <constraint firstAttribute="bottom" secondItem="LV1-LM-h2q" secondAttribute="bottom" constant="40" id="YsV-cZ-Amx"/>
+                        <constraint firstItem="fPk-yc-8np" firstAttribute="trailing" secondItem="Nf7-hy-6Ad" secondAttribute="trailing" id="agg-hg-dT6"/>
                         <constraint firstItem="Pye-GT-934" firstAttribute="top" secondItem="sE3-RS-abB" secondAttribute="bottom" constant="20" id="i0V-M6-e7W"/>
-                        <constraint firstItem="LV1-LM-h2q" firstAttribute="top" secondItem="Nf7-hy-6Ad" secondAttribute="bottom" constant="50" id="wzi-hb-vKs"/>
+                        <constraint firstItem="fPk-yc-8np" firstAttribute="top" secondItem="Nf7-hy-6Ad" secondAttribute="bottom" constant="50" id="nZq-8d-3Yj"/>
+                        <constraint firstItem="LV1-LM-h2q" firstAttribute="top" secondItem="fPk-yc-8np" secondAttribute="bottom" constant="40" id="xjv-px-Ugr"/>
+                        <constraint firstItem="LV1-LM-h2q" firstAttribute="trailing" secondItem="fPk-yc-8np" secondAttribute="trailing" id="zfV-df-0ob"/>
                     </constraints>
                 </scrollView>
             </subviews>
