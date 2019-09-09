@@ -11,28 +11,38 @@
 #import "TSafeRuntimeCFunc.h"
 #import "TLocationManager.h"
 #import "UIWindow+TLocationPluginToast.h"
+#import <dlfcn.h>
+#import <objc/runtime.h>
+#import <mach-o/ldsyms.h>
+#import <mach-o/dyld.h>
+#import <mach-o/loader.h>
+#import <mach-o/nlist.h>
 
 @implementation NSObject (TLocationPlugin)
 
 + (void)load {
-    /// 企业微信的类
-    NSArray<NSString *> *classStrings = @[
-        @"WWKOpenApiCorpAppDetailController",
-        @"WWKLocationRetrieverBaseTask",
-        @"WWKLocationRetrieve",
-        @"JWeixinPlugin_Beacon",
-        @"WWKWXWebViewController",
-        @"WWKAttendanceCheckViewController",
-        @"JWeixinNativeCodeHandler_getLocation",
-        @"WAJSContextPlugin_Beacon",
-        @"MMLocationMgr",
-        @"QMapView",
-    ];
-    for (NSString *classString in classStrings) {
-        Class cls = NSClassFromString(classString);
-        if (cls != Nil) {
-            [self replaceCLLocationsFunctionToClass:cls];
+    const char *old_location_sel = "locationManager:didUpdateToLocation:fromLocation:";
+    const char *new_location_sel = "locationManager:didUpdateLocations:";
+    /// 替换所有类中包含的定位方法
+    int all_classes_count;
+    Class *all_classes = NULL;
+    all_classes_count = objc_getClassList(NULL, 0);
+    if (all_classes_count > 0 ) {
+        all_classes = (__unsafe_unretained Class *)malloc(sizeof(Class) * all_classes_count);
+        objc_getClassList(all_classes, all_classes_count);
+        for (int i = 0; i < all_classes_count; i++) {
+            Class class = all_classes[i];
+            unsigned int count;
+            Method *methods = class_copyMethodList(class, &count);
+            for (int i = 0; i < count; i++) {
+                const char *selName = sel_getName(method_getName(methods[i]));
+                if (strcmp(selName, old_location_sel) == 0 || strcmp(selName, new_location_sel) == 0) {
+                    [self replaceCLLocationsFunctionToClass:class];
+                }
+            }
+            free(methods);
         }
+        free(all_classes);
     }
 }
 
