@@ -12,6 +12,7 @@ from PIL import Image
 src_root = os.path.dirname(os.path.realpath(__file__))
 input_dir = os.path.join(src_root, "logos")
 output_dir = os.path.join(src_root, "icons")
+primary_icon_name = "Lark"
 
 iPhone_size_scall = [
     (20, 2),
@@ -146,20 +147,7 @@ if __name__ == '__main__':
         for (size, scale) in iPad_size_scall:
             convertImage(imageFile, output_dir, size, scale, is_iPhone=False)
 
-    """Add icons to App"""
-    app_content_path = os.getenv("APP_CONTENT_PATH")
-    if app_content_path == None:
-        raise ValueError("No `APP_CONTENT_PATH` Environment Variable")
-    if not os.path.exists(app_content_path):
-        raise ValueError("%s not Exists" % app_content_path)
-    print("Move App icons from: `%s` to `%s`" % (
-        output_dir, app_content_path
-    ))
-    move_icons_to_directory(output_dir, app_content_path)
-    print("Add App Icon Success")
-
     """Edit Info.plist"""
-    primary_icon_name = os.getenv("PRIMARY_ICON_NAME", default=names[0])
     (iPhone_key, iPhone_value) = getCFBundleIcons(
         names,
         primary_icon_name,
@@ -175,13 +163,9 @@ if __name__ == '__main__':
     pp.pprint(iPhone_value)
     pp.pprint(iPad_key)
     pp.pprint(iPad_value)
-    plist_file_path = os.path.join(app_content_path, "Info.plist")
-    if not os.path.exists(plist_file_path):
-        raise ValueError("%s not Exists" % plist_file_path)
-    print("Edit Info.plist: ", plist_file_path)
-    plist_info = biplist.readPlist(plist_file_path)
+    plist_file_path = os.path.join(src_root, "Info.plist")
+    plist_info = {}
     plist_info[iPhone_key] = iPhone_value
     plist_info[iPad_key] = iPad_value
-    os.remove(plist_file_path)
     biplist.writePlist(plist_info, plist_file_path, binary=False)
-    print("Edit Info.plist Success")
+    print("Write Info.plist Success")
