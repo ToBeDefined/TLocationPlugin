@@ -13,11 +13,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UIWindow (TLocationPluginToast)
 
-+ (UIView *)t_showTostForMessage:(NSString *)message;
-+ (UIView *)t_showTostForMessage:(NSString *)message fontSize:(CGFloat)fontSize;
++ (void)t_showTostForMessage:(NSString *)message;
++ (void)t_showTostForMessage:(NSString *)message fontSize:(CGFloat)fontSize;
 
-+ (nullable UIView *)t_showTostForCLLocation:(CLLocation *)location;
-+ (nullable UIView *)t_showTostForCLLocations:(NSArray<CLLocation *> *)locations;
++ (void)t_showTostForCLLocation:(CLLocation *)location;
++ (void)t_showTostForCLLocations:(NSArray<CLLocation *> *)locations;
 
 @end
 

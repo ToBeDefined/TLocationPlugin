@@ -16,6 +16,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (class, nonatomic, assign, readonly) TLocationManager *shared;
 
+/// 是否暂时暂停 HOOK（库内使用）
+@property (nonatomic, assign, getter=isSuspend) BOOL suspend;
+
 /// 当前使用的名称
 @property (nonatomic, copy  ) NSString *locationName;
 /// 当前使用的纬度

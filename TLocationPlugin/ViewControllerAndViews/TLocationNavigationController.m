@@ -8,6 +8,7 @@
 
 #import "TLocationNavigationController.h"
 #import "UIImage+TLocationPlugin.h"
+#import "TLocationManager.h"
 
 @interface TLocationNavigationController ()
 
@@ -18,7 +19,7 @@
 @implementation TLocationNavigationController
 
 - (void)dealloc {
-    self.class.isShowing = NO;
+    TLocationNavigationController.isShowing = NO;
     [UIApplication sharedApplication].statusBarStyle = self.currentStatusBarStyle;
 }
 
@@ -46,6 +47,7 @@ static BOOL _t_isShowing = NO;
 
 + (void)setIsShowing:(BOOL)isShowing {
     _t_isShowing = isShowing;
+    TLocationManager.shared.suspend = isShowing;
 }
 
 

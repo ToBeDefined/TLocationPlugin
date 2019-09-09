@@ -21,12 +21,6 @@
     const char *old_location_sel_name = sel_getName(@selector(locationManager:didUpdateToLocation:fromLocation:));
     const char *new_location_sel_name = sel_getName(@selector(locationManager:didUpdateLocations:));
     
-    // main bundle path
-    CFBundleRef mainBundle = CFBundleGetMainBundle();
-    CFURLRef mainBundleURLRef = CFBundleCopyBundleURL(mainBundle);
-    CFStringRef mainBundleCFString = CFURLCopyPath(mainBundleURLRef);
-    const char *path = CFStringGetCStringPtr(mainBundleCFString, kCFStringEncodingUTF8);
-    
     /// 替换用户实现的代理方法，不替换系统的方法
     int all_classes_count;
     Class *all_classes = NULL;
@@ -38,25 +32,14 @@
             Class cls = all_classes[i];
             unsigned int methods_count;
             Method *methods = class_copyMethodList(cls, &methods_count);
-            BOOL shouldReplace = NO;
             for (int i = 0; i < methods_count; i++) {
-                Method method = methods[i];
                 const char *selName = sel_getName(method_getName(methods[i]));
                 // 是定位函数
                 if (strcmp(selName, old_location_sel_name) == 0 ||
                     strcmp(selName, new_location_sel_name) == 0) {
-                    Dl_info info;
-                    dladdr(method, &info);
-                    // 是 App 包内部的代码，并且不是 TLocationPlugin 动态库内的代码
-                    if (strstr(info.dli_fname, path) != NULL &&
-                        strstr(info.dli_fname, "TLocationPlugin") == NULL) {
-                        shouldReplace = YES;
-                        break;
-                    }
+                    [self replaceCLLocationsFunctionToClass:cls];
+                    break;
                 }
-            }
-            if (shouldReplace) {
-                [self replaceCLLocationsFunctionToClass:cls];
             }
             free(methods);
         }
@@ -82,10 +65,8 @@
         didUpdateToLocation:(CLLocation *)newLocation
                fromLocation:(CLLocation *)oldLocation API_AVAILABLE(macos(10.6)) {
     BOOL useHook = TLocationManager.shared.usingHookLocation && TLocationManager.shared.hasCachedLocation;
-    if (!useHook) {
-        if (TLocationManager.shared.usingToast) {
-            [UIWindow t_showTostForCLLocation:newLocation];
-        }
+    // 不使用或者暂时暂停使用，调用原方法
+    if (!useHook || TLocationManager.shared.isSuspend) {
         [self __t_locationManager:manager didUpdateToLocation:newLocation fromLocation:oldLocation];
         return;
     }
@@ -107,10 +88,8 @@
 - (void)__t_locationManager:(CLLocationManager *)manager
          didUpdateLocations:(NSArray<CLLocation *> *)locations {
     BOOL useHook = TLocationManager.shared.usingHookLocation && TLocationManager.shared.hasCachedLocation;
-    if (!useHook) {
-        if (TLocationManager.shared.usingToast) {
-            [UIWindow t_showTostForCLLocations:locations];
-        }
+    // 不使用或者暂时暂停使用，调用原方法
+    if (!useHook || TLocationManager.shared.isSuspend) {
         [self __t_locationManager:manager didUpdateLocations:locations];
         return;
     }
