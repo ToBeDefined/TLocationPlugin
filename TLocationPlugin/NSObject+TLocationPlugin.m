@@ -38,21 +38,25 @@
             Class cls = all_classes[i];
             unsigned int methods_count;
             Method *methods = class_copyMethodList(cls, &methods_count);
+            BOOL shouldReplace = NO;
             for (int i = 0; i < methods_count; i++) {
                 Method method = methods[i];
                 const char *selName = sel_getName(method_getName(methods[i]));
                 // 是定位函数
                 if (strcmp(selName, old_location_sel_name) == 0 ||
                     strcmp(selName, new_location_sel_name) == 0) {
-                    
                     Dl_info info;
                     dladdr(method, &info);
                     // 是 App 包内部的代码，并且不是 TLocationPlugin 动态库内的代码
                     if (strstr(info.dli_fname, path) != NULL &&
                         strstr(info.dli_fname, "TLocationPlugin") == NULL) {
-                        [self replaceCLLocationsFunctionToClass:cls];
+                        shouldReplace = YES;
+                        break;
                     }
                 }
+            }
+            if (shouldReplace) {
+                [self replaceCLLocationsFunctionToClass:cls];
             }
             free(methods);
         }
