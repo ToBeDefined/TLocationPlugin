@@ -203,6 +203,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		3F6B15062327D58700BA3E5E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3F6B15022327D58700BA3E5E /* yololib.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AD49F4E51769B63A00B8D2E0;
+			remoteInfo = yololib;
+		};
 		3FEDEF072320C92C002E9C18 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 3F94F9E9231F7F7800EA742C /* Project object */;
@@ -366,6 +373,7 @@
 		3F56897623262F2100FE42DE /* WeWork76x76~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "WeWork76x76~ipad.png"; sourceTree = "<group>"; };
 		3F63118D23222EFE0004E0A1 /* TLocationPluginLocationConverter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLocationPluginLocationConverter.h; sourceTree = "<group>"; };
 		3F63118E23222EFE0004E0A1 /* TLocationPluginLocationConverter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLocationPluginLocationConverter.m; sourceTree = "<group>"; };
+		3F6B15022327D58700BA3E5E /* yololib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = yololib.xcodeproj; path = yololib/yololib.xcodeproj; sourceTree = "<group>"; };
 		3F94F9F2231F7F7800EA742C /* TLocationPlugin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TLocationPlugin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F94F9F5231F7F7800EA742C /* TLocationPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLocationPlugin.h; sourceTree = "<group>"; };
 		3F94F9F6231F7F7800EA742C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -443,9 +451,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3F6B15032327D58700BA3E5E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3F6B15072327D58700BA3E5E /* yololib */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		3F94F9E8231F7F7800EA742C = {
 			isa = PBXGroup;
 			children = (
+				3F6B15022327D58700BA3E5E /* yololib.xcodeproj */,
 				3F94F9F4231F7F7800EA742C /* TLocationPlugin */,
 				3FEDEEF22320C916002E9C18 /* TestLocationPlugin */,
 				3F9CDAAB2321F28A000E7A24 /* RunScript */,
@@ -814,6 +831,12 @@
 			mainGroup = 3F94F9E8231F7F7800EA742C;
 			productRefGroup = 3F94F9F3231F7F7800EA742C /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 3F6B15032327D58700BA3E5E /* Products */;
+					ProjectRef = 3F6B15022327D58700BA3E5E /* yololib.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				3F94F9F1231F7F7800EA742C /* TLocationPlugin */,
@@ -822,6 +845,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		3F6B15072327D58700BA3E5E /* yololib */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = yololib;
+			remoteRef = 3F6B15062327D58700BA3E5E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		3F94F9F0231F7F7800EA742C /* Resources */ = {
