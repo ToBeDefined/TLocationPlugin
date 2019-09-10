@@ -94,10 +94,10 @@ static UIView *_t_cllocationToastView = nil;
         CLLocation *location = locations[idx];
         if (idx == 0) [text appendString:@"定位数据"];
         [text appendString:@"\n"];
-        [text appendString:@"纬度"];
+        [text appendString:@"纬度: "];
         [text appendString:@(location.coordinate.latitude).stringValue];
         [text appendString:@"\n"];
-        [text appendString:@"经度"];
+        [text appendString:@"经度: "];
         [text appendString:@(location.coordinate.longitude).stringValue];
     }
     [self t_showTostForMessage:text fontSize:10 bottomMargin:40];
