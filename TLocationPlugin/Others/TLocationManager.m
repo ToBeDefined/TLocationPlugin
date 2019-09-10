@@ -140,7 +140,10 @@ static NSString * const _t_rangeKey = @"_T_CacheKeyTypeRange";
 }
 - (void)setRange:(NSInteger)range {
     self->_range = range;
-    [[NSUserDefaults standardUserDefaults] setInteger:range forKey:_t_rangeKey];
+    if (self->_range <= 0) {
+        self->_range = 10;
+    }
+    [[NSUserDefaults standardUserDefaults] setInteger:self->_range forKey:_t_rangeKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
