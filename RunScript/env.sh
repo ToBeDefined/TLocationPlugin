@@ -1,5 +1,8 @@
 #!/usr/bin/env zsh --login
 
+# Base Dir
+BASEDIR=$(realpath $(dirname "$0"))
+
 # 注入 framework 名称
 export FRAMEWORK_NAME="TLocationPlugin"
 
@@ -13,7 +16,6 @@ export BINARY_NAME="wework"
 export PAYLOAD_PATH=$(realpath "${BASEDIR}/../Payload")
 
 # App 包根目录
-BASEDIR=$(realpath $(dirname "$0"))
 export APP_CONTENT_PATH="${PAYLOAD_PATH}/${BINARY_NAME}.app"
 
 # 默认 App icon 图片名称
