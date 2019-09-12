@@ -171,21 +171,23 @@ if __name__ == '__main__':
     print("Edit Info.plist: ", plist_file_path)
     plist_info = biplist.readPlist(plist_file_path)
     iPhoneOldCFBundlePrimaryIcon = plist_info["CFBundleIcons"]["CFBundlePrimaryIcon"]
-    iPadOldCFBundlePrimaryIcon = plist_info["CFBundleIcons~ipad"]["CFBundlePrimaryIcon"]
     (iPhone_key, iPhone_value) = getCFBundleIcons(
         names,
         primary_icon_name,
         oldPrimaryInfo=iPhoneOldCFBundlePrimaryIcon,
         is_iPhone=True
     )
-    (iPad_key, iPad_value) = getCFBundleIcons(
-        names,
-        primary_icon_name,
-        oldPrimaryInfo=iPadOldCFBundlePrimaryIcon,
-        is_iPhone=False
-    )
     plist_info[iPhone_key] = iPhone_value
-    plist_info[iPad_key] = iPad_value
+
+    if plist_info.__contains__("CFBundleIcons~ipad"):
+        iPadOldCFBundlePrimaryIcon = plist_info["CFBundleIcons~ipad"]["CFBundlePrimaryIcon"]
+        (iPad_key, iPad_value) = getCFBundleIcons(
+            names,
+            primary_icon_name,
+            oldPrimaryInfo=iPadOldCFBundlePrimaryIcon,
+            is_iPhone=False
+        )
+        plist_info[iPad_key] = iPad_value
     os.remove(plist_file_path)
     biplist.writePlist(plist_info, plist_file_path, binary=False)
 
