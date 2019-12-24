@@ -1,6 +1,6 @@
 //
 //  TSafeRuntimeCFunc.h
-//  CashBox
+//  TLocationPlugin
 //
 //  Created by TBD on 2018/4/19.
 //  Copyright © 2019 TBD. All rights reserved.
