@@ -26,7 +26,7 @@
 
 - 修改 `RunScript`文件夹中`env.sh`的环境变量`APP_NAME`和`BINARY_NAME`，`APP_NAME`是 App ipa 文件名(去除 `_origin.ipa`部分) ，`BINARY_NAME`是.app 中主二进制 target 名称(如企业微信都为 wework)
 
-- Xcode运行 `RunScript` target
+- Xcode运行 `RunScript` target (`Generic iOS Device`)
 
 - 生成的文件为`appname_new.ipa`(如企业微信为 wework_new.ipa)
 

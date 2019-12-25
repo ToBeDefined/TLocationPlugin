@@ -806,7 +806,7 @@
 		3F94F9E9231F7F7800EA742C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1100;
+				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = TBD;
 				TargetAttributes = {
 					3F94F9F1231F7F7800EA742C = {
@@ -1227,7 +1227,7 @@
 		3F94F9FB231F7F7800EA742C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = TS9WTSBK78;
@@ -1245,6 +1245,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = tbd.tech.TLocationPlugin;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1252,7 +1253,7 @@
 		3F94F9FC231F7F7800EA742C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = TS9WTSBK78;
@@ -1270,6 +1271,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = tbd.tech.TLocationPlugin;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
