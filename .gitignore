@@ -17,7 +17,8 @@
 profile
 *.ipa
 *.mobileprovision
-
+Payload/
+TLocationPlugin.framework/
 
 ####
 # Xcode temporary files that should never be committed
