@@ -67,6 +67,7 @@
     BOOL useHook = TLocationManager.shared.usingHookLocation && TLocationManager.shared.hasCachedLocation;
     // 不使用或者暂时暂停使用，调用原方法
     if (!useHook || TLocationManager.shared.isSuspend) {
+        [self t_showTostForCLLocation:newLocation];
         [self __t_locationManager:manager didUpdateToLocation:newLocation fromLocation:oldLocation];
         return;
     }
@@ -79,9 +80,8 @@
                                                                 course:newLocation.course
                                                                  speed:newLocation.speed
                                                              timestamp:newLocation.timestamp];
-    if (TLocationManager.shared.usingToast) {
-        [UIWindow t_showTostForCLLocation:t_newLocation];
-    }
+    
+    [self t_showTostForCLLocation:t_newLocation];
     [self __t_locationManager:manager didUpdateToLocation:t_newLocation fromLocation:oldLocation];
 }
 
@@ -90,9 +90,11 @@
     BOOL useHook = TLocationManager.shared.usingHookLocation && TLocationManager.shared.hasCachedLocation;
     // 不使用或者暂时暂停使用，调用原方法
     if (!useHook || TLocationManager.shared.isSuspend) {
+        [self t_showTostForCLLocations:locations];
         [self __t_locationManager:manager didUpdateLocations:locations];
         return;
     }
+    
     NSMutableArray<CLLocation *> *t_locations = [NSMutableArray<CLLocation *> array];
     for (CLLocation *location in locations) {
         /// CLLocation 使用WGS84坐标
@@ -106,10 +108,20 @@
         [t_locations addObject:t_location];
     }
     
-    if (TLocationManager.shared.usingToast) {
-        [UIWindow t_showTostForCLLocations:t_locations];
-    }
+    [self t_showTostForCLLocations:t_locations];
     [self __t_locationManager:manager didUpdateLocations:t_locations];
+}
+
+- (void)t_showTostForCLLocations:(NSArray<CLLocation *> *)locations {
+    if (TLocationManager.shared.usingToast) {
+        [UIWindow t_showTostForCLLocations:locations];
+    }
+}
+
+- (void)t_showTostForCLLocation:(CLLocation *)location {
+    if (TLocationManager.shared.usingToast) {
+        [UIWindow t_showTostForCLLocation:location];
+    }
 }
 
 @end
