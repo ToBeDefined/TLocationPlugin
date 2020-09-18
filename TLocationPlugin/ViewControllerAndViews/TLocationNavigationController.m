@@ -26,7 +26,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.currentStatusBarStyle = [UIApplication sharedApplication].statusBarStyle;
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
     [self.navigationBar setBackgroundImage:[UIImage t_imageWithColor:UIColor.whiteColor]
                              forBarMetrics:UIBarMetricsDefault];
     [self.navigationBar setShadowImage:nil];
@@ -37,7 +36,6 @@
         NSFontAttributeName:[UIFont boldSystemFontOfSize:17],
     };
 }
-
 
 #pragma mark - Setter/Getter
 static BOOL _t_isShowing = NO;

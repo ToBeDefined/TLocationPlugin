@@ -37,7 +37,7 @@ static NSInteger _t_windowTouchedTimes = 0;
     TSelectLocationDataViewController *vc = [[TSelectLocationDataViewController alloc] init];
     TLocationNavigationController *nav = [[TLocationNavigationController alloc] initWithRootViewController:vc];
     [rootVC presentViewController:nav animated:YES completion:^{
-        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+        [UIApplication.sharedApplication performSelector:@selector(setStatusBarStyle:animated:) withObject:@(UIStatusBarStyleDefault) withObject:@(YES)];
     }];
 }
 @end
