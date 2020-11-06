@@ -21,7 +21,7 @@
     const char *old_location_sel_name = sel_getName(@selector(locationManager:didUpdateToLocation:fromLocation:));
     const char *new_location_sel_name = sel_getName(@selector(locationManager:didUpdateLocations:));
     
-    /// 替换用户实现的代理方法，不替换系统的方法
+    /// 替换所有方法
     int all_classes_count;
     Class *all_classes = NULL;
     all_classes_count = objc_getClassList(NULL, 0);
