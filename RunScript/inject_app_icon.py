@@ -2,12 +2,31 @@
 # -*- coding: utf-8 -*-
 
 import os
+import sys
 import glob
 import shutil
 import pprint
 import biplist
+import plistlib
 from PIL import Image
 
+if sys.version_info < (3, 4):
+    import biplist
+    def read_plist(path):
+        return biplist.readPlist(path)
+
+    def write_plist(info, path):
+        biplist.writePlist(info, path, binary=False)
+
+else:
+    import plistlib
+    def read_plist(path):
+        with open(path, 'rb') as f:
+            return plistlib.load(f)
+
+    def write_plist(info, path):
+        with open(path, 'wb') as fp:
+            plistlib.dump(info, fp)
 
 src_root = os.path.dirname(os.path.realpath(__file__))
 input_dir = os.path.join(src_root, "logos")
@@ -169,7 +188,7 @@ if __name__ == '__main__':
     if not os.path.exists(plist_file_path):
         raise ValueError("%s not Exists" % plist_file_path)
     print("Edit Info.plist: ", plist_file_path)
-    plist_info = biplist.readPlist(plist_file_path)
+    plist_info = read_plist(plist_file_path)
     iPhoneOldCFBundlePrimaryIcon = plist_info["CFBundleIcons"]["CFBundlePrimaryIcon"]
     (iPhone_key, iPhone_value) = getCFBundleIcons(
         names,
@@ -189,7 +208,7 @@ if __name__ == '__main__':
         )
         plist_info[iPad_key] = iPad_value
     os.remove(plist_file_path)
-    biplist.writePlist(plist_info, plist_file_path, binary=False)
+    write_plist(plist_info, plist_file_path)
 
     pp = pprint.PrettyPrinter(indent=4)
     pp.pprint(plist_info)
