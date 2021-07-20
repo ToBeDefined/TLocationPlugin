@@ -28,23 +28,23 @@ pushd . > /dev/null
 cd "${APP_CONTENT_PATH}"
 
 # 修改支持的机型
-BINARY_INFO=`file ${BINARY_NAME}`
-SUPPORTED_DEVICE_LIST=""
-echo $ARM64_DEVICES
-echo $ARMV7_DEVICES
-
-if [[ "${BINARY_INFO}" =~ "arm64" ]]; then
-    SUPPORTED_DEVICE_LIST="${SUPPORTED_DEVICE_LIST}${ARM64_DEVICES}"
-fi
-
-if [[ "${BINARY_INFO}" =~ "armv7" ]]; then
-    SUPPORTED_DEVICE_LIST="${SUPPORTED_DEVICE_LIST}${ARMV7_DEVICES}"
-fi
+#BINARY_INFO=`file ${BINARY_NAME}`
+#SUPPORTED_DEVICE_LIST=""
+#echo $ARM64_DEVICES
+#echo $ARMV7_DEVICES
+#
+#if [[ "${BINARY_INFO}" =~ "arm64" ]]; then
+#    SUPPORTED_DEVICE_LIST="${SUPPORTED_DEVICE_LIST}${ARM64_DEVICES}"
+#fi
+#
+#if [[ "${BINARY_INFO}" =~ "armv7" ]]; then
+#    SUPPORTED_DEVICE_LIST="${SUPPORTED_DEVICE_LIST}${ARMV7_DEVICES}"
+#fi
 
 PLIST_FILE_PATH="${APP_CONTENT_PATH}/Info.plist"
-# plutil -remove UISupportedDevices Info.plist
-plutil -replace UISupportedDevices -json "[${SUPPORTED_DEVICE_LIST}]" "${PLIST_FILE_PATH}"
-plutil -p "${PLIST_FILE_PATH}"
+plutil -remove UISupportedDevices Info.plist
+#plutil -replace UISupportedDevices -json "[${SUPPORTED_DEVICE_LIST}]" "${PLIST_FILE_PATH}"
+#plutil -p "${PLIST_FILE_PATH}"
 
 # 注入动态库
 yololib "${BINARY_NAME}" "Frameworks/${FRAMEWORK_NAME}.framework/${FRAMEWORK_NAME}"
