@@ -69,4 +69,5 @@ set +ex
 # sign
 echo "new app: ${NEW_APP_NAME}; \nyou should sign it, recommend fastlane"
 
+fastlane sigh resign -i "your_dev_cert" -p "your_mobileprovision_file" ${NEW_APP_NAME}.ipa
 
