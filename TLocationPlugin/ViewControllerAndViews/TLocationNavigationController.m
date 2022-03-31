@@ -20,20 +20,22 @@
 
 - (void)dealloc {
     TLocationNavigationController.isShowing = NO;
+    /// restore old style
     [UIApplication sharedApplication].statusBarStyle = self.currentStatusBarStyle;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    /// save old style
     self.currentStatusBarStyle = [UIApplication sharedApplication].statusBarStyle;
-    [self.navigationBar setBackgroundImage:[UIImage t_imageWithColor:UIColor.whiteColor]
-                             forBarMetrics:UIBarMetricsDefault];
-    [self.navigationBar setShadowImage:nil];
+    self.view.backgroundColor = UIColor.whiteColor;
+    
+    self.navigationBar.shadowImage = nil;
     self.navigationBar.tintColor = UIColor.whiteColor;
     self.navigationBar.tintColor = UIColor.blackColor;
     self.navigationBar.titleTextAttributes = @{
-        NSForegroundColorAttributeName:UIColor.blackColor,
-        NSFontAttributeName:[UIFont boldSystemFontOfSize:17],
+        NSForegroundColorAttributeName: UIColor.blackColor,
+        NSFontAttributeName: [UIFont boldSystemFontOfSize:17],
     };
 }
 

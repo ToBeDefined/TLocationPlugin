@@ -12,70 +12,50 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-void t_add_instance_method(Class cls, SEL sel) {
-    Method method = class_getInstanceMethod(cls, sel);
-    class_addMethod(cls,
-                    sel,
-                    method_getImplementation(method),
-                    method_getTypeEncoding(method));
-}
-
-void t_add_class_method(Class cls, SEL sel) {
-    Method method = class_getClassMethod(cls, sel);
-    class_addMethod(objc_getMetaClass(object_getClassName(cls)),
-                    sel,
-                    method_getImplementation(method),
-                    method_getTypeEncoding(method));
-}
-
-void t_exchange_instance_method(Class cls, SEL originalSel, SEL swizzledSel) {
-    Method originalMethod = class_getInstanceMethod(cls, originalSel);
-    Method swizzledMethod = class_getInstanceMethod(cls, swizzledSel);
     
-    // 交换实现进行添加函数
-    BOOL addOriginSELSuccess = class_addMethod(cls,
-                                               originalSel,
-                                               method_getImplementation(swizzledMethod),
-                                               method_getTypeEncoding(swizzledMethod));
-    BOOL addSwizzlSELSuccess = class_addMethod(cls,
-                                               swizzledSel,
-                                               method_getImplementation(originalMethod),
-                                               method_getTypeEncoding(originalMethod));
-    // 全都添加成功，返回
-    if (addOriginSELSuccess && addSwizzlSELSuccess) {
-        return;
+    void t_add_instance_method(Class cls, SEL sel) {
+        Method method = class_getInstanceMethod(cls, sel);
+        class_addMethod(cls,
+                        sel,
+                        method_getImplementation(method),
+                        method_getTypeEncoding(method));
     }
-    // 全都添加失败，已经添加过了方法，交换
-    if (!addOriginSELSuccess && !addSwizzlSELSuccess) {
-        method_exchangeImplementations(originalMethod,
-                                       swizzledMethod);
-        return;
+    
+    void t_add_class_method(Class cls, SEL sel) {
+        Method method = class_getClassMethod(cls, sel);
+        class_addMethod(objc_getMetaClass(object_getClassName(cls)),
+                        sel,
+                        method_getImplementation(method),
+                        method_getTypeEncoding(method));
     }
-    // addOriginSELSuccess 成功，addSwizzlSELSuccess 失败，replace SwizzlSel
-    if (addOriginSELSuccess && !addSwizzlSELSuccess) {
-        class_replaceMethod(cls,
-                            swizzledSel,
-                            method_getImplementation(originalMethod),
-                            method_getTypeEncoding(originalMethod));
-        return;
+    
+    void t_exchange_instance_method(Class cls, SEL sel1, SEL sel2) {
+        Method method1 = class_getInstanceMethod(cls, sel1);
+        Method method2 = class_getInstanceMethod(cls, sel2);
+        if (method1 == NULL || method2 == NULL) {
+            NSLog(@"class: %@, no method for sel1: %@, or sel2: %@", cls, NSStringFromSelector(sel1), NSStringFromSelector(sel2));
+        }
+        
+        IMP imp1 = method_getImplementation(method1);
+        IMP imp2 = method_getImplementation(method2);
+        
+        const char *encode1 = method_getTypeEncoding(method1);
+        const char *encode2 = method_getTypeEncoding(method2);
+        if (strcmp(encode1, encode2) != 0) {
+            NSLog(@"type encoding not same for: %@, sel1: %@, sel2: %@", cls, NSStringFromSelector(sel1), NSStringFromSelector(sel2));
+            NSLog(@"sel1 type encoding: %s", encode1);
+            NSLog(@"sel2 type encoding: %s", encode2);
+        }
+        
+        // 交换实现进行添加函数
+        class_replaceMethod(cls, sel1, imp2, encode2);
+        class_replaceMethod(cls, sel2, imp1, encode1);
     }
-    // addSwizzlSELSuccess 成功，addOriginSELSuccess 失败，replace originSEL
-    if (!addOriginSELSuccess && addSwizzlSELSuccess) {
-        class_replaceMethod(cls,
-                            originalSel,
-                            method_getImplementation(swizzledMethod),
-                            method_getTypeEncoding(swizzledMethod));
-        return;
+    
+    void t_exchange_class_method(Class cls, SEL sel1, SEL sel2) {
+        t_exchange_instance_method(object_getClass(cls), sel1, sel2);
     }
-}
-
-void t_exchange_class_method(Class cls, SEL originalSel, SEL swizzledSel) {
-    t_exchange_instance_method(objc_getMetaClass(object_getClassName(cls)),
-                               originalSel,
-                               swizzledSel);
-}
-
+    
 #ifdef __cplusplus
 } // extern "C"
 #endif

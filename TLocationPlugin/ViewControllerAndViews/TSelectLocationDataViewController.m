@@ -121,7 +121,7 @@ static NSString * const TSelectLocationDataTableViewCellID = @"TSelectLocationDa
 }
 
 - (void)editTableView {
-    if (self.tableView.isEditing || self.tableView.isBeginingEdit) {
+    if (self.tableView.isEditing || self.tableView.isEditBegining) {
         return;
     }
     [self.tableView setEditing:YES animated:YES];
@@ -154,7 +154,7 @@ static NSString * const TSelectLocationDataTableViewCellID = @"TSelectLocationDa
 }
 
 - (void)doneEditTableView {
-    if (!self.tableView.isEditing || self.tableView.isEndingEdit) {
+    if (!self.tableView.isEditing || self.tableView.isEditEnding) {
         return;
     }
     [self.tableView setEditing:NO animated:YES];

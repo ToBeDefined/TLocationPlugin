@@ -17,34 +17,37 @@
     t_exchange_instance_method(self, @selector(setEditing:animated:), @selector(_t_setEditing:animated:));
 }
 
-- (BOOL)isBeginingEdit {
+- (BOOL)isEditBegining {
     return [objc_getAssociatedObject(self, _cmd) boolValue];
-}
-- (void)setBeginingEdit:(BOOL)beginingEdit {
-    objc_setAssociatedObject(self, @selector(isBeginingEdit), @(beginingEdit), OBJC_ASSOCIATION_RETAIN);
 }
 
-- (BOOL)isEndingEdit {
+- (void)setEditBegining:(BOOL)beginingEdit {
+    objc_setAssociatedObject(self, @selector(isEditBegining), @(beginingEdit), OBJC_ASSOCIATION_RETAIN);
+}
+
+
+- (BOOL)isEditEnding {
     return [objc_getAssociatedObject(self, _cmd) boolValue];
 }
-- (void)setEndingEdit:(BOOL)endingEdit {
-    objc_setAssociatedObject(self, @selector(isEndingEdit), @(endingEdit), OBJC_ASSOCIATION_RETAIN);
+
+- (void)setEditEnding:(BOOL)endingEdit {
+    objc_setAssociatedObject(self, @selector(isEditEnding), @(endingEdit), OBJC_ASSOCIATION_RETAIN);
 }
 
 - (void)_t_setEditing:(BOOL)editing {
-    self.beginingEdit = editing;
-    self.endingEdit = !editing;
+    self.editBegining = editing;
+    self.editEnding = !editing;
     [self _t_setEditing:editing];
-    self.beginingEdit = NO;
-    self.endingEdit = NO;
+    self.editBegining = NO;
+    self.editEnding = NO;
 }
 
 - (void)_t_setEditing:(BOOL)editing animated:(BOOL)animated {
-    self.beginingEdit = editing;
-    self.endingEdit = !editing;
+    self.editBegining = editing;
+    self.editEnding = !editing;
     [self _t_setEditing:editing animated:animated];
-    self.beginingEdit = NO;
-    self.endingEdit = NO;
+    self.editBegining = NO;
+    self.editEnding = NO;
 }
 
 @end

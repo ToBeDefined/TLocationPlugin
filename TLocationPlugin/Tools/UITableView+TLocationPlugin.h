@@ -12,8 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UITableView (TLocationPlugin)
 
-@property (nonatomic, assign, getter=isBeginingEdit) BOOL beginingEdit;
-@property (nonatomic, assign, getter=isEndingEdit) BOOL endingEdit;
+@property (nonatomic, assign, getter=isEditBegining) BOOL editBegining;
+@property (nonatomic, assign, getter=isEditEnding) BOOL editEnding;
 
 @end
 

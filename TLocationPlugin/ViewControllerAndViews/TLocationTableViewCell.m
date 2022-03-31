@@ -33,7 +33,7 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-    if (self.tableView.isEditing || self.tableView.isBeginingEdit) {
+    if (self.tableView.isEditing || self.tableView.isEditBegining) {
         return;
     }
 }
