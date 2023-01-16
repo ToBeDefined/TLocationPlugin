@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh --login
 
 # Base Dir
-BASEDIR=$(realpath $(dirname "$0"))
+BASEDIR=$(realpath "${PROJECT_DIR}")
 
 # 注入 framework 名称
 export FRAMEWORK_NAME="TLocationPlugin"
@@ -13,7 +13,7 @@ export APP_NAME="wework"
 export BINARY_NAME="wework"
 
 # Payload Path
-export PAYLOAD_PATH=$(realpath "${BASEDIR}/../Payload")
+export PAYLOAD_PATH="${BASEDIR}/Payload"
 
 # App 包根目录
 export APP_CONTENT_PATH="${PAYLOAD_PATH}/${BINARY_NAME}.app"

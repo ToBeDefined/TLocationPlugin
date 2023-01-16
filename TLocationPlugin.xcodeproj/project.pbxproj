@@ -1298,9 +1298,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TS9WTSBK78;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 63JR9Z58EL;
 				INFOPLIST_FILE = TestLocationPlugin/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1309,7 +1309,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = tbd.tech.TestLocationPlugin;
 				PRODUCT_NAME = Lark;
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "Wildcard Development";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1318,9 +1318,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TS9WTSBK78;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 63JR9Z58EL;
 				INFOPLIST_FILE = TestLocationPlugin/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1329,7 +1329,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = tbd.tech.TestLocationPlugin;
 				PRODUCT_NAME = Lark;
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "Wildcard Adhoc";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

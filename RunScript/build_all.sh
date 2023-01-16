@@ -2,9 +2,9 @@
 
 set -ex
 
-BASEDIR=$(realpath $(dirname "$0"))
+CUR_DIR=$(realpath $(dirname "$0"))
 
-source "$BASEDIR/env.sh"
+source "$CUR_DIR/env.sh"
 
 UNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal
 

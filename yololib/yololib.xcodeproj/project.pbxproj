@@ -24,6 +24,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3F0D76872974FD6A00AC8A50 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		AD49F4E51769B63A00B8D2E0 /* yololib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = yololib; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD4A0D561949A42E00B6B127 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		AD4A0D581949AA5B00B6B127 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -41,12 +42,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3F0D76862974FD6900AC8A50 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3F0D76872974FD6A00AC8A50 /* CoreFoundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		AD49F4DC1769B63800B8D2E0 = {
 			isa = PBXGroup;
 			children = (
 				AD4A0D581949AA5B00B6B127 /* main.m */,
 				AD4A0D561949A42E00B6B127 /* Foundation.framework */,
 				AD49F4E61769B63A00B8D2E0 /* Products */,
+				3F0D76862974FD6900AC8A50 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};

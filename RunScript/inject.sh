@@ -2,10 +2,10 @@
 
 set -ex
 
-BASEDIR=$(realpath $(dirname "$0"))
+CUR_DIR=$(realpath $(dirname "$0"))
 
-source "$BASEDIR/devices_arm_info.sh"
-source "$BASEDIR/env.sh"
+source "$CUR_DIR/devices_arm_info.sh"
+source "$CUR_DIR/env.sh"
 
 
 ORIGIN_APP_NAME="${APP_NAME}_origin.ipa"
@@ -50,7 +50,7 @@ plutil -remove UISupportedDevices Info.plist
 yololib "${BINARY_NAME}" "Frameworks/${FRAMEWORK_NAME}.framework/${FRAMEWORK_NAME}"
 
 # 注入图标
-python3 "${BASEDIR}/inject_app_icon.py"
+python3 "${CUR_DIR}/inject_app_icon.py"
 
 popd > /dev/null
 
